@@ -1,0 +1,393 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>GuitarUberProject_2._0</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>iconfinder_guitar_hero_3_b_49667.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="gridBeatsAndBars.png" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s1p9.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s2p9.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s3p9.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s4p9.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s5p9.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p0.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p1.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p10.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p11.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p12.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p13.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p14.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p2.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p3.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p4.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p5.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p6.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p7.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p8.wav" />
+    <None Remove="NotesMp3\GibsonSj200 New\s6p9.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="gridBeatsAndBars.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="iconfinder_guitar_hero_3_b_49667.ico" />
+    <Content Include="NotesMp3\GibsonSj200 New\s1p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s1p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s2p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s3p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s4p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s5p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p10.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p11.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p12.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p13.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p14.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\GibsonSj200 New\s6p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Melanchall.DryWetMidi" Version="7.0.1" />
+    <PackageReference Include="ModernUICharts.WPF.Beta" Version="0.9.1" />
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="NAudio.Lame" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarUberProject 2.0", "GuitarUberProject 2.0\GuitarUberProject 2.0.csproj", "{F18456EE-F6F7-457A-BE3B-DA9D5D910E70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F18456EE-F6F7-457A-BE3B-DA9D5D910E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F18456EE-F6F7-457A-BE3B-DA9D5D910E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F18456EE-F6F7-457A-BE3B-DA9D5D910E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F18456EE-F6F7-457A-BE3B-DA9D5D910E70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {667F7781-9339-4DFF-A989-52B5678F8A89}
+	EndGlobalSection
+EndGlobal

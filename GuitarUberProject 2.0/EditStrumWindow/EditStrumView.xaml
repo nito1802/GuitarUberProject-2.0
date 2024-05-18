@@ -1,0 +1,114 @@
+﻿<Window x:Class="GitarUberProject.EditStrumWindow.EditStrumView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GitarUberProject.EditStrumWindow"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        ShowInTaskbar="False"
+        Background="#66970C84"
+		AllowsTransparency="True"
+		WindowStyle="None"
+		BorderThickness="1"
+		BorderBrush="#7FCFB511"
+        KeyDown="Window_KeyDown"
+        ResizeMode="NoResize"
+        WindowStartupLocation="Manual"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="EditStrumView" Height="250" Width="700">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\KolorujChord\XamlStyles\StylesForEditChordWindow.xaml" />
+                <ResourceDictionary Source="..\XamlStyles\StylesForMainWindow.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid x:Name="MGrid">
+        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click"/>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+            <Border VerticalAlignment="Top" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+            <Border VerticalAlignment="Top" Grid.Row="1" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+            <Border VerticalAlignment="Top" Grid.Row="2" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+            <Border VerticalAlignment="Top" Grid.Row="3" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+            <Border VerticalAlignment="Top" Grid.Row="4" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+            <Border VerticalAlignment="Top" Grid.Row="5" BorderBrush="#CCE2E2E2" BorderThickness="0.5"/>
+
+            <ItemsControl Margin="10 -7 0 0" ItemsSource="{Binding EditStrumModels, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.RowSpan="6">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"  />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5 0 0 0" Background="#4CFFD700">
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Wstaw" Name="menuItemWstaw" Command="{Binding InsertSingleStrum}"/>
+                                    <MenuItem Header="Usuń" Name="menuItemUsun" Command="{Binding RemoveSingleStrum}"/>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+
+                            <TextBox Margin="0 -20 0 0" Width="32" Text="{Binding DelayBeforeMs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Foreground="#FFF1F1F1" Background="#FF171414"/>
+
+                            
+                            <ItemsControl Margin="0 -5 0 0" ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.RowSpan="6">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Button Style="{StaticResource ButtonStyle1}" Command="{Binding ClickStruna}" CommandParameter="2" Margin="0 5 0 0" Width="15" Height="15">
+                                            <i:Interaction.Triggers>
+                                                <!--<i:EventTrigger EventName="MouseRightButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding Path=IsSelectChordCommand}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="MouseDoubleClick">
+                                            <i:InvokeCommandAction Command="{Binding Path=MoveToChordBox}"/>
+                                        </i:EventTrigger>-->
+                                                <local:MouseWheelButtonEventTrigger>
+                                                    <i:InvokeCommandAction Command="{Binding Path=ClickStrunaStop}" />
+                                                </local:MouseWheelButtonEventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
+                                        </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+
+                            <TextBox Margin="0 0 0 -10 " Width="32" Text="{Binding DelayBetweenStrunaMs, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Foreground="#FFF1F1F1" Background="#FF171414"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <StackPanel Margin="10 0 0 10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Name="btnTry" Style="{StaticResource DarkButton}"  Padding="10 2" Width="120" Content="Try!" FontSize="16" Command="{Binding TryCommand}"/>
+            <Button Name="btnAddStrum" Margin="3 0 0 0" Style="{StaticResource DarkButton}"  Padding="10 2" Width="120" Content="Add Strum" FontSize="16" Command="{Binding AddStrum}"/>
+        </StackPanel>
+            
+
+
+        <StackPanel Margin="0 20 10 10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Name="btnApply" Style="{StaticResource DarkButton}" Padding="10 2" Content="Apply" FontSize="16" Click="btnApply_Click"/>
+            <Button Name="btnCancel" Style="{StaticResource DarkButton}" Margin="3 0 0 0" Padding="10 4" Content="Cancel" FontSize="16" Click="btnCancel_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

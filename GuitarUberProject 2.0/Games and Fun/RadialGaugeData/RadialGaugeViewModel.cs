@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GitarUberProject.Games_and_Fun.RadialGaugeData
+{
+    public class RadialGaugeViewModel
+    {
+        public ObservableCollection<RadialGaugeModel> Data { get; set; } = new ObservableCollection<RadialGaugeModel>();
+
+        public RadialGaugeViewModel()
+        {
+            //if(!Data.Any())
+            //    Data.Add(new RadialGaugeModel { Name = "", Count = 0 });
+        }
+    }
+}

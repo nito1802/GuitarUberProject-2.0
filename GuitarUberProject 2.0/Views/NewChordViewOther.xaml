@@ -1,0 +1,162 @@
+﻿<UserControl x:Class="GitarUberProject.Views.NewChordViewOther"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GitarUberProject.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="473" d:DesignWidth="535">
+    <Grid Name="ChordGrid">
+        <StackPanel>
+            <StackPanel Margin="0 10 0 10" Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center">
+                <StackPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="0.6" ScaleY="0.6"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </StackPanel.RenderTransform>
+                <Grid Name="hahaGrid" Margin="0 0 0 0" RenderTransformOrigin="1,1">
+                    <!--<Grid.Effect>
+                        <DropShadowEffect BlurRadius="22"/>
+                    </Grid.Effect>-->
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform  ScaleX="1" ScaleY="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+
+                    <Grid Margin="0 -15 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock  Foreground="White"  Text="{Binding FrText, UpdateSourceTrigger=PropertyChanged}" FontSize="15" />
+                        <TextBlock Grid.Column="1" Text="{Binding ChordFullName, UpdateSourceTrigger=PropertyChanged}" FontSize="15" Foreground="White" Panel.ZIndex="10" FontWeight="UltraLight" />
+                    </Grid>
+
+                    <Border Height="100" Width="190" Background="#2C2C2C" CornerRadius="5 5 5 5"/>
+
+                    <Grid Height="100" Width="200" RenderTransformOrigin="1,1" HorizontalAlignment="Left" Margin="0 10 0 0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="40"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Border VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#E9E9E9" SnapsToDevicePixels="True"/>
+
+
+                        <ItemsControl Name="itemsControlNotes" ItemsSource="{Binding Notes}" Grid.ColumnSpan="6" Grid.RowSpan="6">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="6" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Rectangle Fill="{Binding MyBackground, UpdateSourceTrigger=PropertyChanged}" Width="14" Height="14" Panel.ZIndex="2" Margin="0 -16 0 0"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <Border HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="3" BorderBrush="#FFB0B0B0" SnapsToDevicePixels="True"/>
+                        <Border Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="5"  BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#FF707070"/>
+                        <Border Grid.Column="2"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#FF707070"/>
+                        <Border Grid.Column="3"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#FF707070"/>
+                        <Border Grid.Column="4"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#FF707070"/>
+                        <Border Grid.Column="5"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#FF707070"/>
+
+                        <ItemsControl Name="itemsControlNoteOctaves" Margin="3 -10 0 0" Grid.RowSpan="6" Grid.Column="8" ItemsSource="{Binding NoteOctaves, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel  />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="0 -4 0 0">
+                                        <TextBlock Text="{Binding Name}" Foreground="{Binding NoteColor}" FontSize="16" FontWeight="Bold" />
+                                        <TextBlock Foreground="#FF8D8D8D" Text="{Binding Octave}" FontSize="16" FontWeight="Bold" Margin="2 0 0 0" ClipToBounds="False" Panel.ZIndex="24" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!--<StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb1Note" Foreground="LightGray" Text="E"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb1Octave" Foreground="#FF8D8D8D" Text="3"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" ClipToBounds="False" Panel.ZIndex="24" Grid.ColumnSpan="22"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb2Note" Foreground="LightGray" Text="A"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb2Octave" Foreground="#FF8D8D8D" Text="3"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb3Note" Foreground="LightGray" Text="D"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb3Octave" Foreground="#FF8D8D8D" Text="4"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb4Note" Foreground="LightGray" Text="G"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb4Octave" Foreground="#FF8D8D8D" Text="4"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb5Note" Foreground="LightGray" Text="B"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb5Octave" Foreground="#FF8D8D8D" Text="4"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="8" Margin="3 -10 0 0">
+                            <TextBlock Name="tb6Note" Foreground="LightGray" Text="E#"  FontSize="16" FontWeight="Bold" />
+                            <TextBlock Name="tb6Octave" Foreground="#FF8D8D8D" Text="5"  FontSize="16" FontWeight="Bold" Margin="2 0 0 0" />
+                        </StackPanel>-->
+
+                        <ItemsControl Name="itemsControlNotesO" Margin="-15 -7 0 0" Grid.RowSpan="6" ItemsSource="{Binding NotesO, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel  />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontWeight="Bold"  Panel.ZIndex="-2" Foreground="White" Text="{Binding }" FontSize="12"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Graj" Name="menuItemRemoveCheckpoint"/>
+                <MenuItem Header="Edytuj" IsEnabled="False" Name="menuItemEditChord" Command="{Binding EditChord}"/>
+                <MenuItem Header="Koloruj" Name="menuItemKoloruj" Command="{Binding KolorujChord}" CommandParameter="{Binding Name}"/>
+                <Separator />
+                <MenuItem Header="Do Other" Name="DoOther" Command="{Binding MoveToOther}"/>
+                <MenuItem Header="Do Playlisty" Name="DoPlaylisty" Command="{Binding MoveToChordBox}"/>
+                <MenuItem Header="Usuń" Name="Usun" Command="{Binding UsunOtherChord}"/>
+            </ContextMenu>
+        </Grid.ContextMenu>
+    </Grid>
+</UserControl>
