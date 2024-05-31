@@ -102,6 +102,95 @@
     <None Remove="NotesMp3\GibsonSj200 New\s6p7.wav" />
     <None Remove="NotesMp3\GibsonSj200 New\s6p8.wav" />
     <None Remove="NotesMp3\GibsonSj200 New\s6p9.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#0.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A#7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A0.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\A7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B0.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\B7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C#8.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\C8.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D#7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\D7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\E7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F#7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\F7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G#7.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G1.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G2.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G3.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G4.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G5.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G6.wav" />
+    <None Remove="NotesMp3\piano-mp3-volumeUP5\G7.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -377,6 +466,273 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="NotesMp3\GibsonSj200 New\s6p9.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A#7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\A7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B0.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\B7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C#8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\C8.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D#7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\D7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\E7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F#7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\F7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G#7.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G1.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G3.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G4.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G5.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G6.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NotesMp3\piano-mp3-volumeUP5\G7.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

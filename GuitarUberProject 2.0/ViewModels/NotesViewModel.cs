@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -31,12 +32,6 @@ namespace GitarUberProject
             NotePath = notePath;
         }
     }
-
-  
-
-    
-
-    
 
     public class NotesViewModel : INotifyPropertyChanged
     {
@@ -56,7 +51,7 @@ namespace GitarUberProject
 
         public Dictionary<string, string> BrushNotesDict { get; set; }
         public Dictionary<int, string> BrushOctavesDict { get; set; }
-        
+
         public string[] AllNotes { get; set; } = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
 
         public List<NoteModel> Notes { get; set; }
@@ -65,16 +60,16 @@ namespace GitarUberProject
 
         public WaveOut[] StrunyWaves { get; set; } = new WaveOut[6];
         public WaveOut MainWaveOut { get; set; } = new WaveOut();
+
         public NotesViewModel()
         {
-
             //LiteNote[] startNotes = new LiteNote[] {"E", "A", "D", "G", "B", "E" };
             InitDicts();
             InitNotes();
             InitPlayNotes();
             StrumDelayMs = ChordDelayMsDefault;
 
-            if(NotesViewModelLiteVersion.PlayDownAction == null)
+            if (NotesViewModelLiteVersion.PlayDownAction == null)
             {
                 NotesViewModelLiteVersion.PlayDownAction = (a) => PlayDownMethod(a);
             }
@@ -137,8 +132,6 @@ namespace GitarUberProject
             }
         }
 
-
-
         public ICommand PlayDown
         {
             get
@@ -155,6 +148,8 @@ namespace GitarUberProject
             }
         }
 
+        public static Func<List<ToggleButton>> GetPianoButtonsFunc { get; set; }
+
         public ICommand PlayDownGuitarControl
         {
             get
@@ -163,16 +158,39 @@ namespace GitarUberProject
                 {
                     playDown = new RelayCommand(param =>
                     {
-                        var playedNotes = PrepareToPlay();
-                        playedNotes.Reverse();
-                        PlayChord(playedNotes, strumDelayMs);
+                        //string pathToJson = @"C:\Users\dante\Desktop\Istotne\MojeDane\2023\grudzień\18_12_2023\Inne\serializedChords.json";
+
+                        //TODO: przenalizować kod i dostosować piano
+                        //string pathToJson = @"C:\Users\dante\Desktop\Istotne\MojeDane\2023\grudzień\26_12_2023\Inne\serializedChordsMy.json";
+                        //var jsonContent = File.ReadAllText(pathToJson);
+                        //var chordsVariants = JsonConvert.DeserializeObject<List<MyChord>>(jsonContent);
+                        //Stopwatch sw = Stopwatch.StartNew();
+                        //for (int i = 0; i < chordsVariants.Count; i++)
+                        //{
+                        //    var item = chordsVariants[i];
+                        //    PlayChordPiano(item, strumDelayMs, i);
+                        //}
+                        //sw.Stop();
+                        //return;
+
+                        var pianoKeys = GetPianoButtonsFunc?.Invoke();
+                        var pianoCheckedKeys = pianoKeys.Where(a => a.IsChecked == true).Select(b => b.Content.ToString()).ToList();
+                        if (pianoCheckedKeys.Any())
+                        {
+                            PlayChordPiano(pianoCheckedKeys, strumDelayMs);
+                        }
+                        else
+                        {
+                            var playedNotes = PrepareToPlay();
+                            playedNotes.Reverse();
+                            PlayChord(playedNotes, strumDelayMs);
+                        }
                     }
                      , param => true);
                 }
                 return playDown;
             }
         }
-
 
         public ICommand PlayUp
         {
@@ -190,7 +208,7 @@ namespace GitarUberProject
                 return playUp;
             }
         }
-        
+
         public ICommand ClearChords
         {
             get
@@ -200,6 +218,12 @@ namespace GitarUberProject
                     clearChords = new RelayCommand(param =>
                     {
                         Notes.ForEach(a => a.ClearNote());
+                        var pianoKeys = GetPianoButtonsFunc?.Invoke();
+                        foreach (var item in pianoKeys)
+                        {
+                            item.IsChecked = false;
+                        }
+
                         NoteModel.UpdateGitarMainChord();
                     }
                      , param => true);
@@ -228,7 +252,7 @@ namespace GitarUberProject
             {
                 StrunyWaves[i] = new WaveOut();
             }
-            
+
             Action<int, string> PlayNoteAction = (nrStruny, mp3Name) =>
             {
                 try
@@ -253,7 +277,6 @@ namespace GitarUberProject
 
                 //tbAkordContent.Text = string.Join("   ", checkedNotes);
             };
-
 
             NoteModel.PlayNoteAction = PlayNoteAction;
             NoteModel.RefreshNotesOnStrunaAction = RefreshNotesOnStrunaAction;
@@ -304,7 +327,7 @@ namespace GitarUberProject
             }
         }
 
-        void InitDicts()
+        private void InitDicts()
         {
             BrushNotesDict = new Dictionary<string, string>
             {
@@ -333,7 +356,7 @@ namespace GitarUberProject
 
         public void PlayDownMethod()
         {
-            if(GlobalStrumPattern.Any())
+            if (GlobalStrumPattern.Any())
             {
                 MyExtraPlayChordWithStrumPattern(null);
             }
@@ -359,7 +382,6 @@ namespace GitarUberProject
             }
         }
 
-
         public StrumViewModel GetStrumModels(List<string> playedNotes)
         {
             List<StrumModel> myModel = null;
@@ -376,7 +398,7 @@ namespace GitarUberProject
                     new StrumModel(playedNotes, StrumDirection.Downward, 20, 0, 6, 0),
                 };
             }
-            
+
             Stopwatch myU = new Stopwatch();
             myU.Start();
             //StrumViewModel strumManager = new StrumViewModel(strumPattern);
@@ -385,7 +407,6 @@ namespace GitarUberProject
 
             return strumManager;
         }
-
 
         public void TryPlayChordFromPlaylist(StrumViewModel strumManager)
         {
@@ -419,12 +440,10 @@ namespace GitarUberProject
             MainWaveOut.Play();
         }
 
-
-
         public void MyExtraPlayChordWithStrumPattern(List<StrumModel> models, NotesViewModelLiteVersion notesViewModelLite = null)
         {
             List<string> playedNotesPaths = notesViewModelLite == null ? PrepareToPlayForChord() : PrepareToPlayForChord(notesViewModelLite);
-            
+
             if (models == null || !models.Any())
             {
                 if (GlobalStrumPattern == null || !GlobalStrumPattern.Any()) return;
@@ -437,7 +456,6 @@ namespace GitarUberProject
             List<string> EbChord = new List<string> { "s5p6", "s4p5", "s3p3", "s2p4", "s1p3" };
             List<string> BbChord = new List<string> { "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6" };
 
-
             int offsetMs = 0;
 
             List<ISampleProvider> samples = new List<ISampleProvider>();
@@ -449,7 +467,6 @@ namespace GitarUberProject
 
             //    new StrumModel(GmChord, StrumDirection.Upward, 15, 400, 6, 1),
             //    new StrumModel(GmChord, StrumDirection.Downward, 10, 100, 5, 0),
-
 
             //    new StrumModel(EbChord, StrumDirection.Upward, 15, 160, 6, 1),
             //    new StrumModel(EbChord, StrumDirection.Downward, 15, 160, EbChord.Count-1, 0),
@@ -585,7 +602,6 @@ namespace GitarUberProject
 
                 List<ISampleProvider> samples = new List<ISampleProvider>();
 
-
                 var notesKlocki = klocekInChannel.Where(b => b.IsChord == false).ToList();
                 var chordsKlocki = klocekInChannel.Where(b => b.IsChord == true).ToList();
 
@@ -614,11 +630,9 @@ namespace GitarUberProject
                     }
                 }
 
-
                 foreach (var chordKlocek in chordsKlocki)
                 {
                     double fullDelayMs = chordKlocek.XPos / BeatWidth * delayBpm;
-
 
                     foreach (var item in chordKlocek.StrumViewModel.StrumPattern)
                     {
@@ -636,12 +650,11 @@ namespace GitarUberProject
                     }
                 }
 
-
                 if (!samples.Any()) return;
                 MixingSampleProvider mixSample = new MixingSampleProvider(samples);
 
                 VolumeSampleProvider volumeSampleProvider = new VolumeSampleProvider(mixSample);
-                volumeSampleProvider.Volume = (float)mixerModels[groupedByChannel[s].Key].Vol/100;
+                volumeSampleProvider.Volume = (float)mixerModels[groupedByChannel[s].Key].Vol / 100;
                 globalSamples.Add(volumeSampleProvider);
                 //OffsetSampleProvider myOffsetSample = new OffsetSampleProvider(mixSample);
                 //myOffsetSample.SkipOver = TimeSpan.FromMilliseconds(delayByMs);
@@ -652,7 +665,7 @@ namespace GitarUberProject
             OffsetSampleProvider myOffsetSample = new OffsetSampleProvider(globalMixSample);
             myOffsetSample.SkipOver = TimeSpan.FromMilliseconds(delayByMs);
 
-            if(exportToWavMp3)
+            if (exportToWavMp3)
             {
                 string recordPath = Path.Combine(App.FolderSettingsPath, "lastRecorded");
                 if (!Directory.Exists(recordPath)) Directory.CreateDirectory(recordPath);
@@ -667,7 +680,6 @@ namespace GitarUberProject
             MainWaveOut.Init(myOffsetSample);
             MainWaveOut.Play();
         }
-
 
         public void PlayAtOnceMethod()
         {
@@ -726,6 +738,49 @@ namespace GitarUberProject
             return res;
         }
 
+        private void PlayChordPiano(List<string> paths, int delayMs, int index = 0)
+        {
+            int offsetMs = 0;
+
+            List<ISampleProvider> samples = new List<ISampleProvider>();
+
+            foreach (var path in paths)
+            {
+                //OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\piano-mp3\{path}.mp3"));
+                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\piano-mp3-volumeUP5\{path}.wav"));
+
+                offsetSample.DelayBy = TimeSpan.FromMilliseconds(offsetMs);
+                samples.Add(offsetSample);
+                offsetMs += delayMs;
+            }
+
+            if (!samples.Any()) return;
+
+            MixingSampleProvider mixSample = new MixingSampleProvider(samples);
+
+            //WaveFileWriter.CreateWaveFile16("mixed22.wav", mixSample);
+
+            bool exportToWavMp3 = false;
+            if (exportToWavMp3)
+            {
+                string recordPath = Path.Combine(App.FolderSettingsPath, "chordsRecordedNew2222");
+                if (!Directory.Exists(recordPath)) Directory.CreateDirectory(recordPath);
+
+                //string wavPath = Path.Combine(recordPath, $"{myChord.Name}_{index}.wav");
+                //string mp3Path = Path.Combine(recordPath, $"{myChord.Name}_{index}.mp3");
+                string wavPath = Path.Combine(recordPath, $"recordedPiano.wav");
+                string mp3Path = Path.Combine(recordPath, $"recordedPiano.mp3");
+                NAudioHelper.ConvertToFileWavMp3(mixSample, wavPath, mp3Path);
+            }
+            else
+            {
+                MainWaveOut.Dispose();
+                MainWaveOut = new WaveOut();
+                MainWaveOut.Init(mixSample);
+                MainWaveOut.Play();
+            }
+        }
+
         private void PlayChord(List<string> paths, int delayMs)
         {
             int offsetMs = 0;
@@ -776,7 +831,7 @@ namespace GitarUberProject
             var groupByStruny = notesViewModelLite.Notes.GroupBy(a => a.Struna).ToList();
 
             List<string> playedNotes = new List<string>();
-            
+
             int currStruna = 1;
             int offsetFr = notesViewModelLite.Fr > 1 ? notesViewModelLite.Fr - 1 : 0; //nie do konca rozumiem czemu tak....
 
@@ -795,10 +850,9 @@ namespace GitarUberProject
 
                 if (!foundNote)
                 {
-                    if(notesViewModelLite.NotesO[currStruna - 1] == "O")
+                    if (notesViewModelLite.NotesO[currStruna - 1] == "O")
                     {
                         playedNotes.Add($"s{currStruna}p0");
-
                     }
                 }
 
@@ -827,7 +881,7 @@ namespace GitarUberProject
                     }
                 }
 
-                if(!found)
+                if (!found)
                 {
                     playedNotes.Add("");
                 }
@@ -856,7 +910,6 @@ namespace GitarUberProject
                         break;
                     }
                 }
-
 
                 if (!found)
                 {

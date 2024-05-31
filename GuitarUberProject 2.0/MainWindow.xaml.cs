@@ -21,6 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -52,9 +53,10 @@ namespace GitarUberProject
 
         public string SeparatedLine { get; } = "-s-p-a-f-g-h-h--tht-h-trrtgrtgteea-";
         public string DefaultChordsPath { get; } = "DefaultChords.gup";
+
+        public List<ToggleButton> PianoKeys { get; set; }
         public Brush PianoPressedBrush { get; set; }
-        public List<Button> PianoKeys { get; set; }
-        public Dictionary<string, Button> PianoKeysDict { get; set; }
+        public Dictionary<string, ToggleButton> PianoKeysDict { get; set; }
         public Dictionary<string, Brush> PianoNormalBackground { get; set; }
         public static Dictionary<string, NotesViewModelLiteVersion> GlobalNotesChordDict { get; set; } = new Dictionary<string, NotesViewModelLiteVersion>();
         public static Dictionary<string, List<CheckedFinger>> CheckedFingerDict { get; set; } = new Dictionary<string, List<CheckedFinger>>();
@@ -407,6 +409,8 @@ namespace GitarUberProject
             {
                 NotesViewModel.TryPlayChordFromPlaylist(strumViewModel);
             };
+
+            NotesViewModel.GetPianoButtonsFunc = () => PianoKeys;
 
             MixerModel.UpdateKlocekVisibilityAction = (name, checkboxValue) =>
             {
@@ -881,7 +885,7 @@ namespace GitarUberProject
             LoadChords(fullJsonPath, NeedToRefreshImages, firstRun: true);
             swLoad.Stop();
             NeedToRefreshImages = false; //jakby kto usunal obrazki chordow, to generuje przy starcie na nowo
-            PianoKeys = pianoCanvas.Children.OfType<Button>().ToList();
+            PianoKeys = pianoCanvas.Children.OfType<ToggleButton>().ToList();
             PianoKeysDict = PianoKeys.ToDictionary(a => a.Content.ToString(), b => b);
             PianoNormalBackground = PianoKeys.ToDictionary(a => a.Content.ToString(), b => b.Background);
             foreach (var item in PianoKeys)
@@ -1259,12 +1263,18 @@ namespace GitarUberProject
         {
             ResetPianoKeys();
 
+            foreach (var item in PianoKeys)
+            {
+                item.IsChecked = false;
+            }
+
             foreach (var item in notes)
             {
                 var pianoBrush = NotesHelper.ChordColor[item.Name];
-                string key = $"{item.Name}{item.Octave}";
+                string key = $"{item.Name}{(int.Parse(item.Octave) - 1)}";
 
                 PianoKeysDict[key].Background = pianoBrush;
+                PianoKeysDict[key].IsChecked = true;
             }
         }
 
