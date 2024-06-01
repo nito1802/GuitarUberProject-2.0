@@ -113,7 +113,9 @@ namespace GitarUberProject
             //Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(readImagesSourceDir, ReadChordImagesWorkingPath, true);
             sw.Stop();
             //NeedToRefreshImages = true;
-            MainWindow mainWindow = new GitarUberProject.MainWindow(NeedToRefreshImages);
+
+            var mainWindow = new MainWindow(NeedToRefreshImages);
+
             sw.Stop();
             swApp.Stop();
             Debug.WriteLine($"swApp: {swApp.Elapsed}  sw: {sw.Elapsed}");

@@ -1,13 +1,8 @@
 ﻿using AudioMaker.Interfaces.Models.MidiExport;
 using GitarUberProject.Models;
 using GitarUberProject.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AudioMaker.Interfaces.Mappers
+namespace GuitarUberProject.Mappers
 {
     public interface IPlaylistMapper
     {

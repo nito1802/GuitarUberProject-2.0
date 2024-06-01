@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using GuitarUberProject;
+using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -49,14 +50,16 @@ namespace GitarUberProject
                 {
                     playNote = new RelayCommand(param =>
                     {
-                        if (PlayNoteAction != null)
-                        {
-                            PlayNoteAction(Struna, Mp3Name);
-                        }
-                        else
-                        {
-                            //throw new NotImplementedException("Brakuje PlayNoteAction!");
-                        }
+                        DependencyInjection.PlaySoundService.PlayNote(Struna, Mp3Name);
+
+                        //if (PlayNoteAction != null)
+                        //{
+                        //    PlayNoteAction(Struna, Mp3Name);
+                        //}
+                        //else
+                        //{
+                        //    throw new NotImplementedException("Brakuje PlayNoteAction!");
+                        //}
 
                         SetGitarFocusAction?.Invoke();
                     }

@@ -14,13 +14,11 @@ namespace GitarUberProject.Services
     {
         public static void StopPlaylist(
             double BorderPlaylistOffset,
-            NotesViewModel NotesViewModel,
             DispatcherTimer PlaylistTimer,
             Border borderPositionPlaylist
             )
         {
             BorderPlaylistOffset = 0;
-            NotesViewModel.MainWaveOut.Stop();
             PlaylistTimer.Stop();
             Canvas.SetLeft(borderPositionPlaylist, 0);
         }

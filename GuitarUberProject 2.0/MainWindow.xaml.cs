@@ -1,4 +1,4 @@
-﻿using AudioMaker.Interfaces.Mappers;
+﻿using AudioMaker.Interfaces.Consts;
 using EditChordsWindow;
 using GitarUberProject.EditStrumWindow;
 using GitarUberProject.Helperes;
@@ -7,6 +7,7 @@ using GitarUberProject.HelperWindows;
 using GitarUberProject.Models;
 using GitarUberProject.Services;
 using GitarUberProject.ViewModels;
+using GuitarUberProject;
 using Microsoft.Win32;
 using NAudio.Wave;
 using Newtonsoft.Json;
@@ -57,7 +58,7 @@ namespace GitarUberProject
         public static Dictionary<string, NotesViewModelLiteVersion> GlobalNotesChordDict { get; set; } = new Dictionary<string, NotesViewModelLiteVersion>();
         public static Dictionary<string, List<CheckedFinger>> CheckedFingerDict { get; set; } = new Dictionary<string, List<CheckedFinger>>();
 
-        public NotesViewModel NotesViewModel { get; set; } = new NotesViewModel();
+        public NotesViewModel NotesViewModel { get; set; }
         public ChordsViewModel ChordsViewModel { get; set; } = new ChordsViewModel();
         public CustomChordsViewModel CustomChordsViewModel { get; set; } = new CustomChordsViewModel();
         public ScaleNotesViewModel ScaleNotesViewModel { get; set; } = new ScaleNotesViewModel();
@@ -100,8 +101,10 @@ namespace GitarUberProject
         public long DelayBeforeStrum { get; set; }
         public Dictionary<string, Border> StrunaGlobalDict { get; set; }
         public SolidColorBrush[] StrunaGlobalBrushes { get; set; } = new SolidColorBrush[6];
-        public WaveOut[] GlobalStruny { get; set; } = new WaveOut[6];
+
+        //public WaveOut[] GlobalStruny { get; set; } = new WaveOut[6];
         public string[] NotsyPath { get; set; } = new string[6];
+
         public WaveOut[] GlobalStrunyNew { get; set; } = new WaveOut[6];
         public WaveFileReader[] WaveFileReaderNew { get; set; } = new WaveFileReader[6];
         public Task GlobalStrunyTask { get; set; }
@@ -133,6 +136,8 @@ namespace GitarUberProject
 
         public MainWindow(bool needToRefreshImages)
         {
+            NotesViewModel = new NotesViewModel();
+
             Stopwatch swMainWindow = new Stopwatch();
             swMainWindow.Start();
             NeedToRefreshImages = needToRefreshImages;
@@ -359,7 +364,13 @@ namespace GitarUberProject
             EditStrumViewModel.TryPlayChordWithPattern = (editPattern) =>
             {
                 var pattern = NotesViewModel.ConvertEditStrumModelsToStrumPattern(editPattern);
-                NotesViewModel.MyExtraPlayChordWithStrumPattern(pattern);
+                List<string> playedNotesPaths = NotesViewModel.PrepareToPlayForChord();
+                pattern.ForEach(a => a.AssignPaths(playedNotesPaths));
+                StrumViewModel strumManager = new StrumViewModel(pattern);
+                strumManager.CalculateDelays();
+                var mappedStrumViewModel = DependencyInjection.PlaySoundMapper.MapStrumViewModel(strumManager);
+
+                DependencyInjection.PlaySoundService.MyExtraPlayChordWithStrumPattern(mappedStrumViewModel);
             };
 
             ToViewSingleStrumViewModels.EditStrumPatternAction = (strumPattern) =>
@@ -403,7 +414,8 @@ namespace GitarUberProject
 
             KlocekChordModel.PlayChordFromPlaylist = (strumViewModel) =>
             {
-                NotesViewModel.TryPlayChordFromPlaylist(strumViewModel);
+                var mappedStrumViewModel = DependencyInjection.PlaySoundMapper.MapStrumViewModel(strumViewModel);
+                DependencyInjection.PlaySoundService.TryPlayChordFromPlaylist(mappedStrumViewModel);
             };
 
             NotesViewModel.GetPianoButtonsFunc = () => PianoKeys;
@@ -440,14 +452,13 @@ namespace GitarUberProject
 
             PlaylistTimer.Tick += (send, er) =>
             {
-                if (NotesViewModel.MainWaveOut.PlaybackState == PlaybackState.Stopped)
+                if (DependencyInjection.PlaySoundService.GetPlaylistState() == PlaylistState.Stopped)
                 {
                     PlaylistTimer.Stop();
                 }
 
-                var pos = NotesViewModel.MainWaveOut.GetPosition();
+                double ms = DependencyInjection.PlaySoundService.PlaylistMilisecond();
 
-                double ms = NotesViewModel.MainWaveOut.GetPosition() * 1000.0 / NotesViewModel.MainWaveOut.OutputWaveFormat.BitsPerSample / NotesViewModel.MainWaveOut.OutputWaveFormat.Channels * 8 / NotesViewModel.MainWaveOut.OutputWaveFormat.SampleRate;
                 Debug.WriteLine($"Playlistms: {ms}");
                 double delayBpm = 60_000 / NotesViewModel.Bpm;
                 double beatPos = ms / delayBpm * NotesViewModel.BeatWidth;
@@ -1878,7 +1889,13 @@ namespace GitarUberProject
                 BorderPlaylistOffset = mousePos.X;
                 PlaylistTimer.Stop();
                 PlaylistTimer.Start();
-                NotesViewModel.PlayPlaylist(KlocekViewModel.Klocki, MixerViewModel.MixerModels.ToList(), fullDelay);
+                DependencyInjection.PlaySoundService.PlayPlaylist(
+                    KlocekViewModel.Klocki.Select(DependencyInjection.PlaySoundMapper.MapKlocekChordModel).ToList(),
+                    MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
+                    NotesViewModel.Bpm,
+                    NotesViewModel.BeatWidth,
+                    fullDelay
+                    );
 
                 //NotesViewModel.PlayPlaylist(KlocekViewModel.Klocki, fullDelay);
             }
@@ -1937,9 +1954,6 @@ namespace GitarUberProject
 
                 StartCanvasScrollingPos = new Point(StartCanvasScrollingPos.X - deltaScroll, 0);
             }
-
-            //var tempRect = new Rect(Canvas.GetLeft(DraggedItemControl), Canvas.GetTop(DraggedItemControl), DraggedItemControl.ActualWidth, DraggedItemControl.ActualHeight);
-            //KlocekViewModel.CalculatePosition(tempRect);
         }
 
         private void TitleWindow_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -1949,9 +1963,9 @@ namespace GitarUberProject
 
         private void BtnPlayPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            if (NotesViewModel.MainWaveOut.PlaybackState == PlaybackState.Paused)
+            if (DependencyInjection.PlaySoundService.GetPlaylistState() == PlaylistState.Paused)
             {
-                NotesViewModel.MainWaveOut.Resume();
+                DependencyInjection.PlaySoundService.ResumePlaylist();
             }
             else
             {
@@ -1962,15 +1976,18 @@ namespace GitarUberProject
                 PlaylistTimer.Stop();
                 PlaylistTimer.Start();
 
-                NotesViewModel.PlayPlaylist(KlocekViewModel.Klocki, MixerViewModel.MixerModels.ToList());
-
-                //NotesViewModel.PlayPlaylist(KlocekViewModel.Klocki);
+                DependencyInjection.PlaySoundService.PlayPlaylist(
+                    KlocekViewModel.Klocki.Select(DependencyInjection.PlaySoundMapper.MapKlocekChordModel).ToList(),
+                    MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
+                    NotesViewModel.Bpm,
+                    NotesViewModel.BeatWidth
+                    );
             }
         }
 
         private void BtnPausePlaylist_Click(object sender, RoutedEventArgs e)
         {
-            NotesViewModel.MainWaveOut.Pause();
+            DependencyInjection.PlaySoundService.PausePlaylist();
         }
 
         private void TbBpm_TextChanged(object sender, TextChangedEventArgs e)
@@ -1994,7 +2011,8 @@ namespace GitarUberProject
 
         private void BtnStopPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            PlaylistService.StopPlaylist(BorderPlaylistOffset, NotesViewModel, PlaylistTimer, borderPositionPlaylist);
+            PlaylistService.StopPlaylist(BorderPlaylistOffset, PlaylistTimer, borderPositionPlaylist);
+            DependencyInjection.PlaySoundService.StopPlaylist();
         }
 
         private void BtnSaveSongAs_Click(object sender, RoutedEventArgs e)
@@ -2085,7 +2103,13 @@ namespace GitarUberProject
                 NotesInStrum
                 );
 
-            NotesViewModel.MyExtraPlayChordWithStrumPattern(null);
+            List<string> playedNotesPaths = NotesViewModel.PrepareToPlayForChord();
+            NotesViewModel.GlobalStrumPattern.ForEach(a => a.AssignPaths(playedNotesPaths));
+            StrumViewModel strumManager = new StrumViewModel(NotesViewModel.GlobalStrumPattern);
+            strumManager.CalculateDelays();
+            var mappedStrumViewModel = DependencyInjection.PlaySoundMapper.MapStrumViewModel(strumManager);
+
+            DependencyInjection.PlaySoundService.MyExtraPlayChordWithStrumPattern(mappedStrumViewModel);
         }
 
         private void LbStrumPatterns_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2117,7 +2141,14 @@ namespace GitarUberProject
                     if (myStrumPattern != null)
                     {
                         var myConvertedPattern = NotesViewModel.ConvertToViewStrumModelsToStrumPattern(myStrumPattern.ToViewStrumModels.ToList());
-                        NotesViewModel.MyExtraPlayChordWithStrumPattern(myConvertedPattern);
+
+                        List<string> playedNotesPaths = NotesViewModel.PrepareToPlayForChord();
+                        myConvertedPattern.ForEach(a => a.AssignPaths(playedNotesPaths));
+                        StrumViewModel strumManager = new StrumViewModel(myConvertedPattern);
+                        strumManager.CalculateDelays();
+                        var mappedStrumViewModel = DependencyInjection.PlaySoundMapper.MapStrumViewModel(strumManager);
+
+                        DependencyInjection.PlaySoundService.MyExtraPlayChordWithStrumPattern(mappedStrumViewModel);
                     }
                     else
                     {
@@ -2192,7 +2223,15 @@ namespace GitarUberProject
             PlaylistTimer.Stop();
             PlaylistTimer.Start();
 
-            NotesViewModel.PlayPlaylist(KlocekViewModel.Klocki, MixerViewModel.MixerModels.ToList(), exportToWavMp3: true);
+            DependencyInjection.PlaySoundService.PlayPlaylist(
+                    KlocekViewModel.Klocki.Select(DependencyInjection.PlaySoundMapper.MapKlocekChordModel).ToList(),
+                    MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
+                    NotesViewModel.Bpm,
+                    NotesViewModel.BeatWidth,
+                    exportToWavMp3: true
+                    );
+
+            //_playSoundService.PlayPlaylist(KlocekViewModel.Klocki, MixerViewModel.MixerModels.ToList(), exportToWavMp3: true);
         }
 
         private void BtnGame_Click(object sender, RoutedEventArgs e)
@@ -2228,8 +2267,7 @@ namespace GitarUberProject
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                var playlistMapper = new PlaylistMapper();
-                MidiService.ExportToMidiFile(saveFileDialog.FileName, playlistMapper.MapKlocekChordViewModel(KlocekViewModel));
+                MidiService.ExportToMidiFile(saveFileDialog.FileName, DependencyInjection.PlaylistMapper.MapKlocekChordViewModel(KlocekViewModel));
             }
         }
 
