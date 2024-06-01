@@ -1,10 +1,5 @@
 ﻿using GitarUberProject.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GitarUberProject.ViewModels
@@ -15,11 +10,9 @@ namespace GitarUberProject.ViewModels
         private RelayCommand editStrumPattern;
         private RelayCommand clonePattern;
 
-
         public static Action<ToViewSingleStrumViewModels> RemoveStrumPatternAction { get; set; }
         public static Action<ToViewSingleStrumViewModels> EditStrumPatternAction { get; set; }
         public static Action<ToViewSingleStrumViewModels> ClonePatternAction { get; set; }
-
 
         public ObservableCollection<ToViewStrumModels> ToViewStrumModels { get; set; } = new ObservableCollection<ToViewStrumModels>();
 

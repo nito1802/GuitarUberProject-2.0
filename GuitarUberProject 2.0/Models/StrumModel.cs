@@ -1,9 +1,4 @@
 ﻿using GitarUberProject.Helperes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.Models
 {
@@ -44,11 +39,10 @@ namespace GitarUberProject.Models
             return clone;
         }
 
-
         public StrumModel()
         {
-
         }
+
         public StrumModel(List<string> notesPaths, StrumDirection strumDir, long delayMs, long delayBeforeMs, int takeNotes = -1, int skipNotes = 0)
         {
             this.StrumDir = strumDir;
@@ -102,7 +96,6 @@ namespace GitarUberProject.Models
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
             else
@@ -117,7 +110,6 @@ namespace GitarUberProject.Models
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
         }

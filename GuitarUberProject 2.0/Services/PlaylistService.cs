@@ -2,20 +2,15 @@
 using GitarUberProject.Models;
 using GitarUberProject.ViewModels;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
 namespace GitarUberProject.Services
 {
-    public  class PlaylistService
+    public class PlaylistService
     {
         public static void StopPlaylist(
             double BorderPlaylistOffset,
@@ -29,7 +24,6 @@ namespace GitarUberProject.Services
             PlaylistTimer.Stop();
             Canvas.SetLeft(borderPositionPlaylist, 0);
         }
-
 
         public static void MoveNoteToPlaylistAction(
             NoteModel note,
@@ -117,7 +111,6 @@ namespace GitarUberProject.Services
             }
         }
 
-
         public static void AddChordToPlaylist(
             NotesViewModelLiteVersion chord,
             KlocekChordViewModel KlocekViewModel,
@@ -161,7 +154,6 @@ namespace GitarUberProject.Services
             }
 
             //klocek.YPos = KlocekChordViewModel.ItemHeight * (klocek.Struna - 1);
-
 
             var notesKlocki = KlocekViewModel.Klocki.Where(b => b.IsChord == false && b.ChannelNr == cbCurrentChannel.SelectedIndex).ToList();
             var chordsKlocki = KlocekViewModel.Klocki.Where(b => b.IsChord == true && b.ChannelNr == cbCurrentChannel.SelectedIndex).ToList();
@@ -258,8 +250,8 @@ namespace GitarUberProject.Services
         }
 
         public static void SavePlaylistSong(
-            string path, 
-            TextBox tbBpm, 
+            string path,
+            TextBox tbBpm,
             KlocekChordViewModel KlocekViewModel,
             TextBox tbPlaylistWidth
             )
@@ -273,7 +265,6 @@ namespace GitarUberProject.Services
             }
             else KlocekViewModel.Bpm = 100;
 
-
             bool parseResultCanvas = int.TryParse(tbPlaylistWidth.Text, out var parsedCanvas);
 
             if (parseResultCanvas)
@@ -281,7 +272,6 @@ namespace GitarUberProject.Services
                 KlocekViewModel.CanvasWidth = parsedCanvas;
             }
             else KlocekViewModel.CanvasWidth = 300;
-
 
             string serializedText = JsonConvert.SerializeObject(KlocekViewModel, Formatting.Indented);
             File.WriteAllText(path, serializedText);
@@ -336,18 +326,17 @@ namespace GitarUberProject.Services
                         notInChord.AssignBackground();
                     }
 
-
                     KlocekViewModel.Klocki.Add(item);
                 }
             }
         }
 
         public static void UpdateChordsInPlaylist(
-            KlocekChordViewModel KlocekViewModel, 
+            KlocekChordViewModel KlocekViewModel,
             NotesViewModel NotesViewModel,
             Stack<List<KlocekChordModel>> PlaylistRedoStack,
             Stack<List<KlocekChordModel>> PlaylistStack,
-            bool selectedItemsOnly = true, 
+            bool selectedItemsOnly = true,
             bool changeStrumPattern = true
             )
         {
@@ -473,7 +462,6 @@ namespace GitarUberProject.Services
 
             KlocekViewModel.Klocki.Clear();
 
-
             List<int> visibleChannels = new List<int>();
 
             for (int i = 0; i < MixerViewModel.MixerModels.Count; i++)
@@ -515,7 +503,6 @@ namespace GitarUberProject.Services
             {
                 KlocekViewModel.Klocki.Add(item);
             }
-
         }
     }
 }

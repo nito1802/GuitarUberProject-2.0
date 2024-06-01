@@ -1,11 +1,5 @@
 ﻿using GitarUberProject;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -25,6 +19,7 @@ namespace EditChordsWindow
     {
         //public static Action<int> UpdateNotesNamesAction { get; set; }
         public static SolidColorBrush DefaultBtnBackground { get; set; }
+
         public static SolidColorBrush DefaultBtnHover { get; set; }
         public static Dictionary<CheckedFinger, SolidColorBrush> FingerDict { get; set; }
 
@@ -60,7 +55,7 @@ namespace EditChordsWindow
                 OnPropertyChanged("MyBackground");
             }
         }
-        
+
         public CheckedFinger CheckedFinger
         {
             get
@@ -102,7 +97,7 @@ namespace EditChordsWindow
                 OnPropertyChanged("HoverBackground");
             }
         }
-        
+
         public CheckedFinger HoverFinger
         {
             get

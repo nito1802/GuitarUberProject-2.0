@@ -1,9 +1,4 @@
 ﻿using EditChordsWindow;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -13,9 +8,8 @@ namespace GitarUberProject
     {
         public static string[] AllNotes { get; set; } = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-        public static SolidColorBrush GlobalStrunaBrush { get; set; } = (SolidColorBrush) (new BrushConverter().ConvertFrom("#72D8970B"));
+        public static SolidColorBrush GlobalStrunaBrush { get; set; } = (SolidColorBrush)(new BrushConverter().ConvertFrom("#72D8970B"));
         public static SolidColorBrush GlobalStrunaBrushInactive { get; set; } = (SolidColorBrush)(new BrushConverter().ConvertFrom("#72C40811"));
-
 
         public static Dictionary<int, int> OctaveToFontSizeDict = new Dictionary<int, int>
         {
@@ -89,7 +83,6 @@ namespace GitarUberProject
             {CheckedFinger.None, (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFCCCCCC")) },
             {CheckedFinger.firstFinger, new LinearGradientBrush(new GradientStopCollection(new List<GradientStop>() { new GradientStop((Color)ColorConverter.ConvertFromString("#E29A05"), 0),  new GradientStop((Color)ColorConverter.ConvertFromString("#FFEBA619"), 1) }), new Point(0.5, 0), new Point(0.5, 1)) },
             {CheckedFinger.secondFinger,new LinearGradientBrush(new GradientStopCollection(new List<GradientStop>() { new GradientStop((Color)ColorConverter.ConvertFromString("#B71DE9"), 0),  new GradientStop((Color)ColorConverter.ConvertFromString("#FFA50CD6"), 1) }), new Point(0.5, 0), new Point(0.5, 1)) },
-            
         };
 
         public static string[] IntervalNames = new string[]
@@ -142,7 +135,6 @@ namespace GitarUberProject
 
                     if (noteModel.CheckedFinger != CheckedFinger.None)
                     {
-
                     }
 
                     res.Notes[counter] = noteModel;
@@ -160,12 +152,15 @@ namespace GitarUberProject
                     case NotesOStates.None:
                         res.NotesO[i] = "";
                         break;
+
                     case NotesOStates.X:
                         res.NotesO[i] = "X";
                         break;
+
                     case NotesOStates.O:
                         res.NotesO[i] = "O";
                         break;
+
                     default:
                         break;
                 }
@@ -174,14 +169,14 @@ namespace GitarUberProject
             res.UpdateAllStrunsNames();
             //res.ChordIntervalsNotes
 
-            if(res.ChordIntervalsNotes != null)
+            if (res.ChordIntervalsNotes != null)
                 res.ChordCode = string.Join("-", res.ChordIntervalsNotes.OrderBy(b => b).Distinct().ToList());
             else
                 res.ChordCode = string.Join("-", res.NoteOctaves.Where(c => !string.IsNullOrEmpty(c.Name)).Select(ax => ax.Name).OrderBy(b => b).Distinct().ToList());
 
             res.ChordCodeNormalized = string.Join("-", res.Notes.Where(a => a.CheckedFinger != CheckedFinger.None).Select(ax => $"s{ax.Struna}p{ax.Prog}").OrderBy(b => b).Distinct().ToList());
 
-            if(MainWindow.CheckedFingerDict.ContainsKey(res.ChordCodeNormalized))
+            if (MainWindow.CheckedFingerDict.ContainsKey(res.ChordCodeNormalized))
             {
                 var ukladFingers = MainWindow.CheckedFingerDict[res.ChordCodeNormalized];
                 for (int i = 0; i < ukladFingers.Count; i++)
@@ -203,7 +198,7 @@ namespace GitarUberProject
             int octave = startNote.Octave;
             int counter = 0;
 
-            while(true)
+            while (true)
             {
                 var note = new LiteNote(AllNotes[idx], octave);
                 string key = $"{AllNotes[idx]}{octave}";
@@ -226,7 +221,7 @@ namespace GitarUberProject
         }
     }
 
-    static class Extensions
+    internal static class Extensions
     {
         public static IList<T> Clone<T>(this IList<T> listToClone) where T : ICloneable
         {
@@ -265,7 +260,7 @@ namespace GitarUberProject
             Prog = prog;
             Struna = struna;
         }
-        
+
         public override string ToString()
         {
             return $"{Name}{Octave} P{Prog}_S{Struna}";

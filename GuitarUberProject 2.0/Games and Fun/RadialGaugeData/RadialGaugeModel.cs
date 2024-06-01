@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace GitarUberProject.Games_and_Fun.RadialGaugeData
 {
@@ -12,6 +7,7 @@ namespace GitarUberProject.Games_and_Fun.RadialGaugeData
         public string Name { get; set; }
 
         private double count;
+
         public double Count
         {
             get => count;

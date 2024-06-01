@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GitarUberProject.HelperWindows
 {
@@ -53,6 +42,7 @@ namespace GitarUberProject.HelperWindows
     {
         // ...
         WCA_ACCENT_POLICY = 19
+
         // ...
     }
 
@@ -68,7 +58,7 @@ namespace GitarUberProject.HelperWindows
         private string textPrefix;
         private string text;
         private string errorMessage;
-             
+
         //Jesteś pewien, że chcesz wyłączyć komputer?
         public CustomMessageBox(string _TextPrefix, string _Text, List<CustomMessageBoxValidation> errorsValidationList)
         {
@@ -113,7 +103,7 @@ namespace GitarUberProject.HelperWindows
 
             set
             {
-               text = value;
+                text = value;
                 OnPropertyChanged("Text");
 
                 ErrorMessage = "";
@@ -150,12 +140,12 @@ namespace GitarUberProject.HelperWindows
                 OnPropertyChanged("ErrorMessage");
             }
         }
-        
+
         public void ValidateErrors()
         {
             foreach (var item in ErrorsValidationList)
             {
-                if(item.ErrorCondition(Text))
+                if (item.ErrorCondition(Text))
                 {
                     ErrorMessage = item.ErrorText;
                     btnYes.Opacity = 0.5;
@@ -193,10 +183,10 @@ namespace GitarUberProject.HelperWindows
         {
             Close();
         }
-        
+
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 Apply();
             }
@@ -214,7 +204,7 @@ namespace GitarUberProject.HelperWindows
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove(); 
+            this.DragMove();
         }
     }
 }

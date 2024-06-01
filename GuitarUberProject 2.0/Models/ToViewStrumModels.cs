@@ -1,11 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace GitarUberProject.Models
 {
@@ -15,14 +9,15 @@ namespace GitarUberProject.Models
         private long delayBetweenStrunaMs;
 
         public List<ToViewEditStrumNoteDetailsModel> Notes { get; set; } = new List<ToViewEditStrumNoteDetailsModel>();
+
         [JsonIgnore]
         public static Action<EditStrumModel> InsertSingleStrumAction { get; set; }
+
         [JsonIgnore]
         public static Action<EditStrumModel> RemoveSingleStrumAction { get; set; }
 
         public ToViewStrumModels()
         {
-            
         }
 
         public long DelayBeforeMs
@@ -34,6 +29,7 @@ namespace GitarUberProject.Models
                 OnPropertyChanged("DelayBeforeMs");
             }
         }
+
         public long DelayBetweenStrunaMs
         {
             get => delayBetweenStrunaMs;

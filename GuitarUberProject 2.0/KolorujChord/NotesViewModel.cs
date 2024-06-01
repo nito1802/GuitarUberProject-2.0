@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace EditChordsWindow
 {
@@ -28,7 +21,7 @@ namespace EditChordsWindow
                 {CheckedFinger.fourthFinger,(SolidColorBrush)(new BrushConverter().ConvertFrom("#E16449")) },
                 {CheckedFinger.Other, (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF036C50")) }
             };
-            
+
             NoteModel.DefaultBtnBackground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFDDDDDD"));
             NoteModel.DefaultBtnHover = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFBEE6FD")); ;
 
@@ -63,7 +56,7 @@ namespace EditChordsWindow
                 }
             }
         }
-        
+
         public void ClearButtons(int fingerIdx)
         {
             foreach (var item in Notes)
@@ -81,8 +74,6 @@ namespace EditChordsWindow
         public void MoveCheckedNotesByOffset(int offset)
         {
             var checkedNotesFromEdit = Notes.Where(a => a.CheckedFinger != CheckedFinger.None).Select(a => (NoteModel)a.Clone()).ToList();
-
-
         }
     }
 }

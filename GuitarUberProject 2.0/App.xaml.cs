@@ -1,12 +1,6 @@
 ﻿using GitarUberProject.Games_and_Fun;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace GitarUberProject
@@ -49,7 +43,6 @@ namespace GitarUberProject
             string chordImagesWorkingPath = "ChordImagesWorkingPath";
             ChordImagesWorkingPath = Path.Combine(FolderSettingsPath, chordImagesWorkingPath);
 
-
             string readChordImages = "ReadChordImagesDefault";
             ReadChordsImagesDefaultPath = Path.Combine(FolderSettingsPath, readChordImages);
 
@@ -59,9 +52,8 @@ namespace GitarUberProject
             string readChordImagesWorkingPath = "ReadChordImagesWorkingPath";
             ReadChordImagesWorkingPath = Path.Combine(FolderSettingsPath, readChordImagesWorkingPath);
 
-
             if (!Directory.Exists(FolderSettingsPath)) Directory.CreateDirectory(FolderSettingsPath);
-            if(!Directory.Exists(ChordsImagesDefaultPath)) Directory.CreateDirectory(ChordsImagesDefaultPath);
+            if (!Directory.Exists(ChordsImagesDefaultPath)) Directory.CreateDirectory(ChordsImagesDefaultPath);
             if (!Directory.Exists(ChordImagesProfiles)) Directory.CreateDirectory(ChordImagesProfiles);
             if (!Directory.Exists(ChordImagesWorkingPath)) Directory.CreateDirectory(ChordImagesWorkingPath);
 
@@ -72,7 +64,7 @@ namespace GitarUberProject
             AppOptions.OptionsPath = Path.Combine(FolderSettingsPath, "AppOptions.json");
             AppOptions.Load();
 
-            if(AppOptions.Options != null)
+            if (AppOptions.Options != null)
             {
                 ProfileName = Path.GetFileNameWithoutExtension(AppOptions.Options.LastUsedFile);
             }
@@ -84,10 +76,8 @@ namespace GitarUberProject
 
             HighScoreViewModel.RootFilePath = Path.Combine(FolderSettingsPath, "Terrain");
 
-
             Stopwatch sw = new Stopwatch();
             sw.Start();
-
 
             string imagesSourceDir = Path.Combine(ChordImagesProfiles, ProfileName);
             bool NeedToRefreshImages = false;
@@ -109,7 +99,6 @@ namespace GitarUberProject
             var chordImageFiles = Directory.GetFiles(imagesSourceDir);
             var readChordImageFiles = Directory.GetFiles(readImagesSourceDir);
 
-            
             Parallel.ForEach(chordImageFiles, chordImageFile =>
             {
                 File.Copy(chordImageFile, Path.Combine(ChordImagesWorkingPath, Path.GetFileName(chordImageFile)), true);
@@ -142,7 +131,7 @@ namespace GitarUberProject
 
             var errorDirectory = Path.Combine(myDocumentPath, applicationFolder, "Errors");
 
-            if(!Directory.Exists(errorDirectory))
+            if (!Directory.Exists(errorDirectory))
             {
                 Directory.CreateDirectory(errorDirectory);
             }

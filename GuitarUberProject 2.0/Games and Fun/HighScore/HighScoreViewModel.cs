@@ -1,13 +1,8 @@
 ﻿using GitarUberProject.Games_and_Fun.HighScoreStats;
 using GitarUberProject.Games_and_Fun.RadialGaugeData;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.Games_and_Fun
 {
@@ -15,15 +10,19 @@ namespace GitarUberProject.Games_and_Fun
     {
         [JsonIgnore]
         public int TopScoreCount { get; } = 5;
+
         public static string RootFilePath { get; set; }
+
         [JsonIgnore]
         public string FileName { get; set; }
 
         public HighScoreStatsModel AllTimeStats { get; set; } = new HighScoreStatsModel();
+
         [JsonIgnore]
         public HighScoreStatsModel TodayStats { get; set; } = new HighScoreStatsModel();
 
         public ObservableCollection<HighScoreModel> BestScores { get; set; }
+
         [JsonIgnore]
         public ObservableCollection<HighScoreModel> NetworkBestScores { get; set; }
 
@@ -65,8 +64,8 @@ namespace GitarUberProject.Games_and_Fun
             try
             {
                 highScoreViewModel = JsonConvert.DeserializeObject<HighScoreViewModel>(jsonContent);
-                
-                if(!highScoreViewModel.TodayStats.RadialViewModel.Data.Any())
+
+                if (!highScoreViewModel.TodayStats.RadialViewModel.Data.Any())
                 {
                     highScoreViewModel.TodayStats.RadialViewModel.Data.Add(new RadialGaugeModel { Name = "", Count = 0 });
                 }

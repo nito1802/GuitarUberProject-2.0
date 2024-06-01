@@ -7,12 +7,9 @@ using GitarUberProject.ViewModels;
 using NAudio.Midi;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,7 +38,6 @@ namespace GitarUberProject
         public SolidColorBrush BullseyeTextColor { get; } = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF007C9C"));
         public WaveOut MainWaveOut { get; set; } = new WaveOut();
 
-
         public int ErrorToleranceTries { get; set; } = 1;
         public string[] PossibleErrorMessages { get; set; }
 
@@ -51,13 +47,11 @@ namespace GitarUberProject
         public GameModelEdit BtnD { get; set; }
         public GameModelEdit QuestionModel { get; set; }
 
-
         public NotesViewModelLiteVersion BtnAChord { get; set; }
         public NotesViewModelLiteVersion BtnBChord { get; set; }
         public NotesViewModelLiteVersion BtnCChord { get; set; }
         public NotesViewModelLiteVersion BtnDChord { get; set; }
         public NotesViewModelLiteVersion QuestionModelChord { get; set; }
-
 
         public HighScoreViewModel ScoreViewModel { get; set; } = new HighScoreViewModel();
         public GamesViewModelEdit NotesViewModel { get; set; } = new GamesViewModelEdit();
@@ -71,9 +65,9 @@ namespace GitarUberProject
         public Random Rand { get; set; } = new Random();
         public MidiIn MidiKeyboard { get; set; }
 
-        string notesRemainText;
-        string chordsAlreadyWithInterval;
-        string chordName;
+        private string notesRemainText;
+        private string chordsAlreadyWithInterval;
+        private string chordName;
         private int streak;
         private int possibleErrors;
         private Brush messageBrush;
@@ -89,7 +83,6 @@ namespace GitarUberProject
             //IntervalsNotes = intervalsNotes;
             //AllIntervals = allIntervals;
 
-
             //startNote e3
 
             ScoreViewModel.FileName = HighScoreFileName;
@@ -104,12 +97,10 @@ namespace GitarUberProject
             {
                 ScoreViewModel.BestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
 
                 ScoreViewModel.NetworkBestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
             }
 
@@ -236,7 +227,6 @@ namespace GitarUberProject
                 "Pomyłka",
             };
 
-
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
         }
@@ -336,7 +326,6 @@ namespace GitarUberProject
                 this.Left -= tresholdX;
             }
 
-
             NotesViewModel.Notes.ForEach(a => a.NoteOpacity = 1);
             var disabledNotes = NotesViewModel.Notes.Where(a => a.Prog > MaxProg || a.Struna > MaxStruna).ToList();
             disabledNotes.ForEach(a =>
@@ -344,7 +333,6 @@ namespace GitarUberProject
                 a.IsNoteEnabled = false;
                 a.NoteOpacity = GameModelEdit.DisabledNoteOpacity;
             });
-
 
             var dis = NotesViewModel.Notes.Where(a => a.NoteOpacity == 1).ToList();
             RandNote();
@@ -358,8 +346,6 @@ namespace GitarUberProject
                 MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
                 MidiKeyboard.Start();
             }
-
-
         }
 
         private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
@@ -396,8 +382,6 @@ namespace GitarUberProject
             Debug.WriteLine(text);
         }
 
-        
-
         private void RandNote()
         {
             List<GameModelEdit> btnsRand = new List<GameModelEdit>();
@@ -407,7 +391,6 @@ namespace GitarUberProject
                 .Where(a => string.Equals(a.ChordType, "Major", StringComparison.OrdinalIgnoreCase) || string.Equals(a.ChordType, "moll", StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
-
             var chordIdx = Rand.Next(0, chordsToRand.Count);
             var randIndexes = new List<int>();
             for (int i = 0; i < 4; i++) //losuje indexy akordów
@@ -416,7 +399,7 @@ namespace GitarUberProject
                 do
                 {
                     randIdx = Rand.Next(0, chordsToRand.Count);
-                }while (randIndexes.Contains(randIdx));
+                } while (randIndexes.Contains(randIdx));
                 randIndexes.Add(randIdx);
             }
 
@@ -449,14 +432,17 @@ namespace GitarUberProject
                     QuestionModel = BtnA;
                     QuestionModelChord = BtnAChord;
                     break;
+
                 case 1:
                     QuestionModel = BtnB;
                     QuestionModelChord = BtnBChord;
                     break;
+
                 case 2:
                     QuestionModel = BtnC;
                     QuestionModelChord = BtnCChord;
                     break;
+
                 case 3:
                     QuestionModel = BtnD;
                     QuestionModelChord = BtnDChord;
@@ -555,7 +541,6 @@ namespace GitarUberProject
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
             else
@@ -573,10 +558,9 @@ namespace GitarUberProject
 
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
-
         }
 
-        InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
+        private InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
         {
             InputViewModelFacade res = new InputViewModelFacade();
 
@@ -616,7 +600,7 @@ namespace GitarUberProject
             return res;
         }
 
-        int GetFr(List<GameModelEdit> checkedNotes)
+        private int GetFr(List<GameModelEdit> checkedNotes)
         {
             if (checkedNotes == null || !checkedNotes.Any()) return 0;
 
@@ -669,7 +653,6 @@ namespace GitarUberProject
             }
         }
 
-
         private void BtnQuit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -682,7 +665,6 @@ namespace GitarUberProject
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -732,7 +714,6 @@ namespace GitarUberProject
         }
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
-
 
         protected void OnPropertyChanged(string name)
         {
@@ -786,7 +767,6 @@ namespace GitarUberProject
 
             //clickedDataContext.PlaySingleNote();
 
-
             PossibleErrorMessages = new string[]
             {
                 "Źle",
@@ -835,15 +815,13 @@ namespace GitarUberProject
                 MessageText = PossibleErrorMessages[randIdx] + $" {ChordIntervalHelper.ConvertChord(QuestionModelChord)}";
                 MessageBrush = Brushes.HotPink;
             }
-            
+
             ScoreViewModel.Save();
-       
+
             if (IntervalsNotes != null && IntervalsNotes.Any())
             {
                 DisableNotesOutsideChord();
             }
-
-
 
             NotesViewModelLiteVersion clickedChord = null;
             if (clickedDataContext == BtnA)
@@ -886,7 +864,6 @@ namespace GitarUberProject
                 idx++;
             }
 
-
             fullDelayBy += delayBetweenChords;
             var chordBNotes = GitarUberProject.NotesViewModel.PrepareToPlay(chordB);
             chordBNotes.Reverse();
@@ -901,7 +878,6 @@ namespace GitarUberProject
                 samples.Add(offsetSample);
                 idx++;
             }
-
 
             MixingSampleProvider globalMixSample = new MixingSampleProvider(samples);
 

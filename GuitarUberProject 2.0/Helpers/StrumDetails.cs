@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-namespace GitarUberProject.Helperes
+﻿namespace GitarUberProject.Helperes
 {
     public enum StrumDirection
     {

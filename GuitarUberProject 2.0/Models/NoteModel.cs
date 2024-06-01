@@ -1,10 +1,4 @@
-﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -28,7 +22,6 @@ namespace GitarUberProject
         public static Action SetGitarFocusAction { get; set; }
         public static Action UpdateGitarMainChordAction { get; set; }
         public static Action<NoteModel> MoveNoteToPlaylistAction { get; set; }
-
 
         public NoteModel(string name, int octave, int prog, int struna)
         {
@@ -104,7 +97,6 @@ namespace GitarUberProject
                 return moveNoteToPlaylist;
             }
         }
-        
 
         public Brush OctaveBrush
         {
@@ -191,7 +183,6 @@ namespace GitarUberProject
             UpdateGitarMainChordAction?.Invoke();
         }
 
-
         public double NoteOpacity
         {
             get
@@ -253,7 +244,7 @@ namespace GitarUberProject
         {
             return $"{Name}{Octave} S{Struna}_P{Prog} IsSel: {IsSelected} playedOrBef: {PlayedOrBefore}";
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
         protected void OnPropertyChanged(string name)

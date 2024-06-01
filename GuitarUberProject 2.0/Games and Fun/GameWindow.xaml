@@ -29,7 +29,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="MGrid">
-        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click"/>
+        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click" />
 
         <StackPanel Margin="15 15 0 0">
             <StackPanel Orientation="Horizontal">
@@ -39,22 +39,22 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Button x:Name="btnPlay" Content="Play" FontSize="25" Style="{StaticResource DarkButton}" HorizontalAlignment="Left" Margin="240 0 0 0" Width="100" Height="50" Click="BtnPlay_Click"/>
+                <Button x:Name="btnPlay" Content="Play" FontSize="25" Style="{StaticResource DarkButton}" HorizontalAlignment="Left" Margin="240 0 0 0" Width="100" Height="50" Click="BtnPlay_Click" />
 
                 <Grid Margin="200 0 0 0" HorizontalAlignment="Center">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="50" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="btnWindowA" Width="100" Height="50" Background="{Binding NoteBackground, UpdateSourceTrigger=PropertyChanged}" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GitarModelButton}" Click="BtnWindow_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4"/>
+                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4" />
                                 <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD" />
                             </StackPanel>
                         </Button.Content>
@@ -62,69 +62,66 @@
                     <Button x:Name="btnWindowB" Width="100" Height="50" Grid.Column="1" Background="{Binding NoteBackground, UpdateSourceTrigger=PropertyChanged }" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GitarModelButton}" Click="BtnWindow_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4"/>
-                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD"/>
+                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4" />
+                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="btnWindowC" Width="100" Height="50" Grid.Row="1" Grid.Column="0" Background="{Binding NoteBackground}" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GitarModelButton}" Click="BtnWindow_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4"/>
-                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD"/>
+                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4" />
+                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                     <Button x:Name="btnWindowD" Width="100" Height="50" Grid.Row="1" Grid.Column="1" Background="{Binding NoteBackground}" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource GitarModelButton}" Click="BtnWindow_Click">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4"/>
-                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD"/>
+                                <TextBlock FontWeight="Bold" Text="{Binding Name}" FontSize="25" Foreground="#FFE4E4E4" />
+                                <TextBlock Margin="2 0 0 0" FontWeight="Normal"  Text="{Binding Octave}" FontSize="25" Foreground="#FFCDCDCD" />
                             </StackPanel>
                         </Button.Content>
                     </Button>
                 </Grid>
 
-                <TextBlock x:Name="tbCounter" Margin="100 0 0 0" VerticalAlignment="Center" Text="0" Foreground="#FFE4E4E4" FontSize="80" FontWeight="Light"/>
+                <TextBlock x:Name="tbCounter" Margin="100 0 0 0" VerticalAlignment="Center" Text="0" Foreground="#FFE4E4E4" FontSize="80" FontWeight="Light" />
 
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Margin="100 0 0 0">
-                        <TextBlock Text="Best Scores" FontSize="30" Foreground="#FF622AB4"/>
+                        <TextBlock Text="Best Scores" FontSize="30" Foreground="#FF622AB4" />
 
                         <ItemsControl x:Name="icBestScores" ItemsSource="{Binding BestScores, UpdateSourceTrigger=PropertyChanged}" Margin="-15 0 0 0"  HorizontalAlignment="Left">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"  />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="40 0 0 0" >
-                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4"/>
-                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light"/>
-
+                                    <StackPanel Margin="40 0 0 0">
+                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4" />
+                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </StackPanel>
 
-
                     <StackPanel Margin="100 0 0 0">
-                        <TextBlock Text="Network Best Scores" FontSize="30" Foreground="#FF2A88B4"/>
+                        <TextBlock Text="Network Best Scores" FontSize="30" Foreground="#FF2A88B4" />
 
                         <ItemsControl x:Name="icNetworkBestScores" ItemsSource="{Binding NetworkBestScores, UpdateSourceTrigger=PropertyChanged}" Margin="-15 0 0 0"  HorizontalAlignment="Left">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"  />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="40 0 0 0" >
-                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4"/>
-                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light"/>
-
+                                    <StackPanel Margin="40 0 0 0">
+                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4" />
+                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -133,48 +130,43 @@
                 </StackPanel>
             </StackPanel>
 
-
-
             <Grid Name="GridGuitar" Margin="0 0 0 0" Grid.Row="5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <StackPanel VerticalAlignment="Center">
-                    <!--<Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Razem" Command="{Binding PlayAtOnce}"/>-->
+                    <!--<Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Razem" Command="{Binding PlayAtOnce}" />-->
 
                     <DockPanel Margin="5 1"  Width="90">
-                        <Button Style="{StaticResource DarkButton}" Width="44"  Content="&lt;--" HorizontalAlignment="Left" Command="{Binding MoveChordLeft}"/>
-                        <Button Style="{StaticResource DarkButton}" Width="44" Content="--&gt;" HorizontalAlignment="Right" Command="{Binding MoveChordRight}"/>
+                        <Button Style="{StaticResource DarkButton}" Width="44"  Content="&lt;--" HorizontalAlignment="Left" Command="{Binding MoveChordLeft}" />
+                        <Button Style="{StaticResource DarkButton}" Width="44" Content="--&gt;" HorizontalAlignment="Right" Command="{Binding MoveChordRight}" />
                     </DockPanel>
-                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Razem" Command="{Binding PlayAtOnce}"/>
-                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Dol" Command="{Binding PlayDown}"/>
-                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Gora" Command="{Binding PlayUp}"/>
-                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Clear" Command="{Binding ClearChords}"/>
+                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Razem" Command="{Binding PlayAtOnce}" />
+                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Dol" Command="{Binding PlayDown}" />
+                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Gora" Command="{Binding PlayUp}" />
+                    <Button Style="{StaticResource DarkButton}" Margin="5 1" Content="Clear" Command="{Binding ClearChords}" />
                     <StackPanel Margin="5 1" Orientation="Horizontal">
                         <TextBlock Text="Delay: " Foreground="White" />
-                        <TextBox Width="40" Text="{Binding StrumDelayMs, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFF1F1F1" Background="#FF171414"/>
-                        <TextBlock Text="ms" Foreground="White"  />
+                        <TextBox Width="40" Text="{Binding StrumDelayMs, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFF1F1F1" Background="#FF171414" />
+                        <TextBlock Text="ms" Foreground="White" />
                     </StackPanel>
                 </StackPanel>
 
-
-                <!--<Border x:Name="gitarBorder" Margin="110 50 130 50" BorderThickness="3" BorderBrush="#7E008B8B" Grid.Row="5" Grid.ColumnSpan="2" Panel.ZIndex="-1" Background="#FF354B97" 
+                <!--<Border x:Name="gitarBorder" Margin="110 50 130 50" BorderThickness="3" BorderBrush="#7E008B8B" Grid.Row="5" Grid.ColumnSpan="2" Panel.ZIndex="-1" Background="#FF354B97"
                     PreviewMouseLeftButtonDown="GitarBorder_PreviewMouseLeftButtonDown">
                 <Border BorderThickness="2" BorderBrush="#80FFFF00">
                     -->
                 <!--<Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFAB1B3D" Offset="0"/>
-                            <GradientStop Color="#FF7A0722" Offset="1"/>
+                            <GradientStop Color="#FFAB1B3D" Offset="0" />
+                            <GradientStop Color="#FF7A0722" Offset="1" />
                         </LinearGradientBrush>
                     </Border.Background>-->
                 <!--
                 </Border>
             </Border>-->
-
 
                 <Border Grid.Column="1" Margin="120 20 20 0" Background="#E5381503" Height="120">
                     <Grid>
@@ -206,44 +198,44 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.ColumnSpan="15" Margin="0 3 0 0" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="1" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="2" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="3" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="4" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="5" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
+                        <Border Grid.ColumnSpan="15" Margin="0 3 0 0" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="1" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="2" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="3" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="4" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="5" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
 
-                        <Border Grid.RowSpan="6" Width="2" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="1" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="2" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="3" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="4" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="5" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="6" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="7" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="8" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="9" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="10" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="11" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="12" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="13" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
+                        <Border Grid.RowSpan="6" Width="2" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="1" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="2" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="3" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="4" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="5" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="6" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="7" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="8" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="9" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="10" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="11" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="12" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="13" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
 
-                        <Button Focusable="False" Panel.ZIndex="12" Tag="0" Margin="-254 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" Style="{StaticResource MainGitarBarButton}" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Panel.ZIndex="2" Style="{StaticResource MainGitarBarButton}" Tag="1" Grid.Column="1" Margin="-257 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="2" Grid.Column="2" Margin="-260 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="3" Grid.Column="3" Margin="-263 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="4" Grid.Column="4" Margin="-266 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="5" Grid.Column="5" Margin="-268 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="6" Grid.Column="6" Margin="-270 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="7" Grid.Column="7" Margin="-272 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="8" Grid.Column="8" Margin="-274 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="9" Grid.Column="9" Margin="-276 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="10" Grid.Column="10" Margin="-278 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="11" Grid.Column="11" Margin="-280 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="12" Grid.Column="12" Margin="-283 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="13" Grid.Column="13" Margin="-285 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="14" Grid.Column="13" Margin="-70 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown"/>
-                        
+                        <Button Focusable="False" Panel.ZIndex="12" Tag="0" Margin="-254 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" Style="{StaticResource MainGitarBarButton}" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Panel.ZIndex="2" Style="{StaticResource MainGitarBarButton}" Tag="1" Grid.Column="1" Margin="-257 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="2" Grid.Column="2" Margin="-260 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="3" Grid.Column="3" Margin="-263 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="4" Grid.Column="4" Margin="-266 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="5" Grid.Column="5" Margin="-268 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="6" Grid.Column="6" Margin="-270 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="7" Grid.Column="7" Margin="-272 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="8" Grid.Column="8" Margin="-274 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="9" Grid.Column="9" Margin="-276 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="10" Grid.Column="10" Margin="-278 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="11" Grid.Column="11" Margin="-280 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="12" Grid.Column="12" Margin="-283 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="13" Grid.Column="13" Margin="-285 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+                        <Button Focusable="False" Style="{StaticResource MainGitarBarButton}" Tag="14" Grid.Column="13" Margin="-70 -48 0 0" Width="15" Height="15" Click="BarButtonGuitar_Click" MouseRightButtonDown="BarButtonGuitar_MouseRightButtonDown" />
+
                         <TextBlock Margin="0 -28 0 0" Text="1" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
                         <TextBlock Grid.Column="1" Margin="0 -28 0 0" Text="2" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
                         <TextBlock Grid.Column="2" Margin="0 -28 0 0" Text="3" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
@@ -272,10 +264,10 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Opacity="{Binding NoteOpacity, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal">
-                                <CheckBox VerticalAlignment="Center" Style="{StaticResource DarkCheckBox}" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}" >
+                                <CheckBox VerticalAlignment="Center" Style="{StaticResource DarkCheckBox}" IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Focusable="{Binding IsNoteEnabled, UpdateSourceTrigger=PropertyChanged}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="MouseRightButtonDown">
-                                            <i:InvokeCommandAction Command="{Binding Path=DeselectNote, Mode=OneWay}"/>
+                                            <i:InvokeCommandAction Command="{Binding Path=DeselectNote, Mode=OneWay}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </CheckBox>
@@ -296,40 +288,35 @@
                 </ItemsControl>
             </Grid>
 
-
-
-
             <!--<ItemsControl Name="ChordVariationsItemsControl" Margin="15 25 0 0" MinHeight="340" HorizontalAlignment="Left" ItemsSource="{Binding Chords, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel  />
+                        <WrapPanel />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton GroupName="Variations">
                             <Button Style="{StaticResource VariationsStyleButton}" Command="{Binding IsSelectCommand}">
-                                <views:NewChordView Margin="-10 -22 -30 -20" DataContext="{Binding }"/>
+                                <views:NewChordView Margin="-10 -22 -30 -20" DataContext="{Binding }" />
                             </Button>
                         </RadioButton>
-                        
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 
                 <ItemsControl.Template>
                     <ControlTemplate TargetType="ItemsControl">
                         <ScrollViewer VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-                            <ItemsPresenter/>
+                            <ItemsPresenter />
                         </ScrollViewer>
                     </ControlTemplate>
                 </ItemsControl.Template>
             </ItemsControl>-->
 
             <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnApply" Style="{StaticResource DarkButton}" Content="OK" Width="100" Click="Apply_Click"/>
-                <Button x:Name="btnCancel" Margin="5 0 5 0" Style="{StaticResource DarkButton}" Content="Cancel" Width="100" Click="BtnQuit_Click"/>
+                <Button x:Name="btnApply" Style="{StaticResource DarkButton}" Content="OK" Width="100" Click="Apply_Click" />
+                <Button x:Name="btnCancel" Margin="5 0 5 0" Style="{StaticResource DarkButton}" Content="Cancel" Width="100" Click="BtnQuit_Click" />
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </Window>

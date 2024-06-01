@@ -1,26 +1,16 @@
 ﻿using EditChordsWindow;
-using GitarUberProject.Helperes;
 using GitarUberProject.EditChord;
+using GitarUberProject.Games_and_Fun;
+using GitarUberProject.Games_And_Fun;
+using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
-using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using GitarUberProject.Games_And_Fun;
-using GitarUberProject.Games_and_Fun;
-using System.Collections.ObjectModel;
 
 namespace GitarUberProject
 {
@@ -53,9 +43,9 @@ namespace GitarUberProject
         public Random Rand { get; set; } = new Random();
         public int Streak { get; set; }
 
-        string notesRemainText;
-        string chordsAlreadyWithInterval;
-        string chordName;
+        private string notesRemainText;
+        private string chordsAlreadyWithInterval;
+        private string chordName;
 
         public GameWindow()
         {
@@ -67,13 +57,12 @@ namespace GitarUberProject
             //IntervalsNotes = intervalsNotes;
             //AllIntervals = allIntervals;
 
-
             //startNote e3
 
             ScoreViewModel.FileName = "RecognizeNoteEasy.json";
             var loadedScore = ScoreViewModel.Load();
 
-            if(loadedScore != null && loadedScore.BestScores.Any())
+            if (loadedScore != null && loadedScore.BestScores.Any())
             {
                 ScoreViewModel = loadedScore;
                 ScoreViewModel.FileName = "RecognizeNoteEasy.json";
@@ -82,12 +71,10 @@ namespace GitarUberProject
             {
                 ScoreViewModel.BestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
 
-                    ScoreViewModel.NetworkBestScores = new ObservableCollection<HighScoreModel>
+                ScoreViewModel.NetworkBestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
             }
 
@@ -98,7 +85,7 @@ namespace GitarUberProject
             icNetworkBestScores.DataContext = ScoreViewModel;
 
             GameModelEdit.UpdateGitarMainChordAction = () => UpdateMainGitarChordEdit();
-            if(IntervalsNotes != null && IntervalsNotes.Any())
+            if (IntervalsNotes != null && IntervalsNotes.Any())
             {
                 DisableNotesOutsideChord();
             }
@@ -106,7 +93,6 @@ namespace GitarUberProject
             AllNotesFromGuitar = NotesHelper.GetAllNotesFromGuitar();
 
             var rrr = GetLengthBetweenNotes("F4", "E4");
-
 
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
@@ -181,15 +167,13 @@ namespace GitarUberProject
                 int strunaRnd = 0;
                 int progRnd = 0;
 
-
                 GameModelEdit tempNoteRnd = null;
                 do
                 {
-                    strunaRnd = Rand.Next(1, MaxStruna+1);
-                    progRnd = Rand.Next(0, MaxProg+1);
+                    strunaRnd = Rand.Next(1, MaxStruna + 1);
+                    progRnd = Rand.Next(0, MaxProg + 1);
 
                     tempNoteRnd = NotesViewModel.Notes.First(a => a.Struna == strunaRnd && a.Prog == progRnd);
-
                 } while (btnsRand.Any(a => a.Struna == strunaRnd && a.Prog == progRnd || (a.Name == tempNoteRnd.Name && a.Octave == tempNoteRnd.Octave)));
 
                 var noteRnd = NotesViewModel.Notes.First(a => a.Struna == strunaRnd && a.Prog == progRnd);
@@ -211,12 +195,15 @@ namespace GitarUberProject
                 case 1:
                     BtnA = QuestionModel;
                     break;
+
                 case 2:
                     BtnB = QuestionModel;
                     break;
+
                 case 3:
                     BtnC = QuestionModel;
                     break;
+
                 case 4:
                     BtnD = QuestionModel;
                     break;
@@ -352,7 +339,6 @@ namespace GitarUberProject
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
             else
@@ -370,10 +356,9 @@ namespace GitarUberProject
 
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
-
         }
 
-        InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
+        private InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
         {
             InputViewModelFacade res = new InputViewModelFacade();
 
@@ -413,7 +398,7 @@ namespace GitarUberProject
             return res;
         }
 
-        int GetFr(List<GameModelEdit> checkedNotes)
+        private int GetFr(List<GameModelEdit> checkedNotes)
         {
             if (checkedNotes == null || !checkedNotes.Any()) return 0;
 
@@ -466,7 +451,6 @@ namespace GitarUberProject
             }
         }
 
-
         private void BtnQuit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -479,16 +463,15 @@ namespace GitarUberProject
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == Key.Escape)
+            if (e.Key == Key.Escape)
             {
                 Close();
             }
-            else if(e.Key == Key.Enter && btnApply.IsEnabled)
+            else if (e.Key == Key.Enter && btnApply.IsEnabled)
             {
                 DialogResult = true;
 
@@ -498,7 +481,7 @@ namespace GitarUberProject
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
+            if (e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
             {
                 Close();
             }
@@ -529,7 +512,6 @@ namespace GitarUberProject
         }
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
-
 
         protected void OnPropertyChanged(string name)
         {
@@ -565,7 +547,7 @@ namespace GitarUberProject
             }
             else
             {
-                if(Streak > ScoreViewModel.BestScores.Min(a => a.Score))
+                if (Streak > ScoreViewModel.BestScores.Min(a => a.Score))
                 {
                     ScoreViewModel.AddBestScore(Streak);
                     ScoreViewModel.Save();

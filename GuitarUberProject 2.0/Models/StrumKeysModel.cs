@@ -1,9 +1,4 @@
 ﻿using GitarUberProject.EditChord;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.Models
 {
@@ -22,8 +17,7 @@ namespace GitarUberProject.Models
 
         public override string ToString()
         {
-            return $"{Direction } TS: {MsTimestamp} DelayBefore: {DelayMsBefore} Time: {PlayTime}";
-
+            return $"{Direction} TS: {MsTimestamp} DelayBefore: {DelayMsBefore} Time: {PlayTime}";
         }
     }
 }

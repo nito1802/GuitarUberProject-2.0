@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace GitarUberProject.Models
 {
@@ -17,7 +12,6 @@ namespace GitarUberProject.Models
 
         public MixerModel()
         {
-
         }
 
         public MixerModel(string name, double vol, bool isTurn)
@@ -46,6 +40,7 @@ namespace GitarUberProject.Models
                 OnPropertyChanged("Vol");
             }
         }
+
         public bool IsTurn
         {
             get => isTurn;

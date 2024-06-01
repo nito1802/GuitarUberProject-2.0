@@ -33,7 +33,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -49,7 +49,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    
+
     <Border BorderBrush="#FF4795F3" BorderThickness="1">
         <Grid x:Name="MGrid">
             <Grid.RowDefinitions>
@@ -68,7 +68,7 @@
                     <TextBox Name="tbText" Width="100" Height="20" Foreground="#FFF1F1F1" Background="#FF171414" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" FontSize="12" />
                 </StackPanel>
 
-                <TextBlock Margin="0 -5 0 5" Text="{Binding ErrorMessage}" Foreground="#FFBB0000" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Margin="0 -5 0 5" Text="{Binding ErrorMessage}" Foreground="#FFBB0000" HorizontalAlignment="Center" FontWeight="Bold" />
             </StackPanel>
             <Button Name="btnYes" Grid.Row="1" FontSize="16" Style="{StaticResource StyleButton}" Click="btnYes_Click">
                 <Button.Content>
@@ -77,7 +77,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Name="btnNo" Grid.Row="1" Grid.Column="2" FontSize="16" Style="{StaticResource StyleButton}" Click="btnNo_Click" >
+            <Button Name="btnNo" Grid.Row="1" Grid.Column="2" FontSize="16" Style="{StaticResource StyleButton}" Click="btnNo_Click">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Anuluj" />

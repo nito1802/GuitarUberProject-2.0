@@ -1,9 +1,4 @@
 ﻿using GitarUberProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.ViewModels
 {
@@ -18,6 +13,5 @@ namespace GitarUberProject.ViewModels
                 GlobalButtons.Add(new GlobalGitarButtonModel(i + 1));
             }
         }
-
     }
 }

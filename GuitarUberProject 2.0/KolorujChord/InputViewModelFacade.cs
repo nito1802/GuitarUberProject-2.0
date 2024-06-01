@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace EditChordsWindow
 {
@@ -12,7 +8,6 @@ namespace EditChordsWindow
         X,
         O
     }
-
 
     public class InputViewModelFacade
     {
@@ -64,7 +59,7 @@ namespace EditChordsWindow
 }
 
 /*
- 
+
       public string Name { get; set; }
         public List<InputModel> InputNotes { get; set; }
         public int Fr { get; set; }

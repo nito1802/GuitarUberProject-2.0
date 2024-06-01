@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GitarUberProject.Helpers
+﻿namespace GitarUberProject.Helpers
 {
     public static class DisplayChordsFilter
     {

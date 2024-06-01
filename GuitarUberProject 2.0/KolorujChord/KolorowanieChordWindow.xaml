@@ -25,83 +25,80 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="XamlStyles\StylesForEditChordWindow.xaml" />
                 <ResourceDictionary Source="..\XamlStyles\StylesForMainWindow.xaml" />
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="MGrid">
-        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click"/>
+        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click" />
 
         <StackPanel>
             <StackPanel Margin="0 20 0 0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Margin="30 0 0 0" Foreground="#FFF1F1F1" Text="Kolor" FontSize="30" FontWeight="Bold" VerticalAlignment="Center"/>
-                <TextBlock Margin="30 0 0 0" Foreground="#FFF1F1F1" Text="{Binding ChordName, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="30" FontWeight="UltraLight" VerticalAlignment="Center"/>
-                <TextBlock x:Name="tbFr" Margin="30 0 0 0" Foreground="#99E4CD38" Text="Fr: 2" Width="200" FontSize="40" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                <TextBlock Margin="30 0 0 0" Foreground="#FFF1F1F1" Text="Kolor" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" />
+                <TextBlock Margin="30 0 0 0" Foreground="#FFF1F1F1" Text="{Binding ChordName, UpdateSourceTrigger=PropertyChanged}" Width="200" FontSize="30" FontWeight="UltraLight" VerticalAlignment="Center" />
+                <TextBlock x:Name="tbFr" Margin="30 0 0 0" Foreground="#99E4CD38" Text="Fr: 2" Width="200" FontSize="40" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Right" />
             </StackPanel>
-            <!--<TextBox Margin="0 20 0 0" Text="Gmaj7" Width="200" FontSize="30"/>-->
+            <!--<TextBox Margin="0 20 0 0" Text="Gmaj7" Width="200" FontSize="30" />-->
             <StackPanel Margin="30 20 0 -20" Orientation="Horizontal">
                 <Button Style="{StaticResource DarkButton}" Opacity="0.5" IsEnabled="False" Padding="5 2" Content="Undo" />
                 <Button Style="{StaticResource DarkButton}" Opacity="0.5" IsEnabled="False" Margin="3 0 0 0" Padding="5 2" Content="Redo" />
-                <Button Style="{StaticResource DarkButton}" Name="btnClear" Margin="3 0 0 0" Padding="5 2" Content="Clear" Click="btnClear_Click"/>
+                <Button Style="{StaticResource DarkButton}" Name="btnClear" Margin="3 0 0 0" Padding="5 2" Content="Clear" Click="btnClear_Click" />
 
-                <Button Style="{StaticResource DarkButton}" Opacity="0.5" Name="btnHelp" Margin="23 0 0 0" IsEnabled="False" Padding="5 2" Content="Help"/>
+                <Button Style="{StaticResource DarkButton}" Opacity="0.5" Name="btnHelp" Margin="23 0 0 0" IsEnabled="False" Padding="5 2" Content="Help" />
             </StackPanel>
 
             <StackPanel Margin="0 100 0 0" Orientation="Horizontal">
                 <Grid Margin="155 0 0 0" RenderTransformOrigin="1,1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="19*"/>
-                        <RowDefinition Height="16*"/>
+                        <RowDefinition Height="19*" />
+                        <RowDefinition Height="16*" />
                     </Grid.RowDefinitions>
                     <Grid.Effect>
-                        <DropShadowEffect BlurRadius="22"/>
+                        <DropShadowEffect BlurRadius="22" />
                     </Grid.Effect>
                     <Grid.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="1.3" ScaleY="1.3"/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
+                            <ScaleTransform ScaleX="1.3" ScaleY="1.3" />
+                            <SkewTransform />
+                            <RotateTransform />
+                            <TranslateTransform />
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <Border Margin="5,32,5,8" Height="100" Width="190" Background="#BF2C2C2C" CornerRadius="5 5 5 5" Grid.RowSpan="2"/>
+                    <Border Margin="5,32,5,8" Height="100" Width="190" Background="#BF2C2C2C" CornerRadius="5 5 5 5" Grid.RowSpan="2" />
 
                     <StackPanel Margin="-12 32 0 0" HorizontalAlignment="Left" Opacity="0.7" Panel.ZIndex="24" Grid.RowSpan="2">
-                        <TextBlock x:Name="tbNotesO_1" Text="O" Foreground="White"/>
-                        <TextBlock x:Name="tbNotesO_2" Text="X" Foreground="White"/>
-                        <TextBlock x:Name="tbNotesO_3" Margin="0 2 0 0" Text="O" Foreground="White"/>
-                        <TextBlock x:Name="tbNotesO_4" Text="X" Foreground="White"/>
-                        <TextBlock x:Name="tbNotesO_5" Margin="0 1 0 0" Text="" Foreground="White"/>
-                        <TextBlock x:Name="tbNotesO_6" Text="X" Foreground="White"/>
+                        <TextBlock x:Name="tbNotesO_1" Text="O" Foreground="White" />
+                        <TextBlock x:Name="tbNotesO_2" Text="X" Foreground="White" />
+                        <TextBlock x:Name="tbNotesO_3" Margin="0 2 0 0" Text="O" Foreground="White" />
+                        <TextBlock x:Name="tbNotesO_4" Text="X" Foreground="White" />
+                        <TextBlock x:Name="tbNotesO_5" Margin="0 1 0 0" Text="" Foreground="White" />
+                        <TextBlock x:Name="tbNotesO_6" Text="X" Foreground="White" />
                     </StackPanel>
 
                     <Grid Height="100" Width="200" RenderTransformOrigin="1,1" HorizontalAlignment="Center" Margin="0 40 0 0" Grid.RowSpan="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="40"/>
-
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="40" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
 
-                        <Border VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
-                        <Border Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True"/>
+                        <Border VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
+                        <Border Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
+                        <Border Grid.Row="2" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
+                        <Border Grid.Row="3" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
+                        <Border Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
+                        <Border Grid.Row="5" VerticalAlignment="Top" Grid.ColumnSpan="6" BorderThickness="1" BorderBrush="#99E9E9E9" SnapsToDevicePixels="True" />
 
                         <TextBlock x:Name="tbProg0" Text="0" Margin="10 -48 0 0" Foreground="#FFF1F1F1" />
                         <TextBlock x:Name="tbProg1" Text="1" Grid.Column="1" Margin="10 -48 0 0" Foreground="#FFF1F1F1" />
@@ -110,12 +107,12 @@
                         <TextBlock x:Name="tbProg4" Text="4" Grid.Column="4" Margin="10 -48 0 0" Foreground="#FFF1F1F1" />
                         <TextBlock x:Name="tbProg5" Text="5" Grid.Column="5" Margin="10 -48 0 0" Foreground="#FFF1F1F1" />
 
-                        <Button Tag="0" Style="{StaticResource ButtonStyle1}" Focusable="False" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
-                        <Button Tag="1" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="1" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
-                        <Button Tag="2" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="2" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
-                        <Button Tag="3" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="3" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
-                        <Button Tag="4" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="4" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
-                        <Button Tag="5" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="5" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown"/>
+                        <Button Tag="0" Style="{StaticResource ButtonStyle1}" Focusable="False" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
+                        <Button Tag="1" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="1" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
+                        <Button Tag="2" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="2" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
+                        <Button Tag="3" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="3" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
+                        <Button Tag="4" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="4" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
+                        <Button Tag="5" Style="{StaticResource ButtonStyle1}" Focusable="False" Grid.Column="5" Margin="0 -60 0 0" Width="16" Height="16" Click="HeaderNoteButton_Click" MouseRightButtonDown="HeaderNoteButton_MouseRightButtonDown" />
 
                         <ItemsControl Name="itemsControlNotes" ItemsSource="{Binding Notes}" Grid.ColumnSpan="6" Grid.RowSpan="6">
                             <ItemsControl.ItemsPanel>
@@ -128,25 +125,24 @@
                                     <Button Style="{StaticResource ButtonStyle1}" Focusable="False" IsEnabled="{Binding IsEnabled, UpdateSourceTrigger=PropertyChanged}" FontSize="7" FontWeight="Bold" Command="{Binding ClickNote}" Width="14" Height="14" Panel.ZIndex="2" Margin="0 -16 0 0">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseRightButtonDown">
-                                                <i:InvokeCommandAction Command="{Binding Path=ClearNote, Mode=OneWay}"/>
+                                                <i:InvokeCommandAction Command="{Binding Path=ClearNote, Mode=OneWay}" />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </Button>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
-
                         </ItemsControl>
 
-                        <Border HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="3" BorderBrush="#99707070" SnapsToDevicePixels="True"/>
-                        <Border Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="5"  BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070"/>
-                        <Border Grid.Column="2"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070"/>
-                        <Border Grid.Column="3"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070"/>
-                        <Border Grid.Column="4"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070"/>
-                        <Border Grid.Column="5"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070"/>
+                        <Border HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="3" BorderBrush="#99707070" SnapsToDevicePixels="True" />
+                        <Border Grid.Column="1" HorizontalAlignment="Left" Grid.RowSpan="5"  BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070" />
+                        <Border Grid.Column="2"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070" />
+                        <Border Grid.Column="3"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070" />
+                        <Border Grid.Column="4"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070" />
+                        <Border Grid.Column="5"  HorizontalAlignment="Left" Grid.RowSpan="5" BorderThickness="1" SnapsToDevicePixels="True" BorderBrush="#99707070" />
 
                         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="8" Margin="3 -10 0 0">
                             <TextBlock Name="tb1Note" Foreground="LightGray" Text="E"  FontSize="14" FontWeight="Bold" />
-                            <TextBlock Name="tb1Octave" Foreground="#FF8D8D8D" Text="3"  FontSize="14" FontWeight="Bold" Margin="2 0 0 0" ClipToBounds="False" Panel.ZIndex="24" Grid.ColumnSpan="22"/>
+                            <TextBlock Name="tb1Octave" Foreground="#FF8D8D8D" Text="3"  FontSize="14" FontWeight="Bold" Margin="2 0 0 0" ClipToBounds="False" Panel.ZIndex="24" Grid.ColumnSpan="22" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="8" Margin="3 -10 0 0">
                             <TextBlock Name="tb2Note" Foreground="LightGray" Text="A"  FontSize="14" FontWeight="Bold" />
@@ -169,7 +165,6 @@
                             <TextBlock Name="tb6Octave" Foreground="#FF8D8D8D" Text="5"  FontSize="14" FontWeight="Bold" Margin="2 0 0 0" />
                         </StackPanel>
                     </Grid>
-
                 </Grid>
 
                 <StackPanel Margin="30 -20 0 0">
@@ -179,15 +174,14 @@
                                 <Ellipse Width="16" Height="16" Margin="2 0 2 0">
                                     <Ellipse.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#E29A05" Offset="0"/>
-                                            <GradientStop Color="#FFEBA619" Offset="1"/>
+                                            <GradientStop Color="#E29A05" Offset="0" />
+                                            <GradientStop Color="#FFEBA619" Offset="1" />
                                         </LinearGradientBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="1st Finger" Foreground="White" FontSize="20"/>
+                                <TextBlock Text="1st Finger" Foreground="White" FontSize="20" />
                             </StackPanel>
                         </RadioButton>
-
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <RadioButton Name="rbSecondFinger" GroupName="finger" Foreground="White" FontSize="20" VerticalContentAlignment="Center" Checked="rbFinger_Checked">
@@ -195,12 +189,12 @@
                                 <Ellipse Width="16" Height="16"  Margin="2 0 2 0">
                                     <Ellipse.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#B71DE9" Offset="0"/>
-                                            <GradientStop Color="#FFA50CD6" Offset="1"/>
+                                            <GradientStop Color="#B71DE9" Offset="0" />
+                                            <GradientStop Color="#FFA50CD6" Offset="1" />
                                         </LinearGradientBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="2nd Finger" Foreground="White" FontSize="20"/>
+                                <TextBlock Text="2nd Finger" Foreground="White" FontSize="20" />
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
@@ -210,12 +204,12 @@
                                 <Ellipse Width="16" Height="16"  Margin="2 0 2 0">
                                     <Ellipse.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#00A0E8" Offset="0"/>
-                                            <GradientStop Color="#FF0784BD" Offset="1"/>
+                                            <GradientStop Color="#00A0E8" Offset="0" />
+                                            <GradientStop Color="#FF0784BD" Offset="1" />
                                         </LinearGradientBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="3rd Finger" Foreground="White" FontSize="20"/>
+                                <TextBlock Text="3rd Finger" Foreground="White" FontSize="20" />
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
@@ -225,12 +219,12 @@
                                 <Ellipse Width="16" Height="16"  Margin="2 0 2 0">
                                     <Ellipse.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#E16449" Offset="0"/>
-                                            <GradientStop Color="#FFDB5639" Offset="1"/>
+                                            <GradientStop Color="#E16449" Offset="0" />
+                                            <GradientStop Color="#FFDB5639" Offset="1" />
                                         </LinearGradientBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="4th Finger" Foreground="White" FontSize="20"/>
+                                <TextBlock Text="4th Finger" Foreground="White" FontSize="20" />
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
@@ -240,22 +234,21 @@
                                 <Ellipse Width="16" Height="16"  Margin="2 0 2 0">
                                     <Ellipse.Fill>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                            <GradientStop Color="#FF036C50" Offset="0"/>
-                                            <GradientStop Color="#FF07946E" Offset="1"/>
+                                            <GradientStop Color="#FF036C50" Offset="0" />
+                                            <GradientStop Color="#FF07946E" Offset="1" />
                                         </LinearGradientBrush>
                                     </Ellipse.Fill>
                                 </Ellipse>
-                                <TextBlock Text="Other" Foreground="White" FontSize="20"/>
+                                <TextBlock Text="Other" Foreground="White" FontSize="20" />
                             </StackPanel>
                         </RadioButton>
                     </StackPanel>
-
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Margin="0 20 10 10" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Name="btnApply" Style="{StaticResource DarkButton}" Padding="10 2" Content="Apply" FontSize="16" Click="btnApply_Click"/>
-                <Button Name="btnCancel" Style="{StaticResource DarkButton}" Margin="3 0 0 0" Padding="10 4" Content="Cancel" FontSize="16" Click="btnCancel_Click"/>
+                <Button Name="btnApply" Style="{StaticResource DarkButton}" Padding="10 2" Content="Apply" FontSize="16" Click="btnApply_Click" />
+                <Button Name="btnCancel" Style="{StaticResource DarkButton}" Margin="3 0 0 0" Padding="10 4" Content="Cancel" FontSize="16" Click="btnCancel_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>

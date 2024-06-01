@@ -1,11 +1,4 @@
-﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -71,7 +64,6 @@ namespace GitarUberProject.Games_And_Fun
                 PlayNoteAction?.Invoke(Struna, Mp3Name);
             }
         }
-
 
         public ICommand DeselectNote
         {
@@ -229,7 +221,7 @@ namespace GitarUberProject.Games_And_Fun
         {
             return $"{Name}{Octave} S{Struna}_P{Prog} IsSel: {IsSelected} playedOrBef: {PlayedOrBefore}";
         }
-        
+
         public void PlaySingleNote()
         {
             PlayNoteAction?.Invoke(Struna, Mp3Name);

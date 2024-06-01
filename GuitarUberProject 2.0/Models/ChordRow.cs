@@ -1,12 +1,7 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.HelperWindows;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -24,6 +19,7 @@ namespace GitarUberProject.Models
         private List<int> intervals;
         private string intervalsText;
         private int fontSizeIntervalText = 10; //read 10, normal 13
+
         public ChordRow()
         {
         }
@@ -61,7 +57,7 @@ namespace GitarUberProject.Models
         }
 
         public static Action<string, string> OnAddRowAction { get; set; }
-        public static Action<string> OnRemoveRowAction  { get; set; }
+        public static Action<string> OnRemoveRowAction { get; set; }
         public static Func<string, bool> OnItemWithNameAlreadyExist { get; set; }
         public static Action<ChordRow, int> ReorderRowsAction { get; set; }
 
@@ -108,39 +104,51 @@ namespace GitarUberProject.Models
                 case "C":
                     result = ChordC;
                     break;
+
                 case "C#":
                     result = ChordCSharp;
                     break;
+
                 case "D":
                     result = ChordD;
                     break;
+
                 case "D#":
                     result = ChordDSharp;
                     break;
+
                 case "E":
                     result = ChordE;
                     break;
+
                 case "F":
                     result = ChordF;
                     break;
+
                 case "F#":
                     result = ChordFSharp;
                     break;
+
                 case "G":
                     result = ChordG;
                     break;
+
                 case "G#":
                     result = ChordGSharp;
                     break;
+
                 case "A":
                     result = ChordA;
                     break;
+
                 case "A#":
                     result = ChordASharp;
                     break;
+
                 case "B":
                     result = ChordB;
                     break;
+
                 default:
                     break;
             }
@@ -192,11 +200,11 @@ namespace GitarUberProject.Models
                         customMessageBox.Height *= App.CustomScaleY;
 
                         customMessageBox.ShowDialog();
-                        
+
                         if (customMessageBox.DialogResult == true)
                         {
                             OnAddRowAction?.Invoke(customMessageBox.Text, Type);
-                        }   
+                        }
                     }
                      , param => true);
                 }
@@ -238,7 +246,6 @@ namespace GitarUberProject.Models
                                 }
                             }
                         };
-
 
                         CustomMessageBox customMessageBox = new CustomMessageBox(textPrefix, text, errorsValidation);
 
@@ -299,7 +306,6 @@ namespace GitarUberProject.Models
                             }
                         };
 
-
                         CustomMessageBox customMessageBox = new CustomMessageBox(textPrefix, text, errorsValidation);
 
                         customMessageBox.MGrid.LayoutTransform = new ScaleTransform(App.CustomScaleX, App.CustomScaleY, 0, 0);
@@ -308,7 +314,7 @@ namespace GitarUberProject.Models
 
                         customMessageBox.ShowDialog();
 
-                        if(customMessageBox.DialogResult == true)
+                        if (customMessageBox.DialogResult == true)
                         {
                             Type = customMessageBox.Text;
                         }
@@ -404,6 +410,7 @@ namespace GitarUberProject.Models
                 IntervalsText = intervals != null ? string.Join(", ", intervals) : null;
             }
         }
+
         public string IntervalsText
         {
             get => intervalsText;

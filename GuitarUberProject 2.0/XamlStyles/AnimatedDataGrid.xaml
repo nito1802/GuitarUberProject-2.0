@@ -4,14 +4,20 @@
 
     <local:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-
-    <Style x:Key="FadingListViewStyle" TargetType="local:FadingListView">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="HorizontalAlignment" Value="Stretch" />
-        <Setter Property="VerticalAlignment" Value="Stretch" />
-        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="VerticalContentAlignment" Value="Stretch" />
-        <Setter Property="BorderThickness" Value="0" />
+    <Style x:Key="FadingListViewStyle"
+           TargetType="local:FadingListView">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="BorderThickness"
+                Value="0" />
         <!--
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
@@ -21,31 +27,45 @@
             </Setter.Value>
         </Setter>
         -->
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin"
+                Value="0" />
+        <Setter Property="Padding"
+                Value="0" />
     </Style>
 
-    <Style x:Key="BaseTextStyle" TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="Segoe UI" />
-        <Setter Property="FontSize" Value="9" />
+    <Style x:Key="BaseTextStyle"
+           TargetType="TextBlock">
+        <Setter Property="FontFamily"
+                Value="Segoe UI" />
+        <Setter Property="FontSize"
+                Value="9" />
     </Style>
 
-    <Style x:Key="SeriesTitleStyle" TargetType="TextBlock" BasedOn="{StaticResource BaseTextStyle}">
-        <Setter Property="FontSize" Value="11" />
-        <Setter Property="FontWeight" Value="Light"/>
-        <Setter Property="Opacity" Value="0.75"/>
+    <Style x:Key="SeriesTitleStyle"
+           TargetType="TextBlock"
+           BasedOn="{StaticResource BaseTextStyle}">
+        <Setter Property="FontSize"
+                Value="11" />
+        <Setter Property="FontWeight"
+                Value="Light" />
+        <Setter Property="Opacity"
+                Value="0.75" />
     </Style>
-
 
     <Style TargetType="local:RadialGaugePiece">
-        <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="BorderBrush"
+                Value="Transparent" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="IsTabStop"
+                Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:RadialGaugePiece">
-                    <Grid Width="{TemplateBinding ClientWidth}" Height="{TemplateBinding ClientHeight}">
+                    <Grid Width="{TemplateBinding ClientWidth}"
+                          Height="{TemplateBinding ClientHeight}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualStateGroup.Transitions>
@@ -54,12 +74,18 @@
                                 <VisualState x:Name="Normal" />
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="MouseOverHighlight" Storyboard.TargetProperty="Opacity" To="0.6" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="MouseOverHighlight"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0.6"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="MouseOver">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="MouseOverHighlight" Storyboard.TargetProperty="Opacity" To="0.6" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="MouseOverHighlight"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0.6"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -69,12 +95,18 @@
                                 </VisualStateGroup.Transitions>
                                 <VisualState x:Name="Unselected">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="SelectionHighlight" Storyboard.TargetProperty="Opacity" To="0" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="SelectionHighlight"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Selected">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="SelectionHighlight" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="SelectionHighlight"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -84,26 +116,69 @@
                                 </VisualStateGroup.Transitions>
                                 <VisualState x:Name="Shown">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="Root"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="1"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                                 <VisualState x:Name="Hidden">
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="0" Duration="0" />
+                                        <DoubleAnimation Storyboard.TargetName="Root"
+                                                         Storyboard.TargetProperty="Opacity"
+                                                         To="0"
+                                                         Duration="0" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Canvas x:Name="Root" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Path x:Name="BackgroundCircleHighlight" Data="{TemplateBinding BackgroundGeometry}" Fill="{TemplateBinding Foreground}" Opacity="0.2"  StrokeMiterLimit="1" IsHitTestVisible="False" />
-                            <Path x:Name="Slice" Data="{TemplateBinding Geometry}" ToolTipService.ToolTip="{Binding Path=FormattedValue}" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeMiterLimit="1" />
-                            <Path x:Name="SelectionHighlight" Data="{TemplateBinding SelectionGeometry}" Fill="{Binding Path=SelectedBrush}" StrokeMiterLimit="2" IsHitTestVisible="False" Opacity="0" />
-                            <Path x:Name="MouseOverHighlight" Data="{TemplateBinding MouseOverGeometry}" Fill="White" StrokeMiterLimit="1" IsHitTestVisible="False" Opacity="0" />
+                        <Canvas x:Name="Root"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                            <Path x:Name="BackgroundCircleHighlight"
+                                  Data="{TemplateBinding BackgroundGeometry}"
+                                  Fill="{TemplateBinding Foreground}"
+                                  Opacity="0.2"
+                                  StrokeMiterLimit="1"
+                                  IsHitTestVisible="False" />
+                            <Path x:Name="Slice"
+                                  Data="{TemplateBinding Geometry}"
+                                  ToolTipService.ToolTip="{Binding Path=FormattedValue}"
+                                  Fill="{TemplateBinding Background}"
+                                  Stroke="{TemplateBinding BorderBrush}"
+                                  StrokeMiterLimit="1" />
+                            <Path x:Name="SelectionHighlight"
+                                  Data="{TemplateBinding SelectionGeometry}"
+                                  Fill="{Binding Path=SelectedBrush}"
+                                  StrokeMiterLimit="2"
+                                  IsHitTestVisible="False"
+                                  Opacity="0" />
+                            <Path x:Name="MouseOverHighlight"
+                                  Data="{TemplateBinding MouseOverGeometry}"
+                                  Fill="White"
+                                  StrokeMiterLimit="1"
+                                  IsHitTestVisible="False"
+                                  Opacity="0" />
                         </Canvas>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" FontFamily="Segoe UI" Text="{Binding Path=FormattedAnimatedValue, RelativeSource={RelativeSource Mode=TemplatedParent}}"
-                                       Foreground="{TemplateBinding Background}" FontWeight="Bold" FontSize="17" LineHeight="20" />
-                            <TextBlock LineStackingStrategy="BlockLineHeight" VerticalAlignment="Center" FontFamily="Segoe UI" Text="%" FontWeight="Bold" LineHeight="20" FontSize="12" Foreground="{TemplateBinding Background}" />
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <TextBlock LineStackingStrategy="BlockLineHeight"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Segoe UI"
+                                       Text="{Binding Path=FormattedAnimatedValue, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                       Foreground="{TemplateBinding Background}"
+                                       FontWeight="Bold"
+                                       FontSize="17"
+                                       LineHeight="20" />
+                            <TextBlock LineStackingStrategy="BlockLineHeight"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Segoe UI"
+                                       Text="%"
+                                       FontWeight="Bold"
+                                       LineHeight="20"
+                                       FontSize="12"
+                                       Foreground="{TemplateBinding Background}" />
                         </StackPanel>
                     </Grid>
                 </ControlTemplate>
@@ -111,12 +186,13 @@
         </Setter>
     </Style>
 
-
-    <Style x:Key="RadialGaugeChartPlotterAreaStyleMy" TargetType="local:PlotterArea">
+    <Style x:Key="RadialGaugeChartPlotterAreaStyleMy"
+           TargetType="local:PlotterArea">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PlotterArea">
-                    <local:FadingListView Style="{StaticResource FadingListViewStyle}" ItemsSource="{Binding Path=ParentChart.DataPointGroups, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                    <local:FadingListView Style="{StaticResource FadingListViewStyle}"
+                                          ItemsSource="{Binding Path=ParentChart.DataPointGroups, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                         <local:FadingListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal" />
@@ -130,14 +206,15 @@
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <local:FadingListView Style="{StaticResource FadingListViewStyle}"
-                                                x:Name="itemsControl" 
-                                                ItemsSource="{Binding Path=DataPoints}"
-                                                Margin="5"
-                                                Grid.Row="1">
+                                                          x:Name="itemsControl"
+                                                          ItemsSource="{Binding Path=DataPoints}"
+                                                          Margin="5"
+                                                          Grid.Row="1">
                                         <local:FadingListView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <!--<StackPanel Orientation="Horizontal" />-->
-                                                <local:UniformGridPanel Orientation="Horizontal" MinimalGridWidth="50.0" />
+                                                <local:UniformGridPanel Orientation="Horizontal"
+                                                                        MinimalGridWidth="50.0" />
                                             </ItemsPanelTemplate>
                                         </local:FadingListView.ItemsPanel>
                                         <local:FadingListView.ItemTemplate>
@@ -147,17 +224,16 @@
                                                         <RowDefinition Height="*" />
                                                         <RowDefinition Height="auto" />
                                                     </Grid.RowDefinitions>
-                                                    <local:RadialGaugePiece
-                                                        Grid.Row="0"
-                                                        Margin="5"
-                                                        Background="{Binding Path=ItemBrush}"
-                                                        SelectedBrush="{Binding Path=SelectedBrush}"  
-                                                        Value="{Binding Path=Value}"
-                                                        IsClickedByUser="{Binding Path=IsClickedByUser, Mode=TwoWay}"
-                                                        IsSelected="{Binding Path=IsSelected}"
-                                                        ClientWidth="80"
-                                                        ClientHeight="80" 
-                                                        x:Name="radial">
+                                                    <local:RadialGaugePiece Grid.Row="0"
+                                                                            Margin="5"
+                                                                            Background="{Binding Path=ItemBrush}"
+                                                                            SelectedBrush="{Binding Path=SelectedBrush}"
+                                                                            Value="{Binding Path=Value}"
+                                                                            IsClickedByUser="{Binding Path=IsClickedByUser, Mode=TwoWay}"
+                                                                            IsSelected="{Binding Path=IsSelected}"
+                                                                            ClientWidth="80"
+                                                                            ClientHeight="80"
+                                                                            x:Name="radial">
                                                     </local:RadialGaugePiece>
                                                 </Grid>
                                             </DataTemplate>
@@ -172,12 +248,13 @@
         </Setter>
     </Style>
 
-
-    <Style x:Key="RadialGaugeChartPlotterAreaStyleMyGreen" TargetType="local:PlotterArea">
+    <Style x:Key="RadialGaugeChartPlotterAreaStyleMyGreen"
+           TargetType="local:PlotterArea">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:PlotterArea">
-                    <local:FadingListView Style="{StaticResource FadingListViewStyle}" ItemsSource="{Binding Path=ParentChart.DataPointGroups, RelativeSource={RelativeSource Mode=TemplatedParent}}">
+                    <local:FadingListView Style="{StaticResource FadingListViewStyle}"
+                                          ItemsSource="{Binding Path=ParentChart.DataPointGroups, RelativeSource={RelativeSource Mode=TemplatedParent}}">
                         <local:FadingListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal" />
@@ -191,14 +268,15 @@
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
                                     <local:FadingListView Style="{StaticResource FadingListViewStyle}"
-                                                x:Name="itemsControl" 
-                                                ItemsSource="{Binding Path=DataPoints}"
-                                                Margin="5"
-                                                Grid.Row="1">
+                                                          x:Name="itemsControl"
+                                                          ItemsSource="{Binding Path=DataPoints}"
+                                                          Margin="5"
+                                                          Grid.Row="1">
                                         <local:FadingListView.ItemsPanel>
                                             <ItemsPanelTemplate>
                                                 <!--<StackPanel Orientation="Horizontal" />-->
-                                                <local:UniformGridPanel Orientation="Horizontal" MinimalGridWidth="50.0" />
+                                                <local:UniformGridPanel Orientation="Horizontal"
+                                                                        MinimalGridWidth="50.0" />
                                             </ItemsPanelTemplate>
                                         </local:FadingListView.ItemsPanel>
                                         <local:FadingListView.ItemTemplate>
@@ -208,17 +286,16 @@
                                                         <RowDefinition Height="*" />
                                                         <RowDefinition Height="auto" />
                                                     </Grid.RowDefinitions>
-                                                    <local:RadialGaugePiece
-                                                        Grid.Row="0"
-                                                        Margin="5"
-                                                        Background="#FF2AB447"
-                                                        SelectedBrush="{Binding Path=SelectedBrush}"  
-                                                        Value="{Binding Path=Value}"
-                                                        IsClickedByUser="{Binding Path=IsClickedByUser, Mode=TwoWay}"
-                                                        IsSelected="{Binding Path=IsSelected}"
-                                                        ClientWidth="80"
-                                                        ClientHeight="80" 
-                                                        x:Name="radial">
+                                                    <local:RadialGaugePiece Grid.Row="0"
+                                                                            Margin="5"
+                                                                            Background="#FF2AB447"
+                                                                            SelectedBrush="{Binding Path=SelectedBrush}"
+                                                                            Value="{Binding Path=Value}"
+                                                                            IsClickedByUser="{Binding Path=IsClickedByUser, Mode=TwoWay}"
+                                                                            IsSelected="{Binding Path=IsSelected}"
+                                                                            ClientWidth="80"
+                                                                            ClientHeight="80"
+                                                                            x:Name="radial">
                                                     </local:RadialGaugePiece>
                                                 </Grid>
                                             </DataTemplate>
@@ -233,22 +310,31 @@
         </Setter>
     </Style>
 
+    <Style x:Key="HighlightableRow"
+           TargetType="{x:Type DataGridRow}">
 
-    <Style x:Key="HighlightableRow" TargetType="{x:Type DataGridRow}">
-
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontSize"
+                Value="16" />
         <Style.Triggers>
-            <Trigger Property="AlternationIndex" Value="0">
-                <Setter Property="Background" Value="Black" />
+            <Trigger Property="AlternationIndex"
+                     Value="0">
+                <Setter Property="Background"
+                        Value="Black" />
             </Trigger>
-            <Trigger Property="AlternationIndex" Value="1">
-                <Setter Property="Background" Value="#78218B91" />
+            <Trigger Property="AlternationIndex"
+                     Value="1">
+                <Setter Property="Background"
+                        Value="#78218B91" />
             </Trigger>
             <EventTrigger RoutedEvent="DataGridRow.MouseEnter">
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color" From="Silver" To="#FFEDEDED" BeginTime="0:0:0" Duration="0:0:0.5"/>
+                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color"
+                                            From="Silver"
+                                            To="#FFEDEDED"
+                                            BeginTime="0:0:0"
+                                            Duration="0:0:0.5" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger.Actions>
@@ -257,75 +343,119 @@
                 <EventTrigger.Actions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color" From="#FFEDEDED" To="Silver" BeginTime="0:0:0" Duration="0:0:0.5"/>
+                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color"
+                                            From="#FFEDEDED"
+                                            To="Silver"
+                                            BeginTime="0:0:0"
+                                            Duration="0:0:0.5" />
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger.Actions>
             </EventTrigger>
 
-            <DataTrigger Binding="{Binding IsNewItem}" Value="True">
+            <DataTrigger Binding="{Binding IsNewItem}"
+                         Value="True">
                 <DataTrigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color" From="Silver" To="#622AB4" BeginTime="0:0:0" Duration="0:0:1"/>
+                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color"
+                                            From="Silver"
+                                            To="#622AB4"
+                                            BeginTime="0:0:0"
+                                            Duration="0:0:1" />
                         </Storyboard>
                     </BeginStoryboard>
                 </DataTrigger.EnterActions>
                 <DataTrigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color" From="#622AB4" To="Silver" BeginTime="0:0:0" Duration="0:0:1"/>
+                            <ColorAnimation Storyboard.TargetProperty="(DataGridRow.Foreground).Color"
+                                            From="#622AB4"
+                                            To="Silver"
+                                            BeginTime="0:0:0"
+                                            Duration="0:0:1" />
                         </Storyboard>
                     </BeginStoryboard>
                 </DataTrigger.ExitActions>
             </DataTrigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="CellStyle" TargetType="{x:Type DataGridCell}">
-        <Setter Property="BorderThickness" Value="0"/>
-         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="Transparent" />
+    <Style x:Key="CellStyle"
+           TargetType="{x:Type DataGridCell}">
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="FocusVisualStyle"
+                Value="{x:Null}" />
+        <Setter Property="Background"
+                Value="Transparent" />
         <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{x:Null}" />
-                <Setter Property="BorderBrush" Value="{x:Null}" />
-                <Setter Property="Foreground" Value="Orange" />
+            <Trigger Property="IsSelected"
+                     Value="True">
+                <Setter Property="Background"
+                        Value="{x:Null}" />
+                <Setter Property="BorderBrush"
+                        Value="{x:Null}" />
+                <Setter Property="Foreground"
+                        Value="Orange" />
 
-                <Setter Property="BorderThickness" Value="0" />
-                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="FocusVisualStyle"
+                        Value="{x:Null}" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Storyboard x:Key="Storyboard1" RepeatBehavior="Forever"  AutoReverse="True">
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="X"  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="movingElipse1">
+    <Storyboard x:Key="Storyboard1"
+                RepeatBehavior="Forever"
+                AutoReverse="True">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="X"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                  Storyboard.TargetName="movingElipse1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M35.1665,-49.7915 L96.2915,-116.2915"/>
+                <PathGeometry Figures="M35.1665,-49.7915 L96.2915,-116.2915" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="Y" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="movingElipse1">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="Y"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"
+                                  Storyboard.TargetName="movingElipse1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M35.1665,-49.7915 L96.2915,-116.2915"/>
+                <PathGeometry Figures="M35.1665,-49.7915 L96.2915,-116.2915" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="X" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="movingRect1">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="X"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                  Storyboard.TargetName="movingRect1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M30,60 L95,-25 L130,60 L170,-25 L210,10"/>
+                <PathGeometry Figures="M30,60 L95,-25 L130,60 L170,-25 L210,10" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="Y" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="movingRect1">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="Y"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"
+                                  Storyboard.TargetName="movingRect1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M30,60 L95,-25 L130,60 L170,-25 L210,10"/>
+                <PathGeometry Figures="M30,60 L95,-25 L130,60 L170,-25 L210,10" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="X" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="shapeNo1">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="X"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                  Storyboard.TargetName="shapeNo1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M-2,3 L72.5,-72.5"/>
+                <PathGeometry Figures="M-2,3 L72.5,-72.5" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
-        <DoubleAnimationUsingPath Duration="0:0:2" Source="Y" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="shapeNo1">
+        <DoubleAnimationUsingPath Duration="0:0:2"
+                                  Source="Y"
+                                  Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)"
+                                  Storyboard.TargetName="shapeNo1">
             <DoubleAnimationUsingPath.PathGeometry>
-                <PathGeometry Figures="M-2,3 L72.5,-72.5"/>
+                <PathGeometry Figures="M-2,3 L72.5,-72.5" />
             </DoubleAnimationUsingPath.PathGeometry>
         </DoubleAnimationUsingPath>
     </Storyboard>

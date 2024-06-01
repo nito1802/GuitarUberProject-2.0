@@ -1,21 +1,6 @@
-﻿using EditChordsWindow;
-using GitarUberProject.EditChord;
-using GitarUberProject.Games_and_Fun;
-using GitarUberProject.Games_And_Fun;
-using GitarUberProject.Helperes;
-using GitarUberProject.ViewModels;
-using NAudio.Midi;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
@@ -30,13 +15,10 @@ namespace GitarUberProject
         [DllImport("user32.dll")]
         internal static extern int SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttributeData data);
 
-
         public GameChoose()
         {
             InitializeComponent();
-
         }
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -52,7 +34,6 @@ namespace GitarUberProject
                 double tresholdX = windowRight - screenWidth;
                 this.Left -= tresholdX;
             }
-
         }
 
         internal void EnableBlur()
@@ -89,7 +70,6 @@ namespace GitarUberProject
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -110,7 +90,6 @@ namespace GitarUberProject
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
-
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -126,7 +105,6 @@ namespace GitarUberProject
 
             Close();
         }
-
 
         private void Window_Closed(object sender, EventArgs e)
         {

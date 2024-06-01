@@ -1,11 +1,6 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace GitarUberProject.ViewModels
@@ -31,7 +26,7 @@ namespace GitarUberProject.ViewModels
             EditStrumModels.Clear();
             models.ForEach(a => EditStrumModels.Add(a));
 
-            if(!EditStrumModels.Any()) EditStrumModels.Add(new EditStrumModel());
+            if (!EditStrumModels.Any()) EditStrumModels.Add(new EditStrumModel());
         }
 
         private void AssignActions()
@@ -91,12 +86,10 @@ namespace GitarUberProject.ViewModels
                             item.CheckedNote = CheckedFinger.None;
                         }
 
-
                         var secondNotes = myNotes.Where(a => a.CheckedNote == CheckedFinger.secondFinger).ToList();
 
                         if (secondNotes.Count > 1)
                         {
-
                         }
                         else if (secondNotes.Count == 1)
                         {

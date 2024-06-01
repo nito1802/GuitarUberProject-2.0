@@ -1,8 +1,5 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GitarUberProject.Helperes
 {
@@ -45,7 +42,6 @@ namespace GitarUberProject.Helperes
             int idx = Array.IndexOf(AllNotes, rootNote);
             //List<int> res = new List<int> { 1 };
             List<int> res = new List<int>();
-
 
             int intervalCounter = 0;
             for (int i = idx; ; i++, intervalCounter++)
@@ -116,13 +112,13 @@ namespace GitarUberProject.Helperes
 
             var processedNotes = notes.Select(a => a.Note).Distinct().ToList();
 
-            if(!AllNotes.Contains(rootNote))
+            if (!AllNotes.Contains(rootNote))
             {
                 rootNote = processedNotes.First();
             }
 
             var keyGroup = GetNoteGroup(rootNote, notes);
-            if(keyGroup.Notes.Any()) result.NotesGroup.Add(keyGroup);
+            if (keyGroup.Notes.Any()) result.NotesGroup.Add(keyGroup);
 
             processedNotes.Remove(rootNote);
 

@@ -1,5 +1,4 @@
 ﻿using NAudio.Midi;
-using System;
 using System.Diagnostics;
 
 //using System.Windows.Threading;

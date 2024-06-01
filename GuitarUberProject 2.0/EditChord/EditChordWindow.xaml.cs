@@ -1,24 +1,12 @@
 ﻿using EditChordsWindow;
-using GitarUberProject.Helperes;
 using GitarUberProject.EditChord;
+using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace GitarUberProject
 {
@@ -52,6 +40,7 @@ namespace GitarUberProject
     {
         // ...
         WCA_ACCENT_POLICY = 19
+
         // ...
     }
 
@@ -71,9 +60,9 @@ namespace GitarUberProject
         public Dictionary<string, List<int>> AllIntervals { get; set; }
         public List<int> IntervalNumbers { get; set; } = new List<int>();
 
-        string notesRemainText;
-        string chordsAlreadyWithInterval;
-        string chordName;
+        private string notesRemainText;
+        private string chordsAlreadyWithInterval;
+        private string chordName;
 
         public EditChordWindow(NotesViewModelLiteVersion notesViewModelLiteVersion, List<string> intervalsNotes, Dictionary<string, List<int>> allIntervals)
         {
@@ -96,7 +85,7 @@ namespace GitarUberProject
 
             mainContentControl.Content = SelectedGitarChord;
 
-            if(IntervalsNotes != null && IntervalsNotes.Any())
+            if (IntervalsNotes != null && IntervalsNotes.Any())
             {
                 DisableNotesOutsideChord();
             }
@@ -207,7 +196,7 @@ namespace GitarUberProject
                                      .Where(b => b.Value.SequenceEqual(IntervalNumbers))
                                      .ToList();
 
-            if(inters.Any())
+            if (inters.Any())
             {
                 ChordsAlreadyWithInterval = $"{string.Join(", ", inters.Select(a => a.Key))} Intervals";
             }
@@ -274,7 +263,6 @@ namespace GitarUberProject
                 }
                 catch (Exception ex)
                 {
-
                 }
                 chordIntervalsDetailsPanel.DataContext = ChordIntervalsDetailsViewModel;
             }
@@ -298,7 +286,7 @@ namespace GitarUberProject
             mainContentControl.Content = SelectedGitarChord;
         }
 
-        InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<NoteModelEdit> checkedNotes, int treshhold = 0)
+        private InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<NoteModelEdit> checkedNotes, int treshhold = 0)
         {
             InputViewModelFacade res = new InputViewModelFacade();
 
@@ -338,7 +326,7 @@ namespace GitarUberProject
             return res;
         }
 
-        int GetFr(List<NoteModelEdit> checkedNotes)
+        private int GetFr(List<NoteModelEdit> checkedNotes)
         {
             if (checkedNotes == null || !checkedNotes.Any()) return 0;
 
@@ -391,7 +379,6 @@ namespace GitarUberProject
             }
         }
 
-
         private void BtnQuit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -404,16 +391,15 @@ namespace GitarUberProject
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == Key.Escape)
+            if (e.Key == Key.Escape)
             {
                 Close();
             }
-            else if(e.Key == Key.Enter && btnApply.IsEnabled)
+            else if (e.Key == Key.Enter && btnApply.IsEnabled)
             {
                 DialogResult = true;
 
@@ -423,7 +409,7 @@ namespace GitarUberProject
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
+            if (e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
             {
                 Close();
             }
@@ -454,7 +440,6 @@ namespace GitarUberProject
         }
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
-
 
         protected void OnPropertyChanged(string name)
         {

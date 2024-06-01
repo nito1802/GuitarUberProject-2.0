@@ -1,20 +1,14 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.ViewModels;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace GitarUberProject.Models
 {
-
     public class KlocekNoteDetails
     {
         private double xPos;
@@ -25,7 +19,6 @@ namespace GitarUberProject.Models
 
         public KlocekNoteDetails()
         {
-           
         }
 
         public void AssignBackground()
@@ -39,6 +32,7 @@ namespace GitarUberProject.Models
         public int Struna { get; set; }
         public string Mp3Name { get; set; }
         public bool IsChord { get; set; }
+
         [JsonIgnore]
         public Brush NoteBackground { get; set; } = Brushes.Red;
 
@@ -83,7 +77,7 @@ namespace GitarUberProject.Models
                 OnPropertyChanged("NoteWidth");
             }
         }
-        
+
         public double ZIndex
         {
             get
@@ -130,6 +124,7 @@ namespace GitarUberProject.Models
     {
         //private Brush backgroundBrush;
         private RelayCommand removeFromPlaylist;
+
         private RelayCommand playNote;
         private double xPos;
         private double yPos;
@@ -145,14 +140,14 @@ namespace GitarUberProject.Models
 
         [JsonIgnore]
         public Point DeltaMouse { get; set; }
+
         public static Action<KlocekChordModel> RemoveKlocekFromPlaylist { get; set; }
         public static Action<StrumViewModel> PlayChordFromPlaylist { get; set; }
 
         public KlocekChordModel()
         {
-            
         }
-        
+
         //singleNote
         public KlocekChordModel(string name, int octave, int prog, int struna)
         {
@@ -166,6 +161,7 @@ namespace GitarUberProject.Models
 
         //private RelayCommand mouseEnterCommand;
         public NotesViewModelLiteVersion ChordModel { get; set; }
+
         public ObservableCollection<KlocekNoteDetails> NotesInChord { get; set; } = new ObservableCollection<KlocekNoteDetails>();
         public string Name { get; set; }
         public int Octave { get; set; }
@@ -339,7 +335,7 @@ namespace GitarUberProject.Models
                 {
                     playNote = new RelayCommand(param =>
                     {
-                        if(!IsChord)
+                        if (!IsChord)
                         {
                             NoteModel.PlayNoteAction?.Invoke(Struna, Mp3Name);
                         }
@@ -358,7 +354,7 @@ namespace GitarUberProject.Models
         {
             KlocekChordModel klocekClone = new KlocekChordModel();
 
-            if(!this.IsChord)
+            if (!this.IsChord)
             {
                 klocekClone.KlocekOpacity = 1;
                 klocekClone.Mp3Name = this.Mp3Name;
@@ -423,7 +419,6 @@ namespace GitarUberProject.Models
         //        {
         //            mouseEnterCommand = new RelayCommand(param =>
         //            {
-
         //                Border kloc = ((MouseEventArgs)param).Source as Border;
         //                var x = Canvas.GetLeft(kloc);
         //                var y = Canvas.GetTop(kloc);

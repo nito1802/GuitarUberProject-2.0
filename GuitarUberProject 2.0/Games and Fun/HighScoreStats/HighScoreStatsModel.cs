@@ -1,13 +1,7 @@
 ﻿using GitarUberProject.Games_and_Fun.RadialGaugeData;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
 
 namespace GitarUberProject.Games_and_Fun.HighScoreStats
 {
@@ -39,7 +33,6 @@ namespace GitarUberProject.Games_and_Fun.HighScoreStats
         {
         }
 
-
         public void AddResult(bool value)
         {
             if (value)
@@ -55,7 +48,7 @@ namespace GitarUberProject.Games_and_Fun.HighScoreStats
 
             var radialGaugeValue = RadialViewModel.Data.FirstOrDefault();
 
-            if(radialGaugeValue == null)
+            if (radialGaugeValue == null)
             {
                 RadialViewModel.Data.Add(new RadialGaugeModel { Name = "", Count = 0 });
                 radialGaugeValue = RadialViewModel.Data.First();
@@ -65,11 +58,11 @@ namespace GitarUberProject.Games_and_Fun.HighScoreStats
 
         public void AddResult(int interval)
         {
-            if(interval == 0)
+            if (interval == 0)
             {
                 Proc100++;
             }
-            else if(interval == 1)
+            else if (interval == 1)
             {
                 Proc90++;
             }

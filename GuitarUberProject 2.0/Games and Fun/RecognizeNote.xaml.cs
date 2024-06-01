@@ -1,29 +1,18 @@
 ﻿using EditChordsWindow;
-using GitarUberProject.Helperes;
 using GitarUberProject.EditChord;
+using GitarUberProject.Games_and_Fun;
+using GitarUberProject.Games_And_Fun;
+using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
-using System;
-using System.Collections.Generic;
+using NAudio.Midi;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using GitarUberProject.Games_And_Fun;
-using GitarUberProject.Games_and_Fun;
-using System.Collections.ObjectModel;
-using GitarUberProject.Games_and_Fun.HighScoreStats;
-using NAudio.Midi;
-using System.Diagnostics;
 
 namespace GitarUberProject
 {
@@ -46,7 +35,6 @@ namespace GitarUberProject
         public int BullseyePoints { get; set; } = 3;
         public SolidColorBrush BullseyeTextColor { get; } = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF007C9C"));
 
-
         public int ErrorToleranceTries { get; set; } = 1;
         public string[] PossibleErrorMessages { get; set; }
 
@@ -63,9 +51,9 @@ namespace GitarUberProject
         public Random Rand { get; set; } = new Random();
         public MidiIn MidiKeyboard { get; set; }
 
-        string notesRemainText;
-        string chordsAlreadyWithInterval;
-        string chordName;
+        private string notesRemainText;
+        private string chordsAlreadyWithInterval;
+        private string chordName;
         private int streak;
         private int possibleErrors;
         private Brush messageBrush;
@@ -81,13 +69,12 @@ namespace GitarUberProject
             //IntervalsNotes = intervalsNotes;
             //AllIntervals = allIntervals;
 
-
             //startNote e3
 
             ScoreViewModel.FileName = "RecognizeNoteEasy.json";
             var loadedScore = ScoreViewModel.Load();
 
-            if(loadedScore != null && loadedScore.BestScores.Any())
+            if (loadedScore != null && loadedScore.BestScores.Any())
             {
                 ScoreViewModel = loadedScore;
                 ScoreViewModel.FileName = "RecognizeNoteEasy.json";
@@ -96,12 +83,10 @@ namespace GitarUberProject
             {
                 ScoreViewModel.BestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
 
                 ScoreViewModel.NetworkBestScores = new ObservableCollection<HighScoreModel>
                 {
-
                 };
             }
 
@@ -133,7 +118,7 @@ namespace GitarUberProject
                     var awardPoints = bullseye ? BullseyePoints : 1;
 
                     Streak += awardPoints;
-                    
+
                     ErrorToleranceTries = ErrorToleranceMaxTries;
 
                     bool addPossibleErrors = false;
@@ -143,7 +128,7 @@ namespace GitarUberProject
                         addPossibleErrors = true;
                     }
 
-                    if(!bullseye)
+                    if (!bullseye)
                     {
                         MessageText = addPossibleErrors ? $"Dobrze! {cNote}  (+1)" : $"Dobrze! {cNote}";
                         MessageBrush = Brushes.Green;
@@ -159,7 +144,7 @@ namespace GitarUberProject
 
                     res = true;
                 }
-                else if(intervalBetweenCorrectNote <= ErrorTolerance)
+                else if (intervalBetweenCorrectNote <= ErrorTolerance)
                 {
                     if (ErrorToleranceTries > 0)
                     {
@@ -227,7 +212,6 @@ namespace GitarUberProject
                 "Cóż, źle",
                 "Pomyłka",
             };
-
 
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
@@ -328,7 +312,6 @@ namespace GitarUberProject
                 this.Left -= tresholdX;
             }
 
-
             NotesViewModel.Notes.ForEach(a => a.NoteOpacity = 1);
             var disabledNotes = NotesViewModel.Notes.Where(a => a.Prog > MaxProg || a.Struna > MaxStruna).ToList();
             disabledNotes.ForEach(a =>
@@ -337,21 +320,18 @@ namespace GitarUberProject
                 a.NoteOpacity = GameModelEdit.DisabledNoteOpacity;
             });
 
-
             var dis = NotesViewModel.Notes.Where(a => a.NoteOpacity == 1).ToList();
             RandNote();
             var dis2 = NotesViewModel.Notes.Where(a => a.NoteOpacity == 1).ToList();
 
             var midiCounter = MidiIn.NumberOfDevices;
 
-            if(midiCounter > 0)
+            if (midiCounter > 0)
             {
                 MidiKeyboard = new MidiIn(0);
                 MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
                 MidiKeyboard.Start();
             }
-
-            
         }
 
         private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
@@ -359,8 +339,8 @@ namespace GitarUberProject
             if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
             {
                 NoteEvent noteEvent = (NoteEvent)e.MidiEvent;
-                
-                if(noteEvent.NoteName == "C4")
+
+                if (noteEvent.NoteName == "C4")
                 {
                     this.Dispatcher.Invoke(() =>
                     {
@@ -397,15 +377,13 @@ namespace GitarUberProject
                 int strunaRnd = 0;
                 int progRnd = 0;
 
-
                 GameModelEdit tempNoteRnd = null;
                 do
                 {
-                    strunaRnd = Rand.Next(1, MaxStruna+1);
-                    progRnd = Rand.Next(0, MaxProg+1);
+                    strunaRnd = Rand.Next(1, MaxStruna + 1);
+                    progRnd = Rand.Next(0, MaxProg + 1);
 
                     tempNoteRnd = NotesViewModel.Notes.First(a => a.Struna == strunaRnd && a.Prog == progRnd);
-
                 } while (btnsRand.Any(a => a.Struna == strunaRnd && a.Prog == progRnd || (a.Name == tempNoteRnd.Name && a.Octave == tempNoteRnd.Octave)));
 
                 var noteRnd = NotesViewModel.Notes.First(a => a.Struna == strunaRnd && a.Prog == progRnd);
@@ -502,7 +480,6 @@ namespace GitarUberProject
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
             else
@@ -520,10 +497,9 @@ namespace GitarUberProject
 
             //bool isChordCorrect = IsChordCorrect();
             //btnApply.IsEnabled = isChordCorrect;
-
         }
 
-        InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
+        private InputViewModelFacade GuitarControlVMToInputViewModelFacade(List<GameModelEdit> checkedNotes, int treshhold = 0)
         {
             InputViewModelFacade res = new InputViewModelFacade();
 
@@ -563,7 +539,7 @@ namespace GitarUberProject
             return res;
         }
 
-        int GetFr(List<GameModelEdit> checkedNotes)
+        private int GetFr(List<GameModelEdit> checkedNotes)
         {
             if (checkedNotes == null || !checkedNotes.Any()) return 0;
 
@@ -616,7 +592,6 @@ namespace GitarUberProject
             }
         }
 
-
         private void BtnQuit_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -629,16 +604,15 @@ namespace GitarUberProject
 
         private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if(e.Key == Key.Escape)
+            if (e.Key == Key.Escape)
             {
                 Close();
             }
-            else if(e.Key == Key.Enter && btnApply.IsEnabled)
+            else if (e.Key == Key.Enter && btnApply.IsEnabled)
             {
                 DialogResult = true;
 
@@ -648,7 +622,7 @@ namespace GitarUberProject
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
+            if (e.ChangedButton == MouseButton.XButton1 || e.ChangedButton == MouseButton.XButton2)
             {
                 Close();
             }
@@ -680,7 +654,6 @@ namespace GitarUberProject
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
-
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -711,7 +684,7 @@ namespace GitarUberProject
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if(MidiKeyboard != null)
+            if (MidiKeyboard != null)
             {
                 MidiKeyboard.Stop();
                 MidiKeyboard.Dispose();

@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows.Input;
 
 namespace GitarUberProject
 {
-    class RelayCommand : ICommand
+    internal class RelayCommand : ICommand
     {
-        Action<object> _execute;
-        Predicate<object> _canExecute;
+        private Action<object> _execute;
+        private Predicate<object> _canExecute;
 
         public RelayCommand(Action<object> execute) : this(execute, null)
         { }

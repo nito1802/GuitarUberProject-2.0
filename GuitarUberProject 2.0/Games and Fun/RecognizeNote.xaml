@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart" 
+        xmlns:MetroChart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
         xmlns:local="clr-namespace:GitarUberProject"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:views="clr-namespace:GitarUberProject.Views"
@@ -32,7 +32,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="MGrid">
-        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click"/>
+        <Button Name="btnQuit" HorizontalAlignment="Right" Panel.ZIndex="2" VerticalAlignment="Top" Content="X" Width="35" FontSize="15" FontWeight="Bold" Height="30" Click="BtnQuit_Click" />
 
         <StackPanel Margin="15 15 0 0">
             <StackPanel Orientation="Horizontal" Width="400" HorizontalAlignment="Left">
@@ -42,17 +42,16 @@
 
             <StackPanel Margin="0 -30 0 0" Orientation="Horizontal">
 
-                <Button x:Name="btnPlay" Content="Play" FontSize="35" Style="{StaticResource DarkButton}" HorizontalAlignment="Left" Margin="110 0 0 0" Width="150" Height="80" Click="BtnPlay_Click"/>
+                <Button x:Name="btnPlay" Content="Play" FontSize="35" Style="{StaticResource DarkButton}" HorizontalAlignment="Left" Margin="110 0 0 0" Width="150" Height="80" Click="BtnPlay_Click" />
 
                 <StackPanel Margin="80 35 0 0">
-                    <TextBlock Text="Możliwe błędy" Foreground="#FFF759A1"  FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Opacity="0.7"/>
-                    <TextBlock HorizontalAlignment="Center"  Text="{Binding PossibleErrors, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4" Opacity="0.7" FontSize="40" FontWeight="Light"/>
+                    <TextBlock Text="Możliwe błędy" Foreground="#FFF759A1"  FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Opacity="0.7" />
+                    <TextBlock HorizontalAlignment="Center"  Text="{Binding PossibleErrors, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4" Opacity="0.7" FontSize="40" FontWeight="Light" />
                 </StackPanel>
                 <StackPanel Margin="-40 35 0 0">
-                    <TextBlock Text="Streak" Foreground="#FFE4E4E4"  FontSize="20" FontWeight="Light" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="tbCounter" Margin="0 -15 0 0" HorizontalAlignment="Center"  Text="{Binding Streak, StringFormat= {}{0:0'x'}}" Foreground="#FFE4E4E4" FontSize="80" FontWeight="Light"/>
-                    <TextBlock Margin="0 15 0 0" Width="280" VerticalAlignment="Center" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding MessageBrush, UpdateSourceTrigger=PropertyChanged}" FontSize="25" Opacity="0.7"/>
-
+                    <TextBlock Text="Streak" Foreground="#FFE4E4E4"  FontSize="20" FontWeight="Light" HorizontalAlignment="Center" />
+                    <TextBlock x:Name="tbCounter" Margin="0 -15 0 0" HorizontalAlignment="Center"  Text="{Binding Streak, StringFormat= {}{0:0'x'}}" Foreground="#FFE4E4E4" FontSize="80" FontWeight="Light" />
+                    <TextBlock Margin="0 15 0 0" Width="280" VerticalAlignment="Center" Text="{Binding MessageText, UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding MessageBrush, UpdateSourceTrigger=PropertyChanged}" FontSize="25" Opacity="0.7" />
                 </StackPanel>
                 <StackPanel Margin="100 40 0 0">
                     <Grid x:Name="gridStatsAllTime">
@@ -65,7 +64,7 @@
                                 IsEnabled="False"
                                 Background="Transparent">
                             <MetroChart:RadialGaugeChart.Series>
-                                <MetroChart:ChartSeries 
+                                <MetroChart:ChartSeries
                                     ItemsSource="{Binding Data}"
                                     SeriesTitle="My Population Series"
                                     DisplayMember="Name"
@@ -73,11 +72,11 @@
                             </MetroChart:RadialGaugeChart.Series>
                         </MetroChart:RadialGaugeChart>
 
-                        <TextBlock Margin="80 0 0 0" HorizontalAlignment="Left" Text="{Binding AllCounter, UpdateSourceTrigger=PropertyChanged}" Width="180" Foreground="#FF2AB447" FontWeight="Bold" FontSize="35"/>
+                        <TextBlock Margin="80 0 0 0" HorizontalAlignment="Left" Text="{Binding AllCounter, UpdateSourceTrigger=PropertyChanged}" Width="180" Foreground="#FF2AB447" FontWeight="Bold" FontSize="35" />
                     </Grid>
 
                     <Grid x:Name="gridStatsToday" Margin="0 20 0 0">
-                        <TextBlock Margin="60 -30 0 0" Text="This Session" HorizontalAlignment="Left" Foreground="#FF007C9C" FontSize="20" FontWeight="UltraLight"/>
+                        <TextBlock Margin="60 -30 0 0" Text="This Session" HorizontalAlignment="Left" Foreground="#FF007C9C" FontSize="20" FontWeight="UltraLight" />
                         <MetroChart:RadialGaugeChart
                                 Name="myRadialGaugeChart"
                                 Margin="-20 -60 0 0"
@@ -87,7 +86,7 @@
                                 IsEnabled="False"
                                 Background="Transparent">
                             <MetroChart:RadialGaugeChart.Series>
-                                <MetroChart:ChartSeries 
+                                <MetroChart:ChartSeries
                             ItemsSource="{Binding Data}"
                             SeriesTitle="My Population Series"
                             DisplayMember="Name"
@@ -95,20 +94,20 @@
                             </MetroChart:RadialGaugeChart.Series>
                         </MetroChart:RadialGaugeChart>
 
-                        <TextBlock Margin="80 0 0 0" HorizontalAlignment="Left" Text="{Binding AllCounter, UpdateSourceTrigger=PropertyChanged}" Width="180" Foreground="#FF007C9C" FontWeight="Bold" FontSize="35"/>
+                        <TextBlock Margin="80 0 0 0" HorizontalAlignment="Left" Text="{Binding AllCounter, UpdateSourceTrigger=PropertyChanged}" Width="180" Foreground="#FF007C9C" FontWeight="Bold" FontSize="35" />
                     </Grid>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="50 20 0 0">
                     <StackPanel>
-                        <TextBlock Text="Top 5 Streaks" FontSize="30" Foreground="#FF622AB4" FontWeight="Bold" Opacity="0.7"/>
+                        <TextBlock Text="Top 5 Streaks" FontSize="30" Foreground="#FF622AB4" FontWeight="Bold" Opacity="0.7" />
 
                         <DataGrid Name="DataG"
                                   Cursor="Hand"
-                                  Foreground="Silver" 
+                                  Foreground="Silver"
                                   Background="Transparent"
-                                  VerticalAlignment="Top" 
-                                  AutoGenerateColumns="False" 
+                                  VerticalAlignment="Top"
+                                  AutoGenerateColumns="False"
                                   IsReadOnly="True"
                                   GridLinesVisibility="None"
                                   RowBackground="Transparent"
@@ -142,8 +141,8 @@
                             <DataGrid.Columns>
                                 <!--<DataGridTextColumn Foreground="#FFE4E4E4" FontSize="20" Header="Index" Binding="{Binding Index, StringFormat= {}{0:#'.'}}" Width="25" />-->
                                 <!--<DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="70" />-->
-                                <DataGridTextColumn FontSize="20" FontWeight="Bold" Header="Result" Binding="{Binding Score}" Width="60"/>
-                                <DataGridTextColumn  FontSize="20" FontWeight="Light" Header="Date" Binding="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Width="100"/>
+                                <DataGridTextColumn FontSize="20" FontWeight="Bold" Header="Result" Binding="{Binding Score}" Width="60" />
+                                <DataGridTextColumn  FontSize="20" FontWeight="Light" Header="Date" Binding="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Width="100" />
                             </DataGrid.Columns>
                             <DataGrid.RowDetailsTemplate>
                                 <DataTemplate>
@@ -152,47 +151,37 @@
                             </DataGrid.RowDetailsTemplate>
                         </DataGrid>
 
-
-
-
-
-
-
-
                         <!--<ItemsControl x:Name="icBestScores" ItemsSource="{Binding BestScores, UpdateSourceTrigger=PropertyChanged}" Margin="-15 0 0 0"  HorizontalAlignment="Left">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"  />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="40 0 0 0" >
-                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4"/>
-                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light"/>
-
+                                    <StackPanel Margin="40 0 0 0">
+                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4" />
+                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>-->
                     </StackPanel>
 
-
                     <StackPanel Margin="60 0 0 0">
-                        <TextBlock Text="Top 5 Streaks Online" FontSize="30" Foreground="#FFD1B849" FontWeight="Bold" Opacity="0.7"/>
+                        <TextBlock Text="Top 5 Streaks Online" FontSize="30" Foreground="#FFD1B849" FontWeight="Bold" Opacity="0.7" />
 
                         <ItemsControl x:Name="icNetworkBestScores" ItemsSource="{Binding NetworkBestScores, UpdateSourceTrigger=PropertyChanged}" Margin="-15 0 0 0"  HorizontalAlignment="Left">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal"  />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="40 0 0 0" >
-                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4"/>
-                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light"/>
-
+                                    <StackPanel Margin="40 0 0 0">
+                                        <TextBlock FontSize="10" Text="{Binding Date,StringFormat='{}{0:dd.MM.yyyy}'}" Foreground="#FFE4E4E4" />
+                                        <TextBlock x:Name="tbCounter" VerticalAlignment="Top" Text="{Binding Score, UpdateSourceTrigger=PropertyChanged}" Foreground="#FFE4E4E4"  FontSize="{Binding FontSizeText, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -201,31 +190,25 @@
                 </StackPanel>
             </StackPanel>
 
-
-
             <Grid Name="GridGuitar" Margin="0 15 0 0" Grid.Row="5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0"/>
-                    <ColumnDefinition Width="*"/>
-
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-
-
-                <!--<Border x:Name="gitarBorder" Margin="110 50 130 50" BorderThickness="3" BorderBrush="#7E008B8B" Grid.Row="5" Grid.ColumnSpan="2" Panel.ZIndex="-1" Background="#FF354B97" 
+                <!--<Border x:Name="gitarBorder" Margin="110 50 130 50" BorderThickness="3" BorderBrush="#7E008B8B" Grid.Row="5" Grid.ColumnSpan="2" Panel.ZIndex="-1" Background="#FF354B97"
                     PreviewMouseLeftButtonDown="GitarBorder_PreviewMouseLeftButtonDown">
                 <Border BorderThickness="2" BorderBrush="#80FFFF00">
                     -->
                 <!--<Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFAB1B3D" Offset="0"/>
-                            <GradientStop Color="#FF7A0722" Offset="1"/>
+                            <GradientStop Color="#FFAB1B3D" Offset="0" />
+                            <GradientStop Color="#FF7A0722" Offset="1" />
                         </LinearGradientBrush>
                     </Border.Background>-->
                 <!--
                 </Border>
             </Border>-->
-
 
                 <Border Grid.Column="1" Margin="120 20 20 0" Background="#E5381503" Height="120">
                     <Grid>
@@ -257,28 +240,27 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.ColumnSpan="15" Margin="0 3 0 0" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="1" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="2" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="3" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="4" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
-                        <Border Grid.ColumnSpan="15" Grid.Row="5" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center"/>
+                        <Border Grid.ColumnSpan="15" Margin="0 3 0 0" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="1" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="2" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="3" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="4" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
+                        <Border Grid.ColumnSpan="15" Grid.Row="5" BorderThickness="2" Height="2" BorderBrush="#99D8970B" VerticalAlignment="Center" />
 
-                        <Border Grid.RowSpan="6" Width="2" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="1" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="2" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="3" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="4" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="5" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="6" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="7" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="8" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="9" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="10" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="11" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="12" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-                        <Border Grid.Column="13" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right"/>
-
+                        <Border Grid.RowSpan="6" Width="2" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="1" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="2" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="3" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="4" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="5" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="6" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="7" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="8" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="9" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="10" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="11" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="12" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
+                        <Border Grid.Column="13" Width="2" Grid.RowSpan="6" Background="#DCDCCD" HorizontalAlignment="Right" />
 
                         <TextBlock Margin="0 -28 0 0" Text="1" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
                         <TextBlock Grid.Column="1" Margin="0 -28 0 0" Text="2" HorizontalAlignment="Center" FontSize="20" Foreground="White" />
@@ -324,40 +306,35 @@
                 </ItemsControl>
             </Grid>
 
-
-
-
             <!--<ItemsControl Name="ChordVariationsItemsControl" Margin="15 25 0 0" MinHeight="340" HorizontalAlignment="Left" ItemsSource="{Binding Chords, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel  />
+                        <WrapPanel />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <RadioButton GroupName="Variations">
                             <Button Style="{StaticResource VariationsStyleButton}" Command="{Binding IsSelectCommand}">
-                                <views:NewChordView Margin="-10 -22 -30 -20" DataContext="{Binding }"/>
+                                <views:NewChordView Margin="-10 -22 -30 -20" DataContext="{Binding }" />
                             </Button>
                         </RadioButton>
-                        
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 
                 <ItemsControl.Template>
                     <ControlTemplate TargetType="ItemsControl">
                         <ScrollViewer VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
-                            <ItemsPresenter/>
+                            <ItemsPresenter />
                         </ScrollViewer>
                     </ControlTemplate>
                 </ItemsControl.Template>
             </ItemsControl>-->
 
             <StackPanel Margin="0 10 0 0" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnApply" Style="{StaticResource DarkButton}" Content="OK" Width="100" Click="Apply_Click"/>
-                <Button x:Name="btnCancel" Margin="5 0 5 0" Style="{StaticResource DarkButton}" Content="Cancel" Width="100" Click="BtnQuit_Click"/>
+                <Button x:Name="btnApply" Style="{StaticResource DarkButton}" Content="OK" Width="100" Click="Apply_Click" />
+                <Button x:Name="btnCancel" Margin="5 0 5 0" Style="{StaticResource DarkButton}" Content="Cancel" Width="100" Click="BtnQuit_Click" />
             </StackPanel>
         </StackPanel>
-
     </Grid>
 </Window>

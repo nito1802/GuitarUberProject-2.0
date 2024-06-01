@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace GitarUberProject.ViewModels
@@ -15,6 +10,7 @@ namespace GitarUberProject.ViewModels
         private string chordType;
 
         public ObservableCollection<NotesGroup> NotesGroup { get; set; } = new ObservableCollection<NotesGroup>();
+
         public string RootNoteName
         {
             get => rootNoteName;
@@ -22,7 +18,7 @@ namespace GitarUberProject.ViewModels
             {
                 rootNoteName = value;
                 OnPropertyChanged("RootNoteName");
-            } 
+            }
         }
 
         public string ChordType
@@ -40,7 +36,6 @@ namespace GitarUberProject.ViewModels
             return $"Name: {RootNoteName}{ChordType} Groups: {NotesGroup.Count} ChordIntervalsDetails";
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
         protected void OnPropertyChanged(string name)
@@ -52,9 +47,6 @@ namespace GitarUberProject.ViewModels
             }
         }
     }
-
-
-    
 
     public class NotesGroup
     {
@@ -78,7 +70,6 @@ namespace GitarUberProject.ViewModels
         public Brush ForegroundNoteBrush { get; set; }
         public int FontSizeNote { get; set; }
         public string Interval { get; set; }
-
 
         public NoteOctaveIntervalDetails(string note, int octave)
         {

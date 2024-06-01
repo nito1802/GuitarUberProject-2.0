@@ -2,19 +2,11 @@
 using GitarUberProject.Helperes;
 using GitarUberProject.Helpers;
 using GitarUberProject.Models;
-using GitarUberProject.ViewModels;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -57,7 +49,7 @@ namespace EditChordsWindow
         private LinearGradientBrush chordReadModeBackground;
 
         public string ChordCode { get; set; }
-        public string ChordCodeNormalized{ get; set; }
+        public string ChordCodeNormalized { get; set; }
 
         public static int RowSize { get; } = 6;
         public static int ColumnSize { get; } = 6;
@@ -74,38 +66,35 @@ namespace EditChordsWindow
         public static Action<NotesViewModelLiteVersion> PlayDownAction { get; set; }
         public static Action<string, List<CheckedFinger>> RefreshKolorowanieChordsAction { get; set; }
         public static Action<bool> MainWindowBlackAction { get; set; }
-        public static Action<NotesViewModelLiteVersion> AddChordToChordsBoxAction  { get; set; }
+        public static Action<NotesViewModelLiteVersion> AddChordToChordsBoxAction { get; set; }
         public static Action<NotesViewModelLiteVersion> RemoveChordsBoxAction { get; set; }
-        public static Action<NotesViewModelLiteVersion> RemoveOtherChord{ get; set; }
+        public static Action<NotesViewModelLiteVersion> RemoveOtherChord { get; set; }
         public static Action<NotesViewModelLiteVersion> MoveToOtherAction { get; set; }
-
 
         [JsonIgnore]
         public Func<List<int>> GetIntervalsFromParent { get; set; }
+
         [JsonIgnore]
         public Action<List<int>> SetIntervalInParent { get; set; }
 
-
         public ObservableCollection<NoteModelLiteVersion> Notes { get; set; } = new ObservableCollection<NoteModelLiteVersion>();
+
         public ObservableCollection<string> NotesO { get; set; } = new ObservableCollection<string>()
         {
-        
         };
+
         public ObservableCollection<NoteOctaveDetails> NoteOctaves { get; set; } = new ObservableCollection<NoteOctaveDetails>()
         {
-        
         };
 
         //tylko do wyswietlenia na dataGrid
         public ObservableCollection<NoteOctaveDetails> NoteOctavesDataGrid { get; set; } = new ObservableCollection<NoteOctaveDetails>()
         {
-
         };
 
         [JsonIgnore]
         public ObservableCollection<ChordBorderModel> ChordBorders { get; set; } = new ObservableCollection<ChordBorderModel>()
         {
-
         };
 
         public static string[] AllNotes { get; set; } = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
@@ -215,7 +204,6 @@ namespace EditChordsWindow
 
                             var checkedNotesDebug = Notes.Where(a => a.CheckedFinger != CheckedFinger.None).ToList();
 
-
                             var ukladFingers = Notes.Select(a => a.CheckedFinger).ToList();
                             RefreshKolorowanieChordsAction?.Invoke(ChordCodeNormalized, ukladFingers);
 
@@ -267,7 +255,6 @@ namespace EditChordsWindow
 
                         var err = allChordsIntervals.GroupBy(a => a).Where(b => b.Count() > 1).ToList();
 
-
                         EditChordWindow editChordWindow = new EditChordWindow(clone, ChordIntervalsNotes, allChordsIntervals);
                         editChordWindow.Owner = System.Windows.Application.Current.MainWindow;
 
@@ -277,7 +264,7 @@ namespace EditChordsWindow
 
                         MainWindowBlackAction?.Invoke(true);
                         editChordWindow.ShowDialog();
-                        if(editChordWindow.DialogResult.Value == true)
+                        if (editChordWindow.DialogResult.Value == true)
                         {
                             var checkedNotesDebug = Notes.Where(a => a.CheckedFinger != CheckedFinger.None).ToList();
 
@@ -302,7 +289,7 @@ namespace EditChordsWindow
 
                             var intervalsFromParent = GetIntervalsFromParent?.Invoke();
 
-                            if(intervalsFromParent == null || !intervalsFromParent.Any())
+                            if (intervalsFromParent == null || !intervalsFromParent.Any())
                             {
                                 SetIntervalInParent?.Invoke(ChordIntervalsNumbers);
                                 UpdateIntervalsAction?.Invoke(ChordType, ChordIntervalsNumbers);
@@ -330,7 +317,6 @@ namespace EditChordsWindow
                     {
                         ScrollDataGridToItemAction(this);
                         //SetHeightForAllChords(ChordHeight - 10);
-
                     }
                      , param => true);
                 }
@@ -580,8 +566,9 @@ namespace EditChordsWindow
                 OnPropertyChanged("ChordId");
             }
         }
+
         public List<int> ChordIntervalsNumbers { get; set; }
-        public List<string> ChordIntervalsNotes{ get; set; }
+        public List<string> ChordIntervalsNotes { get; set; }
 
         [JsonIgnore]
         public LinearGradientBrush ChordReadModeBackground
@@ -670,7 +657,7 @@ namespace EditChordsWindow
             else
             {
                 int offset = progIdx.Value + fr;
-                realProg = offset+1;
+                realProg = offset + 1;
 
                 if (fr == 0)
                 {
@@ -684,7 +671,7 @@ namespace EditChordsWindow
 
             NoteOctaves[struna - 1].Name = newNote.Name;
             NoteOctaves[struna - 1].Octave = newNote.Octave != 0 ? newNote.Octave.ToString() : "";
-            if(!string.IsNullOrEmpty(newNote.Name))
+            if (!string.IsNullOrEmpty(newNote.Name))
             {
                 NoteOctaves[struna - 1].NoteColor = NotesHelper.ChordColorNoOpacity[newNote.Name];
             }
@@ -701,9 +688,9 @@ namespace EditChordsWindow
 
             for (int i = 0; i < NotesO.Count; i++)
             {
-                if(NotesO[i] == "O")
+                if (NotesO[i] == "O")
                 {
-                    string note = $"s{i+1}p{0}";
+                    string note = $"s{i + 1}p{0}";
                     checkedNotesO.Add(note);
                 }
             }
@@ -725,7 +712,7 @@ namespace EditChordsWindow
                 }
             }
 
-            if(progIdx == null && NotesO[struna-1] == "O")
+            if (progIdx == null && NotesO[struna - 1] == "O")
             {
                 progIdx = -1;
             }
@@ -763,7 +750,7 @@ namespace EditChordsWindow
 
             return resultNote;
         }
-        
+
         public void ClearButtons(int fingerIdx)
         {
             foreach (var item in Notes)
@@ -772,7 +759,7 @@ namespace EditChordsWindow
                 item.HoverFinger = (CheckedFinger)fingerIdx + 1; ;
             }
         }
-        
+
         public void UpdateIntervals(List<int> intervals)
         {
             string rootNote = ChordName;
@@ -810,11 +797,13 @@ namespace EditChordsWindow
                     ChordHeight = MainWindow.ReadChordHeight;
                     ChordMargin = new Thickness(0);
                     break;
+
                 case ChordMode.Normal:
                     ChordWidth = MainWindow.NormalChordWidth;
                     ChordHeight = MainWindow.NormalChordHeight;
                     ChordMargin = new Thickness(10, 5, 5, 5);
                     break;
+
                 default:
                     break;
             }
@@ -822,34 +811,33 @@ namespace EditChordsWindow
 
         public BitmapImage UpdateChordImage(ChordMode mode)
         {
-                SetChordMode(mode);
+            SetChordMode(mode);
 
-                if (string.IsNullOrEmpty(ChordFullName)) return null;
+            if (string.IsNullOrEmpty(ChordFullName)) return null;
 
-                string chordImagesDirectory = (AppOptions.Options != null && AppOptions.Options.ChordReadMode) ? App.ReadChordImagesWorkingPath : App.ChordImagesWorkingPath;
-                string chordNameNormalized = $"{ChordFullName.Replace('/', ';')}.png";
+            string chordImagesDirectory = (AppOptions.Options != null && AppOptions.Options.ChordReadMode) ? App.ReadChordImagesWorkingPath : App.ChordImagesWorkingPath;
+            string chordNameNormalized = $"{ChordFullName.Replace('/', ';')}.png";
 
-                string fullChordImagePath = Path.Combine(chordImagesDirectory, chordNameNormalized);
+            string fullChordImagePath = Path.Combine(chordImagesDirectory, chordNameNormalized);
 
-                if (File.Exists(fullChordImagePath))
-                {
-                    BitmapImage bitmapImage = null;
-                    //Application.Current.Dispatcher.Invoke(new Action(() =>
-                    //{
+            if (File.Exists(fullChordImagePath))
+            {
+                BitmapImage bitmapImage = null;
+                //Application.Current.Dispatcher.Invoke(new Action(() =>
+                //{
+                bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.UriSource = new Uri(fullChordImagePath);
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+                //}));
+                ChordImage = bitmapImage;
+                return bitmapImage;
+            }
 
-                    bitmapImage = new BitmapImage();
-                    bitmapImage.BeginInit();
-                    bitmapImage.UriSource = new Uri(fullChordImagePath);
-                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapImage.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                    bitmapImage.EndInit();
-                        bitmapImage.Freeze();
-                    //}));
-                    ChordImage = bitmapImage;
-                    return bitmapImage;
-                }
-
-                return null;
+            return null;
         }
 
         public void UpdateChordImage()

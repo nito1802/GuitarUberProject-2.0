@@ -86,8 +86,5 @@
                     HorizontalAlignment="Left"
                     Click="btnRecognizeNotes_Click" />
         </StackPanel>
-
-
-
     </Grid>
 </Window>

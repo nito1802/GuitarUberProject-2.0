@@ -1,12 +1,6 @@
 ﻿using GitarUberProject;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -26,7 +20,7 @@ namespace EditChordsWindow
         private CheckedFinger hoverFinger;
         private int prog;
         private int struna;  //liczymy od 1
-        
+
         public NoteModelLiteVersion(int struna, int prog)
         {
             this.Struna = struna;

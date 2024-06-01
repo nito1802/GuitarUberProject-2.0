@@ -3,9 +3,7 @@ using GitarUberProject.EditStrumWindow;
 using GitarUberProject.Helperes;
 using GitarUberProject.Models;
 using GitarUberProject.ViewModels;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Media;
 using System.Windows.Threading;
 
@@ -14,9 +12,9 @@ namespace GitarUberProject.Services
     public static class StrumPatternService
     {
         public static void CreateStrumPattern(
-            bool IsStrumming, 
-            Stopwatch SwStrumPatternKeys, 
-            List<StrumKeysModel> StrumKeys, 
+            bool IsStrumming,
+            Stopwatch SwStrumPatternKeys,
+            List<StrumKeysModel> StrumKeys,
             NotesViewModel NotesViewModel,
             EditStrumViewModel EditStrumViewModel,
             ToViewStrumViewModels ToViewStrumViewModels,
@@ -150,15 +148,11 @@ namespace GitarUberProject.Services
                 }
                 else
                 {
-
                 }
-
 
                 NotesViewModel.GlobalEditStrumModels.Add(editStrumModel);
                 idx++;
             }
-
-
 
             Strums.Clear();
             NotesInStrum.Clear();

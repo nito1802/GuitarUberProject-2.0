@@ -1,10 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject
 {
@@ -12,13 +7,13 @@ namespace GitarUberProject
     {
         [JsonIgnore]
         public static string OptionsPath { get; set; }
+
         [JsonIgnore]
         public static AppOptions Options { get; set; }
 
         public string LastUsedFile { get; set; }
         public bool ChordReadMode { get; set; }
         public bool RenderImage { get; set; }
-
 
         public static void Load()
         {

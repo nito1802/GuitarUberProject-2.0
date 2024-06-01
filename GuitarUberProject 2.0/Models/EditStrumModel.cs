@@ -1,14 +1,5 @@
-﻿using EditChordsWindow;
-using GitarUberProject.EditChord;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.ComponentModel;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace GitarUberProject.Models
 {
@@ -26,12 +17,12 @@ namespace GitarUberProject.Models
 
         public EditStrumModel()
         {
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 0});
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 1});
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 2});
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 3});
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 4});
-            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 5});
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 0 });
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 1 });
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 2 });
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 3 });
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 4 });
+            Notes.Add(new EditStrumNoteDetailsModel() { MyIdx = 5 });
         }
 
         public long DelayBeforeMs
@@ -43,6 +34,7 @@ namespace GitarUberProject.Models
                 OnPropertyChanged("DelayBeforeMs");
             }
         }
+
         public long DelayBetweenStrunaMs
         {
             get => delayBetweenStrunaMs;
@@ -52,6 +44,7 @@ namespace GitarUberProject.Models
                 OnPropertyChanged("DelayBetweenStrunaMs");
             }
         }
+
         public ICommand InsertSingleStrum
         {
             get

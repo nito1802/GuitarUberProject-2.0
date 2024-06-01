@@ -1,10 +1,4 @@
-﻿using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -25,7 +19,6 @@ namespace GitarUberProject.EditChord
         public static Action<int, string> PlayNoteAction { get; set; } //idx struny, pathToMp3 - statyczny action, zeby dalo sie dostac do gitary z viewmodelu
         public static Action<int> RefreshNotesOnStrunaAction { get; set; } //jesli klikniety checkbox, wtedy robie refresh  (args: struna i prog, isSelected)
         public static Action UpdateGitarMainChordAction { get; set; }
-
 
         public NoteModelEdit(string name, int octave, int prog, int struna)
         {
@@ -53,7 +46,7 @@ namespace GitarUberProject.EditChord
                 {
                     playNote = new RelayCommand(param =>
                     {
-                        if(PlayNoteAction != null)
+                        if (PlayNoteAction != null)
                         {
                             PlayNoteAction(Struna, Mp3Name);
                         }
@@ -224,7 +217,7 @@ namespace GitarUberProject.EditChord
         {
             return $"{Name}{Octave} S{Struna}_P{Prog} IsSel: {IsSelected} playedOrBef: {PlayedOrBefore}";
         }
-        
+
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
         protected void OnPropertyChanged(string name)

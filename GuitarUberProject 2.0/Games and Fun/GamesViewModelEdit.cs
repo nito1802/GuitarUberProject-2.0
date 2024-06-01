@@ -1,16 +1,8 @@
 ﻿using EditChordsWindow;
-using GitarUberProject.Helperes;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -73,9 +65,9 @@ namespace GitarUberProject.Games_And_Fun
             //foreach (var item in allPlayedNotes)
             for (int i = 0; i < allPlayedNotes.Count; i++)
             {
-                var nextNoteOnStruna = allPlayedNotes.Skip(i+1).FirstOrDefault(a => a.Struna == allPlayedNotes[i].Struna);
+                var nextNoteOnStruna = allPlayedNotes.Skip(i + 1).FirstOrDefault(a => a.Struna == allPlayedNotes[i].Struna);
 
-                if(nextNoteOnStruna != null)
+                if (nextNoteOnStruna != null)
                 {
                     allPlayedNotes[i].PlayTime = nextNoteOnStruna.DelayMs - allPlayedNotes[i].DelayMs;
                 }
@@ -140,7 +132,7 @@ namespace GitarUberProject.Games_And_Fun
             this.TakeNotes = takeNotes;
             this.SkipNotes = skipNotes;
 
-            if(StrumDir == StrumDirection.Downward)
+            if (StrumDir == StrumDirection.Downward)
             {
                 PlayedNotes = notesPaths.Skip(SkipNotes)
                                         .Take(TakeNotes == -1 ? notesPaths.Count : TakeNotes)
@@ -173,7 +165,7 @@ namespace GitarUberProject.Games_And_Fun
 
         public Dictionary<string, string> BrushNotesDict { get; set; }
         public Dictionary<int, string> BrushOctavesDict { get; set; }
-        
+
         public string[] AllNotes { get; set; } = { "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#" };
 
         public List<GameModelEdit> Notes { get; set; }
@@ -183,14 +175,13 @@ namespace GitarUberProject.Games_And_Fun
 
         public GamesViewModelEdit()
         {
-
             //LiteNote[] startNotes = new LiteNote[] {"E", "A", "D", "G", "B", "E" };
             InitDicts();
             InitNotes();
             InitPlayNotes();
             StrumDelayMs = ChordDelayMsDefault;
 
-            if(NotesViewModelLiteVersion.PlayDownAction == null)
+            if (NotesViewModelLiteVersion.PlayDownAction == null)
             {
                 NotesViewModelLiteVersion.PlayDownAction = (a) => PlayDownMethod();
             }
@@ -247,8 +238,6 @@ namespace GitarUberProject.Games_And_Fun
             }
         }
 
-
-
         public ICommand PlayDown
         {
             get
@@ -264,7 +253,6 @@ namespace GitarUberProject.Games_And_Fun
                 return playDown;
             }
         }
-
 
         public ICommand PlayUp
         {
@@ -282,7 +270,7 @@ namespace GitarUberProject.Games_And_Fun
                 return playUp;
             }
         }
-        
+
         public ICommand ClearChords
         {
             get
@@ -320,7 +308,7 @@ namespace GitarUberProject.Games_And_Fun
             {
                 StrunyWaves[i] = new WaveOut();
             }
-            
+
             Action<int, string> PlayNoteAction = (nrStruny, mp3Name) =>
             {
                 try
@@ -345,7 +333,6 @@ namespace GitarUberProject.Games_And_Fun
 
                 //tbAkordContent.Text = string.Join("   ", checkedNotes);
             };
-
 
             GameModelEdit.PlayNoteAction = PlayNoteAction;
             GameModelEdit.RefreshNotesOnStrunaAction = RefreshNotesOnStrunaAction;
@@ -390,7 +377,7 @@ namespace GitarUberProject.Games_And_Fun
             }
         }
 
-        void InitDicts()
+        private void InitDicts()
         {
             BrushNotesDict = new Dictionary<string, string>
             {
@@ -483,21 +470,18 @@ namespace GitarUberProject.Games_And_Fun
             List<string> EbChord = new List<string> { "s5p6", "s4p5", "s3p3", "s2p4", "s1p3" };
             List<string> BbChord = new List<string> { "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6" };
 
-
             int offsetMs = 0;
 
             List<ISampleProvider> samples = new List<ISampleProvider>();
-
 
             int strumCounter = 0;
             int counter = 0;
             foreach (var item in paths)
             {
                 OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
-                   
 
-                if(counter != 0)
-                offsetSample.DelayBy = TimeSpan.FromMilliseconds(msDelay);
+                if (counter != 0)
+                    offsetSample.DelayBy = TimeSpan.FromMilliseconds(msDelay);
                 //var takeSample = offsetSample.Take(TimeSpan.FromMilliseconds(msDelay));
                 samples.Add(offsetSample);
                 counter++;
@@ -515,8 +499,6 @@ namespace GitarUberProject.Games_And_Fun
             MainWaveOut.Init(mixSample);
             MainWaveOut.Play();
         }
-
-       
 
         private void PlayChord(List<string> paths, int delayMs)
         {

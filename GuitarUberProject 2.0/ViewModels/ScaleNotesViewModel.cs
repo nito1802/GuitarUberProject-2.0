@@ -1,18 +1,13 @@
 ﻿using GitarUberProject.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.ViewModels
 {
     public class ScaleNotesViewModel : INotifyPropertyChanged
     {
-        Dictionary<string, List<int>> ScalesDict { get; set; }
-        Dictionary<string, List<ScaleNoteModel>> CachedScaleValue = new Dictionary<string, List<ScaleNoteModel>>();
+        private Dictionary<string, List<int>> ScalesDict { get; set; }
+        private Dictionary<string, List<ScaleNoteModel>> CachedScaleValue = new Dictionary<string, List<ScaleNoteModel>>();
 
         public ScaleNotesViewModel()
         {
@@ -38,17 +33,16 @@ namespace GitarUberProject.ViewModels
             SelectedNote = "C";
         }
 
-
         public List<string> ScalesNames { get; set; }
         public List<string> PopularChordProgression { get; set; }
 
-
-        public List<string> AllNotes { get; set; } = new List<string> { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+        public List<string> AllNotes { get; set; } = new List<string> { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         private string scaleName;
         private string selectedNote;
         private bool disableNotesOutsideScale;
         public ObservableCollection<ScaleNoteModel> ScaleNotes { get; set; } = new ObservableCollection<ScaleNoteModel>();
         public ObservableCollection<ScaleNoteModel> HarmonizedChords { get; set; } = new ObservableCollection<ScaleNoteModel>();
+
         public string ScaleName
         {
             get
@@ -107,7 +101,6 @@ namespace GitarUberProject.ViewModels
             }
         }
 
-
         public Dictionary<string, List<ScaleNoteModel>> GetMyDict() => CachedScaleValue;
 
         public List<string> GetPossibleScales(List<string> notesInPlaylist)
@@ -118,7 +111,7 @@ namespace GitarUberProject.ViewModels
             {
                 var exceptNotes = notesInPlaylist.Except(item.Value.Select(a => a.Note)).ToList();
 
-                if(exceptNotes.Count == 0)
+                if (exceptNotes.Count == 0)
                 {
                     res.Add(item.Key);
                 }
@@ -166,7 +159,6 @@ namespace GitarUberProject.ViewModels
             return res;
         }
 
-
         public void ExecuteScale()
         {
             if (string.IsNullOrEmpty(SelectedNote) || string.IsNullOrEmpty(ScaleName)) return;
@@ -191,7 +183,6 @@ namespace GitarUberProject.ViewModels
         //    HarmonizedChords.Clear();
         //    harmonized.ForEach(a => HarmonizedChords.Add(a));
         //}
-
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 

@@ -1,11 +1,5 @@
 ﻿using EditChordsWindow;
-using GitarUberProject.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject
 {
@@ -46,8 +40,6 @@ namespace GitarUberProject
             inputViewModelFacade.Fr = 0;
             inputViewModelFacade.NotesO[3] = NotesOStates.None;
 
-
-
             NotesViewModelLiteVersion NotesVM = new NotesViewModelLiteVersion();
 
             int counter = 0;
@@ -64,7 +56,7 @@ namespace GitarUberProject
             }
 
             NotesVM.Fr = 3;
-            
+
             Chords = new ObservableCollection<NotesViewModelLiteVersion>()
             {
                 NotesVM

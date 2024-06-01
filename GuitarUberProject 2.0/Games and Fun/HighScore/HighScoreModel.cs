@@ -1,11 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace GitarUberProject.Games_and_Fun
@@ -56,9 +51,12 @@ namespace GitarUberProject.Games_and_Fun
         }
 
         public int Score { get; set; }
+
         [JsonConverter(typeof(DateFormatConverter), "yyyy-MM-dd")]
         public DateTime Date { get; set; }
+
         public string Name { get; set; }
+
         public int Index
         {
             get => index;

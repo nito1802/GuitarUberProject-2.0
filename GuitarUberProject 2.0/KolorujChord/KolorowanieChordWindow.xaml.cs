@@ -1,22 +1,11 @@
 ﻿using GitarUberProject;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EditChordsWindow
 {
@@ -36,7 +25,6 @@ namespace EditChordsWindow
             return $"{Name}{Octave} EditChordsWindow.NoteDetails";
         }
     }
-
 
     internal enum AccentState
     {
@@ -68,6 +56,7 @@ namespace EditChordsWindow
     {
         // ...
         WCA_ACCENT_POLICY = 19
+
         // ...
     }
 
@@ -118,7 +107,7 @@ namespace EditChordsWindow
             {
                 var currentNoteOctave = notesViewModelLiteVersion.NoteOctaves[i];
                 int.TryParse(currentNoteOctave.Octave, out var octave);
-                UpdateNoteName(i+1, currentNoteOctave.Name, octave);
+                UpdateNoteName(i + 1, currentNoteOctave.Name, octave);
             }
 
             TextBlock[] NotesO_Textboxes = new TextBlock[]
@@ -262,13 +251,14 @@ namespace EditChordsWindow
             {
                 case 1:
                     tb1Note.Text = name;
-                    if(!string.IsNullOrEmpty(name))
+                    if (!string.IsNullOrEmpty(name))
                     {
                         tb1Note.Foreground = NotesHelper.ChordColorNoOpacity[name];
                     }
 
                     tb1Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 case 2:
                     tb2Note.Text = name;
                     if (!string.IsNullOrEmpty(name))
@@ -277,6 +267,7 @@ namespace EditChordsWindow
                     }
                     tb2Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 case 3:
                     tb3Note.Text = name;
                     if (!string.IsNullOrEmpty(name))
@@ -285,6 +276,7 @@ namespace EditChordsWindow
                     }
                     tb3Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 case 4:
                     tb4Note.Text = name;
                     if (!string.IsNullOrEmpty(name))
@@ -293,6 +285,7 @@ namespace EditChordsWindow
                     }
                     tb4Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 case 5:
                     tb5Note.Text = name;
                     if (!string.IsNullOrEmpty(name))
@@ -301,6 +294,7 @@ namespace EditChordsWindow
                     }
                     tb5Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 case 6:
                     tb6Note.Text = name;
                     if (!string.IsNullOrEmpty(name))
@@ -309,6 +303,7 @@ namespace EditChordsWindow
                     }
                     tb6Octave.Text = octave != 0 ? octave.ToString() : "";
                     break;
+
                 default:
                     throw new Exception("Nie ma takiej struny");
             }
@@ -371,8 +366,6 @@ namespace EditChordsWindow
             ResultDialog = false;
             Close();
         }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 

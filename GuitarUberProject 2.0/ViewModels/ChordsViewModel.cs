@@ -1,13 +1,6 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace GitarUberProject
 {
@@ -22,8 +15,7 @@ namespace GitarUberProject
             Chords = new ObservableCollection<ChordRow>();
             //InitExampleChords();
 
-
-            if(ChordRow.OnAddRowAction == null)
+            if (ChordRow.OnAddRowAction == null)
             {
                 ChordRow.OnAddRowAction = (arg, toInsertType) =>
                 {
@@ -57,8 +49,8 @@ namespace GitarUberProject
                     //RefreshItems?.Invoke();
                 };
             }
-            
-            if(ChordRow.OnRemoveRowAction == null)
+
+            if (ChordRow.OnRemoveRowAction == null)
             {
                 ChordRow.OnRemoveRowAction = (arg) =>
                 {
@@ -76,7 +68,6 @@ namespace GitarUberProject
                         Chords.RemoveAt(indexesToRemove[i]);
                     }
 
-
                     int aa = 2;
                 };
             }
@@ -86,7 +77,7 @@ namespace GitarUberProject
                 ChordRow.ReorderRowsAction = (chordRow, orderIdx) =>
                 {
                     Chords.Remove(chordRow);
-                    Chords.Insert(orderIdx-1, chordRow);
+                    Chords.Insert(orderIdx - 1, chordRow);
 
                     for (int i = 0; i < Chords.Count; i++)
                     {
@@ -97,7 +88,6 @@ namespace GitarUberProject
                     int aa = 2;
                 };
             }
-
 
             if (ChordRow.OnItemWithNameAlreadyExist == null)
             {
@@ -132,7 +122,6 @@ namespace GitarUberProject
                 inputViewModelFacade.NotesO[i] = NotesOStates.None;
             }
 
-
             NotesViewModelLiteVersion NotesVM = new NotesViewModelLiteVersion();
 
             NotesVM.InitNotes();
@@ -152,15 +141,7 @@ namespace GitarUberProject
 
             NotesVM.Fr = 3;
 
-
             //Chords[0].ChordA = NotesVM;
-
-
-
-
-
-
-
 
             InputViewModelFacade inputViewModelFacade2 = new InputViewModelFacade();
             inputViewModelFacade2.Name = "GDM 5.0";
@@ -180,7 +161,6 @@ namespace GitarUberProject
                 inputViewModelFacade2.NotesO[i] = NotesOStates.None;
             }
 
-
             NotesViewModelLiteVersion NotesVM2 = new NotesViewModelLiteVersion();
             NotesVM2.InitNotes();
 
@@ -198,7 +178,6 @@ namespace GitarUberProject
             }
 
             NotesVM2.Fr = 2;
-
 
             Chords = new ObservableCollection<ChordRow>
             {
