@@ -1,4 +1,6 @@
-﻿using EditChordsWindow;
+﻿using AudioMaker.Interfaces.Mappers;
+using AudioMaker.Interfaces.Models;
+using EditChordsWindow;
 using GitarUberProject.EditStrumWindow;
 using GitarUberProject.Helperes;
 using GitarUberProject.Helpers;
@@ -2232,7 +2234,8 @@ namespace GitarUberProject
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                MidiService.ExportToMidiFile(saveFileDialog.FileName, KlocekViewModel);
+                var playlistMapper = new PlaylistMapper();
+                MidiService.ExportToMidiFile(saveFileDialog.FileName, playlistMapper.MapKlocekChordViewModel(KlocekViewModel));
             }
         }
 

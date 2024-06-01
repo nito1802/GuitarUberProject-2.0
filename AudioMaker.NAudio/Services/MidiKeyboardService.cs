@@ -1,18 +1,21 @@
 ﻿using NAudio.Midi;
 using System;
 using System.Diagnostics;
-using System.Windows.Threading;
+
+//using System.Windows.Threading;
 
 namespace GitarUberProject.Services
 {
     public class MidiKeyboardService
     {
         public MidiIn MidiKeyboard { get; set; }
-        public Dispatcher Dispatcher { get; set; }
 
-        public MidiKeyboardService(Dispatcher Dispatcher)
+        //TODO: W razie kontynuowania przerobić na Actiony i tam wywołać Dispatchera (żeby nie dodawać tu referencji do WPF)
+        //public Dispatcher Dispatcher { get; set; }
+
+        public MidiKeyboardService(/*Dispatcher Dispatcher*/)
         {
-            this.Dispatcher = Dispatcher;
+            //this.Dispatcher = Dispatcher;
 
             Init();
         }
@@ -41,27 +44,25 @@ namespace GitarUberProject.Services
             {
                 string noteName = ((NAudio.Midi.NoteOnEvent)e.MidiEvent).NoteName;
 
-                this.Dispatcher.Invoke(() =>
-                {
-                    NotesViewModel.NotesNameDict[noteName].IsSelected = true;
-                });
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    NotesViewModel.NotesNameDict[noteName].IsSelected = true;
+                //});
             }
             else if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOff)
             {
                 string text22 = e.MidiEvent.ToString();
 
-
                 string noteName = ((NAudio.Midi.NoteEvent)e.MidiEvent).NoteName;
 
-                this.Dispatcher.Invoke(() =>
-                {
-                    NotesViewModel.NotesNameDict[noteName].IsSelected = false;
-                });
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    NotesViewModel.NotesNameDict[noteName].IsSelected = false;
+                //});
             }
 
             string text = e.MidiEvent.ToString();
             Debug.WriteLine(text);
-
         }
     }
 }

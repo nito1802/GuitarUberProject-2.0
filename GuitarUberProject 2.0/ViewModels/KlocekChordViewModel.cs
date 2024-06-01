@@ -24,6 +24,7 @@ namespace GitarUberProject.ViewModels
         public ObservableCollection<KlocekChordModel> Klocki { get; set; }
         public double Bpm { get; set; }
         public int CanvasWidth { get; set; }
+
         public KlocekChordViewModel()
         {
             Klocki = new ObservableCollection<KlocekChordModel>()
@@ -34,7 +35,7 @@ namespace GitarUberProject.ViewModels
                 //new KlocekChordModel("E", 3, 5, 2),
             };
 
-           DraggedItem = new KlocekChordModel("C", 1, 2, 3);
+            DraggedItem = new KlocekChordModel("C", 1, 2, 3);
 
             RenumerateItems();
 
@@ -102,7 +103,6 @@ namespace GitarUberProject.ViewModels
                 DraggedItem.KlocekOpacity = 0.3;
                 DraggedItem.ZIndex = 20;
                 DraggedItem.DeltaMouse = new Point(mousePos.X - DraggedItem.XPos, mousePos.Y - DraggedItem.YPos);
-
             }
         }
 
@@ -122,7 +122,7 @@ namespace GitarUberProject.ViewModels
             res.AddRange(namesFromChordsKlocki);
 
             var groupedByNoteNames = res.GroupBy(a => a)
-                                        .Select(c => new { Note = c.Key, Count = c.Count()})
+                                        .Select(c => new { Note = c.Key, Count = c.Count() })
                                         .OrderByDescending(b => b.Count)
                                         .ToList();
 
@@ -164,7 +164,7 @@ namespace GitarUberProject.ViewModels
                 {
                     double translatedMousePos = mousePos.X - item.DeltaMouse.X;
 
-                    if(alignToGrid)
+                    if (alignToGrid)
                     {
                         double rest = translatedMousePos % beatsColumnWidth;
                         int fullBeatsColumn = (int)translatedMousePos / (int)beatsColumnWidth;
@@ -179,7 +179,7 @@ namespace GitarUberProject.ViewModels
                     {
                         item.XPos = translatedMousePos;
                     }
-                    
+
                     //CalculateStruna(item, mousePos.Y - item.DeltaMouse.Y + (ItemHeight / 2));
                 }
             }
@@ -187,7 +187,7 @@ namespace GitarUberProject.ViewModels
             {
                 double translatedMousePos = mousePos.X - DraggedItem.DeltaMouse.X;
 
-                if(alignToGrid)
+                if (alignToGrid)
                 {
                     double rest = translatedMousePos % beatsColumnWidth;
                     int fullBeatsColumn = (int)translatedMousePos / (int)beatsColumnWidth;
@@ -202,7 +202,7 @@ namespace GitarUberProject.ViewModels
                 {
                     DraggedItem.XPos = translatedMousePos;
                 }
-                
+
                 //CalculateStruna(DraggedItem, mousePos.Y - DraggedItem.DeltaMouse.Y + (ItemHeight / 2));
             }
         }
@@ -239,7 +239,6 @@ namespace GitarUberProject.ViewModels
                 }
                 else
                 {
-
                 }
             }
 
@@ -293,8 +292,6 @@ namespace GitarUberProject.ViewModels
                 item.XPos = xPosCounter += 50;
             }
         }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 

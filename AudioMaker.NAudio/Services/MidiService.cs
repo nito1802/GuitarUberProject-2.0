@@ -1,18 +1,13 @@
-﻿using GitarUberProject.ViewModels;
+﻿using AudioMaker.Interfaces.Models.MidiExport;
 using Melanchall.DryWetMidi.Interaction;
 using Melanchall.DryWetMidi.MusicTheory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NoteMy = Melanchall.DryWetMidi.Interaction.Note;
 
 namespace GitarUberProject.Services
 {
     public static class MidiService
     {
-        public static void ExportToMidiFile(string outputPath, KlocekChordViewModel klocekViewModel)
+        public static void ExportToMidiFile(string outputPath, PlaylistKlocekChordViewModel klocekViewModel)
         {
             int mnoznik = 2;
             long NOTE_LENGTH = 192 * mnoznik;
@@ -44,45 +39,56 @@ namespace GitarUberProject.Services
         {
             NoteName res = NoteName.C;
 
-
             switch (noteName)
             {
                 case "C":
                     res = NoteName.C;
                     break;
+
                 case "C#":
                     res = NoteName.CSharp;
                     break;
+
                 case "D":
                     res = NoteName.D;
                     break;
+
                 case "D#":
                     res = NoteName.DSharp;
                     break;
+
                 case "E":
                     res = NoteName.E;
                     break;
+
                 case "F":
                     res = NoteName.F;
                     break;
+
                 case "F#":
                     res = NoteName.FSharp;
                     break;
+
                 case "G":
                     res = NoteName.G;
                     break;
+
                 case "G#":
                     res = NoteName.GSharp;
                     break;
+
                 case "A":
                     res = NoteName.A;
                     break;
+
                 case "A#":
                     res = NoteName.ASharp;
                     break;
+
                 case "B":
                     res = NoteName.B;
                     break;
+
                 default:
                     break;
             }
