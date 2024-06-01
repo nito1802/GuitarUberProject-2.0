@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using GuitarUberProject;
+using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -16,7 +17,6 @@ namespace GitarUberProject.EditChord
         private double noteOpacity;
         private bool playedOrBefore; //nuta grana lub bedaca za grana na tej samej strunie (opacity: 1, inne na tej strunie opacity mniejsze)
         private bool isNoteEnabled = true;
-        public static Action<int, string> PlayNoteAction { get; set; } //idx struny, pathToMp3 - statyczny action, zeby dalo sie dostac do gitary z viewmodelu
         public static Action<int> RefreshNotesOnStrunaAction { get; set; } //jesli klikniety checkbox, wtedy robie refresh  (args: struna i prog, isSelected)
         public static Action UpdateGitarMainChordAction { get; set; }
 
@@ -46,14 +46,7 @@ namespace GitarUberProject.EditChord
                 {
                     playNote = new RelayCommand(param =>
                     {
-                        if (PlayNoteAction != null)
-                        {
-                            PlayNoteAction(Struna, Mp3Name);
-                        }
-                        else
-                        {
-                            //throw new NotImplementedException("Brakuje PlayNoteAction!");
-                        }
+                        DependencyInjection.PlaySoundService.PlayNote(Struna, Mp3Name);
                     }
                      , param => true);
                 }

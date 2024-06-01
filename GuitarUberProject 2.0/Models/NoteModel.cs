@@ -18,7 +18,6 @@ namespace GitarUberProject
         private double noteOpacity;
         private bool playedOrBefore; //nuta grana lub bedaca za grana na tej samej strunie (opacity: 1, inne na tej strunie opacity mniejsze)
         private bool isNoteEnabled = true;
-        public static Action<int, string> PlayNoteAction { get; set; } //idx struny, pathToMp3 - statyczny action, zeby dalo sie dostac do gitary z viewmodelu
         public static Action<int> RefreshNotesOnStrunaAction { get; set; } //jesli klikniety checkbox, wtedy robie refresh  (args: struna i prog, isSelected)
         public static Action SetGitarFocusAction { get; set; }
         public static Action UpdateGitarMainChordAction { get; set; }

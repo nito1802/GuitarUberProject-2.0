@@ -1,5 +1,6 @@
 ﻿using EditChordsWindow;
 using GitarUberProject.ViewModels;
+using GuitarUberProject;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -337,7 +338,7 @@ namespace GitarUberProject.Models
                     {
                         if (!IsChord)
                         {
-                            NoteModel.PlayNoteAction?.Invoke(Struna, Mp3Name);
+                            DependencyInjection.PlaySoundService.PlayNote(Struna, Mp3Name);
                         }
                         else
                         {

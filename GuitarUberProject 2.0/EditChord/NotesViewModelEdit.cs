@@ -304,37 +304,11 @@ namespace GitarUberProject.EditChord
 
         private void InitPlayNotes()
         {
-            for (int i = 0; i < StrunyWaves.Length; i++)
-            {
-                StrunyWaves[i] = new WaveOut();
-            }
-
-            Action<int, string> PlayNoteAction = (nrStruny, mp3Name) =>
-            {
-                try
-                {
-                    int idx = nrStruny - 1;
-                    StrunyWaves[idx].Dispose();
-                    StrunyWaves[idx] = new WaveOut();
-                    var reader = new AudioFileReader($@"NotesMp3\GibsonSj200 New\{mp3Name}.wav");
-
-                    StrunyWaves[idx].Init(reader);
-                    StrunyWaves[idx].Play();
-                }
-                catch (Exception ex)
-                {
-                    //tymczasowe: na wypadek jak by nie bylo odpowiedniego pliku
-                }
-            };
-
             Action<int> RefreshNotesOnStrunaAction = (nrStruny) =>
             {
                 RefreshStrunaGuitar(nrStruny);
-
-                //tbAkordContent.Text = string.Join("   ", checkedNotes);
             };
 
-            NoteModelEdit.PlayNoteAction = PlayNoteAction;
             NoteModelEdit.RefreshNotesOnStrunaAction = RefreshNotesOnStrunaAction;
         }
 

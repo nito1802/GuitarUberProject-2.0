@@ -1,5 +1,4 @@
-﻿using AudioMaker.NAudiox.Services;
-using GitarUberProject;
+﻿using GitarUberProject;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,8 +17,6 @@ namespace EditChordsWindow
 
     public class NoteModel : INotifyPropertyChanged, ICloneable
     {
-        private readonly PlaySoundService _playSoundService;
-
         //public static Action<int> UpdateNotesNamesAction { get; set; }
         public static SolidColorBrush DefaultBtnBackground { get; set; }
 
