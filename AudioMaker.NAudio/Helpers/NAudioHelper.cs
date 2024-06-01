@@ -1,12 +1,6 @@
 ﻿using NAudio.Lame;
 using NAudio.Utils;
 using NAudio.Wave;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitarUberProject.Helperes
 {
@@ -25,7 +19,6 @@ namespace GitarUberProject.Helperes
 
         private static byte[] ConvertWavToMp3(byte[] wavFile)
         {
-
             using (var retMs = new MemoryStream())
             using (var ms = new MemoryStream(wavFile))
             using (var rdr = new WaveFileReader(ms))
