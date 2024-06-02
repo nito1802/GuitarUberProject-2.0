@@ -2210,14 +2210,6 @@ namespace GitarUberProject
         {
             if (KlocekViewModel.Klocki == null || !KlocekViewModel.Klocki.Any()) return;
 
-            var offset = 1000;
-            for (int i = 1; i < KlocekViewModel.Klocki.Count; i++)
-            {
-                var item = KlocekViewModel.Klocki[i];
-                item.XPos = offset;
-                offset += 1000;
-            }
-
             IsStrumming = false;
             BorderPlaylistOffset = 0;
             PlaylistTimer.Stop();
