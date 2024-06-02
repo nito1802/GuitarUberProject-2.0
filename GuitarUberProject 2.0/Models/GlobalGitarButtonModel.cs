@@ -1,5 +1,4 @@
-﻿using NAudio.Wave;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace GitarUberProject.Models
 {
@@ -7,8 +6,8 @@ namespace GitarUberProject.Models
     {
         private RelayCommand playNote;
         public int StrunaNr { get; set; }
-        public WaveOut NotePlayer { get; set; }
-        public WaveFileReader WaveFileReader { get; set; }
+        //public WaveOut NotePlayer { get; set; }
+        //public WaveFileReader WaveFileReader { get; set; }
 
         public GlobalGitarButtonModel(int strunaNr)
         {
@@ -23,11 +22,13 @@ namespace GitarUberProject.Models
                 {
                     playNote = new RelayCommand(param =>
                     {
-                        if (NotePlayer != null)
-                        {
-                            WaveFileReader.Position = 0;
-                            NotePlayer.Play();
-                        }
+                        throw new Exception("o tu jesteś!");
+
+                        //if (NotePlayer != null)
+                        //{
+                        //    WaveFileReader.Position = 0;
+                        //    NotePlayer.Play();
+                        //}
                     }
                      , param => true);
                 }
