@@ -1,14 +1,11 @@
 ﻿using AudioMaker.Interfaces.Consts;
+using AudioMaker.Interfaces.Interfaces;
 using AudioMaker.Interfaces.Models.PlaySound;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
 namespace AudioMaker.NAudiox.Services
 {
-    public interface IPlaySoundService
-    {
-    }
-
     public class PlaySoundService : IPlaySoundService
     {
         public WaveOut[] StrunyWaves { get; set; } = new WaveOut[6];
