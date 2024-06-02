@@ -9,7 +9,6 @@ using GitarUberProject.Services;
 using GitarUberProject.ViewModels;
 using GuitarUberProject;
 using Microsoft.Win32;
-using NAudio.Wave;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -105,8 +104,6 @@ namespace GitarUberProject
         //public WaveOut[] GlobalStruny { get; set; } = new WaveOut[6];
         public string[] NotsyPath { get; set; } = new string[6];
 
-        public WaveOut[] GlobalStrunyNew { get; set; } = new WaveOut[6];
-        public WaveFileReader[] WaveFileReaderNew { get; set; } = new WaveFileReader[6];
         public Task GlobalStrunyTask { get; set; }
         public static CancellationTokenSource cts = new CancellationTokenSource();
         public static CancellationToken token = cts.Token;
@@ -1630,12 +1627,12 @@ namespace GitarUberProject
                     DelayBeforeStrum = SwSingleNote.ElapsedMilliseconds;
                 }
 
-                if (GlobalStrunyNew[6 - currentStruna] != null)
-                {
-                    //GlobalStrunyNew[6 - currentStruna].Stop();
-                    WaveFileReaderNew[6 - currentStruna].Position = 0;
-                    GlobalStrunyNew[6 - currentStruna].Play();
-                }
+                //if (GlobalStrunyNew[6 - currentStruna] != null)
+                //{
+                //    //GlobalStrunyNew[6 - currentStruna].Stop();
+                //    WaveFileReaderNew[6 - currentStruna].Position = 0;
+                //    GlobalStrunyNew[6 - currentStruna].Play();
+                //}
 
                 StrunaGlobalDict[$"bordStr{currentStruna + 1}"].BorderBrush = Brushes.Green;
 
