@@ -21,9 +21,17 @@ namespace AudioMaker.Interfaces.Interfaces
 
         void MyExtraPlayChordWithStrumPattern(PlaysoundStrumViewModel strumManager);
 
-        void PlayPlaylist(List<PlaysoundKlocekChordModel> klocki, List<PlaysoundMixerModel> mixerModels, double Bpm, double BeatWidth, double delayByMs = 0, bool exportToWavMp3 = false);
+        void PlayPlaylist(
+                    List<PlaysoundKlocekChordModel> klocki,
+                    List<PlaysoundMixerModel> mixerModels,
+                    double Bpm,
+                    double BeatWidth,
+                    string recordBasePath,
+                    double delayByMs = 0,
+                    bool exportToWavMp3 = false
+                    );
 
-        void PlayChordPiano(List<string> paths, int delayMs, int index = 0);
+        void PlayChordPiano(List<string> paths, int delayMs, string recordBasePath, int index = 0, bool exportToWavMp3 = false);
 
         void PlayChord(List<string> paths, int delayMs);
 

@@ -8,6 +8,7 @@ using GitarUberProject.Models;
 using GitarUberProject.Services;
 using GitarUberProject.ViewModels;
 using GuitarUberProject;
+using GuitarUberProject_2._0.Services;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.ComponentModel;
@@ -1891,6 +1892,7 @@ namespace GitarUberProject
                     MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
                     NotesViewModel.Bpm,
                     NotesViewModel.BeatWidth,
+                    PathService.GetBasePathToRecords(),
                     fullDelay
                     );
 
@@ -1977,7 +1979,8 @@ namespace GitarUberProject
                     KlocekViewModel.Klocki.Select(DependencyInjection.PlaySoundMapper.MapKlocekChordModel).ToList(),
                     MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
                     NotesViewModel.Bpm,
-                    NotesViewModel.BeatWidth
+                    NotesViewModel.BeatWidth,
+                    PathService.GetBasePathToRecords()
                     );
             }
         }
@@ -2225,6 +2228,7 @@ namespace GitarUberProject
                     MixerViewModel.MixerModels.Select(DependencyInjection.PlaySoundMapper.MapMixerModel).ToList(),
                     NotesViewModel.Bpm,
                     NotesViewModel.BeatWidth,
+                    PathService.GetBasePathToRecords(),
                     exportToWavMp3: true
                     );
 

@@ -1,6 +1,7 @@
 ﻿using AudioMaker.Interfaces.Consts;
 using AudioMaker.Interfaces.Interfaces;
 using AudioMaker.Interfaces.Models.PlaySound;
+using GitarUberProject.Helperes;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
@@ -77,8 +78,6 @@ namespace AudioMaker.NAudiox.Services
 
             MixingSampleProvider mixSample = new MixingSampleProvider(samples);
 
-            //NAudioHelper.ConvertToFileWavMp3(mixSample, "mixedBest.wav", "mixedBest.mp3");
-
             MainWaveOut.Dispose();
             MainWaveOut = new WaveOut();
             MainWaveOut.Init(mixSample);
@@ -87,63 +86,7 @@ namespace AudioMaker.NAudiox.Services
 
         public void MyExtraPlayChordWithStrumPattern(PlaysoundStrumViewModel strumManager)
         {
-            //List<string> playedNotesPaths = notesViewModelLite == null ? PrepareToPlayForChord() : PrepareToPlayForChord(notesViewModelLite);
-
-            //if (models == null || !models.Any())
-            //{
-            //    if (GlobalStrumPattern == null || !GlobalStrumPattern.Any()) return;
-            //    models = GlobalStrumPattern;
-            //}
-
-            //models.ForEach(a => a.AssignPaths(playedNotesPaths));
-
-            //List<string> GmChord = new List<string> { "s6p3", "s5p5", "s4p5", "s3p3", "s2p3", "s1p3" };
-            //List<string> EbChord = new List<string> { "s5p6", "s4p5", "s3p3", "s2p4", "s1p3" };
-            //List<string> BbChord = new List<string> { "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6" };
-
-            //int offsetMs = 0;
-
             List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            //List<StrumModel> strumPattern = new List<StrumModel>()
-            //{
-            //    new StrumModel(GmChord, StrumDirection.Downward, 40, 0, 3, 0),
-            //    new StrumModel(GmChord, StrumDirection.Downward, 40, 800, 4, 0),
-
-            //    new StrumModel(GmChord, StrumDirection.Upward, 15, 400, 6, 1),
-            //    new StrumModel(GmChord, StrumDirection.Downward, 10, 100, 5, 0),
-
-            //    new StrumModel(EbChord, StrumDirection.Upward, 15, 160, 6, 1),
-            //    new StrumModel(EbChord, StrumDirection.Downward, 15, 160, EbChord.Count-1, 0),
-            //    new StrumModel(EbChord, StrumDirection.Upward, 15, 160, 6, 1),
-            //    new StrumModel(EbChord, StrumDirection.Downward, 20, 350, EbChord.Count-1, 0),
-
-            //    new StrumModel(EbChord, StrumDirection.Upward, 15, 360, 6, 1),
-            //    new StrumModel(EbChord, StrumDirection.Downward, 25, 100, EbChord.Count-1, 0),
-
-            //    new StrumModel(BbChord, StrumDirection.Downward, 40, 160, BbChord.Count-1, 0),
-            //    new StrumModel(BbChord, StrumDirection.Downward, 40, 700, BbChord.Count-1, 0),
-
-            //    new StrumModel(BbChord, StrumDirection.Downward, 40, 400, BbChord.Count-1, 0),
-            //    new StrumModel(BbChord, StrumDirection.Downward, 25, 300, BbChord.Count-1, 0),
-            //    new StrumModel(BbChord, StrumDirection.Upward, 25, 100, 6, 1),
-
-            //    new StrumModel(BbChord, StrumDirection.Downward, 25, 400, BbChord.Count-1, 0),
-            //    new StrumModel(BbChord, StrumDirection.Upward, 25, 100, 6, 1),
-            //    new StrumModel(BbChord, StrumDirection.Downward, 25, 100, BbChord.Count-1, 0),
-            //    new StrumModel(BbChord, StrumDirection.Upward, 40, 100, 6, 1),
-            //};
-
-            //Stopwatch myU = new Stopwatch();
-            //myU.Start();
-            ////StrumViewModel strumManager = new StrumViewModel(strumPattern);
-            ////StrumViewModel strumManager = new StrumViewModel(models);
-            //strumManager.CalculateDelays();
-            //myU.Stop();
-
-            //Gm     "s6p3", "s5p5", "s4p5", "s3p3", "s2p3", "s1p3"
-            //Eb     "s5p6", "s4p5", "s3p3", "s2p4", "s1p3"
-            //Bb     "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6"
             int strumCounter = 0;
             foreach (var item in strumManager.StrumPattern)
             {
@@ -164,15 +107,21 @@ namespace AudioMaker.NAudiox.Services
 
             MixingSampleProvider mixSample = new MixingSampleProvider(samples);
 
-            //NAudioHelper.ConvertToFileWavMp3(mixSample, "mixedBest.wav", "mixedBest.mp3");
-
             MainWaveOut.Dispose();
             MainWaveOut = new WaveOut();
             MainWaveOut.Init(mixSample);
             MainWaveOut.Play();
         }
 
-        public void PlayPlaylist(List<PlaysoundKlocekChordModel> klocki, List<PlaysoundMixerModel> mixerModels, double Bpm, double BeatWidth, double delayByMs = 0, bool exportToWavMp3 = false)
+        public void PlayPlaylist(
+            List<PlaysoundKlocekChordModel> klocki,
+            List<PlaysoundMixerModel> mixerModels,
+            double Bpm,
+            double BeatWidth,
+            string recordBasePath,
+            double delayByMs = 0,
+            bool exportToWavMp3 = false
+            )
         {
             if (klocki == null || !klocki.Any()) return;
 
@@ -201,18 +150,7 @@ namespace AudioMaker.NAudiox.Services
                     double fullDelayMs = item.XPos / BeatWidth * delayBpm;
                     offsetSample.DelayBy = TimeSpan.FromMilliseconds(fullDelayMs);
 
-                    //if (i == klocki.Count - 1)
-                    //{
-                    //    double playDuration = KlocekChordViewModel.ItemWidth / BeatWidth * fullDelayMs;
-                    //    var takeSample = offsetSample.Take(TimeSpan.FromMilliseconds(playDuration + fullDelayMs));
-                    //    samples.Add(takeSample);
-                    //}
-                    //else
-                    {
-                        //VolumeSampleProvider volumeSampleProvider = new VolumeSampleProvider(offsetSample);
-                        //volumeSampleProvider.Volume = 1f;
-                        samples.Add(offsetSample);
-                    }
+                    samples.Add(offsetSample);
                 }
 
                 foreach (var chordKlocek in chordsKlocki)
@@ -241,8 +179,6 @@ namespace AudioMaker.NAudiox.Services
                 VolumeSampleProvider volumeSampleProvider = new VolumeSampleProvider(mixSample);
                 volumeSampleProvider.Volume = (float)mixerModels[groupedByChannel[s].Key].Vol / 100;
                 globalSamples.Add(volumeSampleProvider);
-                //OffsetSampleProvider myOffsetSample = new OffsetSampleProvider(mixSample);
-                //myOffsetSample.SkipOver = TimeSpan.FromMilliseconds(delayByMs);
             }
 
             MixingSampleProvider globalMixSample = new MixingSampleProvider(globalSamples);
@@ -252,14 +188,9 @@ namespace AudioMaker.NAudiox.Services
 
             if (exportToWavMp3)
             {
-                /*
-                string recordPath = Path.Combine(App.FolderSettingsPath, "lastRecorded");
-                if (!Directory.Exists(recordPath)) Directory.CreateDirectory(recordPath);
-
-                string wavPath = Path.Combine(recordPath, "recorded.wav");
-                string mp3Path = Path.Combine(recordPath, "recorded.mp3");
+                string wavPath = Path.Combine(recordBasePath, "recorded.wav");
+                string mp3Path = Path.Combine(recordBasePath, "recorded.mp3");
                 NAudioHelper.ConvertToFileWavMp3(globalMixSample, wavPath, mp3Path);
-                */
             }
 
             MainWaveOut.Dispose();
@@ -268,7 +199,7 @@ namespace AudioMaker.NAudiox.Services
             MainWaveOut.Play();
         }
 
-        public void PlayChordPiano(List<string> paths, int delayMs, int index = 0)
+        public void PlayChordPiano(List<string> paths, int delayMs, string recordBasePath, int index = 0, bool exportToWavMp3 = false)
         {
             int offsetMs = 0;
 
@@ -290,19 +221,13 @@ namespace AudioMaker.NAudiox.Services
 
             //WaveFileWriter.CreateWaveFile16("mixed22.wav", mixSample);
 
-            bool exportToWavMp3 = false;
             if (exportToWavMp3)
             {
-                /*
-                string recordPath = Path.Combine(App.FolderSettingsPath, "chordsRecordedNew2222");
-                if (!Directory.Exists(recordPath)) Directory.CreateDirectory(recordPath);
-
                 //string wavPath = Path.Combine(recordPath, $"{myChord.Name}_{index}.wav");
                 //string mp3Path = Path.Combine(recordPath, $"{myChord.Name}_{index}.mp3");
-                string wavPath = Path.Combine(recordPath, $"recordedPiano.wav");
-                string mp3Path = Path.Combine(recordPath, $"recordedPiano.mp3");
+                string wavPath = Path.Combine(recordBasePath, $"recordedPiano.wav");
+                string mp3Path = Path.Combine(recordBasePath, $"recordedPiano.mp3");
                 NAudioHelper.ConvertToFileWavMp3(mixSample, wavPath, mp3Path);
-                */
             }
             else
             {

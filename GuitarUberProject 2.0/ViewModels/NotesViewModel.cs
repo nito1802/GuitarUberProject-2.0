@@ -3,6 +3,7 @@ using GitarUberProject.Helperes;
 using GitarUberProject.Models;
 using GitarUberProject.ViewModels;
 using GuitarUberProject;
+using GuitarUberProject_2._0.Services;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Controls.Primitives;
@@ -175,7 +176,7 @@ namespace GitarUberProject
                         var pianoCheckedKeys = pianoKeys.Where(a => a.IsChecked == true).Select(b => b.Content.ToString()).ToList();
                         if (pianoCheckedKeys.Any())
                         {
-                            DependencyInjection.PlaySoundService.PlayChordPiano(pianoCheckedKeys, strumDelayMs);
+                            DependencyInjection.PlaySoundService.PlayChordPiano(pianoCheckedKeys, strumDelayMs, PathService.GetBasePathToRecords());
                         }
                         else
                         {
