@@ -4,6 +4,7 @@ using GitarUberProject.Games_and_Fun;
 using GitarUberProject.Games_And_Fun;
 using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
+using GuitarUberProject;
 using NAudio.Midi;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
@@ -154,7 +155,7 @@ namespace GitarUberProject
                     }
 
                     RandNote();
-                    NotesViewModel.PlayChordWithStrumPattern(new List<string> { clickedNote.Mp3Name, QuestionModel.Mp3Name }, 1000);
+                    DependencyInjection.PlaySoundService.PlayChord(new List<string> { clickedNote.Mp3Name, QuestionModel.Mp3Name }, 1000);
 
                     res = true;
                 }

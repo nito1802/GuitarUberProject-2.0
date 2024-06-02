@@ -1,8 +1,6 @@
 ﻿using EditChordsWindow;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
+using GuitarUberProject;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -170,8 +168,6 @@ namespace GitarUberProject.Games_And_Fun
 
         public List<GameModelEdit> Notes { get; set; }
         public static Dictionary<string, GameModelEdit> NotesDict { get; set; }
-        public WaveOut[] StrunyWaves { get; set; } = new WaveOut[6];
-        public WaveOut MainWaveOut { get; set; } = new WaveOut();
 
         public GamesViewModelEdit()
         {
@@ -230,7 +226,7 @@ namespace GitarUberProject.Games_And_Fun
                         var playedNotes = PrepareToPlay();
                         playedNotes.Reverse();
 
-                        PlayChord(playedNotes, 0);
+                        DependencyInjection.PlaySoundService.PlayChord(playedNotes, 0);
                     }
                      , param => true);
                 }
@@ -263,7 +259,7 @@ namespace GitarUberProject.Games_And_Fun
                     playUp = new RelayCommand(param =>
                     {
                         var playedNotes = PrepareToPlay();
-                        PlayChord(playedNotes, strumDelayMs);
+                        DependencyInjection.PlaySoundService.PlayChord(playedNotes, strumDelayMs);
                     }
                      , param => true);
                 }
@@ -383,8 +379,7 @@ namespace GitarUberProject.Games_And_Fun
             var playedNotes = PrepareToPlay();
             playedNotes.Reverse();
 
-            PlayChord(playedNotes, strumDelayMs);
-            //PlayChordWithStrumPattern(playedNotes);
+            DependencyInjection.PlaySoundService.PlayChord(playedNotes, strumDelayMs);
         }
 
         public void RefreshStrunaGuitar(int nrStruny)
@@ -434,70 +429,6 @@ namespace GitarUberProject.Games_And_Fun
         {
             List<GameModelEdit> res = Notes.Where(a => a.IsSelected).ToList();
             return res;
-        }
-
-        public void PlayChordWithStrumPattern(List<string> paths, int msDelay)
-        {
-            Debug.WriteLine(string.Join(", ", paths.Select(a => $"\"{a}\"")));
-
-            List<string> GmChord = new List<string> { "s6p3", "s5p5", "s4p5", "s3p3", "s2p3", "s1p3" };
-            List<string> EbChord = new List<string> { "s5p6", "s4p5", "s3p3", "s2p4", "s1p3" };
-            List<string> BbChord = new List<string> { "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6" };
-
-            int offsetMs = 0;
-
-            List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            int strumCounter = 0;
-            int counter = 0;
-            foreach (var item in paths)
-            {
-                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
-
-                if (counter != 0)
-                    offsetSample.DelayBy = TimeSpan.FromMilliseconds(msDelay);
-                //var takeSample = offsetSample.Take(TimeSpan.FromMilliseconds(msDelay));
-                samples.Add(offsetSample);
-                counter++;
-            }
-            strumCounter++;
-
-            if (!samples.Any()) return;
-
-            MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-
-            //NAudioHelper.ConvertToFileWavMp3(mixSample, "mixedBest.wav", "mixedBest.mp3");
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
-        }
-
-        private void PlayChord(List<string> paths, int delayMs)
-        {
-            int offsetMs = 0;
-
-            List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            foreach (var path in paths)
-            {
-                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{path}.wav"));
-                offsetSample.DelayBy = TimeSpan.FromMilliseconds(offsetMs);
-                samples.Add(offsetSample);
-                offsetMs += delayMs;
-            }
-
-            if (!samples.Any()) return;
-
-            MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-
-            //WaveFileWriter.CreateWaveFile16("mixed22.wav", mixSample);
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
         }
 
         public List<string> PrepareToPlay()

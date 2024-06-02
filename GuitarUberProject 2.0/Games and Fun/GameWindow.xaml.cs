@@ -4,6 +4,7 @@ using GitarUberProject.Games_and_Fun;
 using GitarUberProject.Games_And_Fun;
 using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
+using GuitarUberProject;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
@@ -557,7 +558,7 @@ namespace GitarUberProject
             }
 
             RandNote();
-            NotesViewModel.PlayChordWithStrumPattern(new List<string> { clickedDataContext.Mp3Name, QuestionModel.Mp3Name }, 1000);
+            DependencyInjection.PlaySoundService.PlayChord(new List<string> { clickedDataContext.Mp3Name, QuestionModel.Mp3Name }, 1000);
 
             tbCounter.Text = Streak.ToString();
         }
