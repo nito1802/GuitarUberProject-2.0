@@ -1,8 +1,9 @@
 ﻿using EditChordsWindow;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
+using GuitarUberProject;
+
+//using NAudio.Wave;
+//using NAudio.Wave.SampleProviders;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -170,8 +171,6 @@ namespace GitarUberProject.EditChord
 
         public List<NoteModelEdit> Notes { get; set; }
         public static Dictionary<string, NoteModelEdit> NotesDict { get; set; }
-        public WaveOut[] StrunyWaves { get; set; } = new WaveOut[6];
-        public WaveOut MainWaveOut { get; set; } = new WaveOut();
 
         public NotesViewModelEdit()
         {
@@ -230,7 +229,7 @@ namespace GitarUberProject.EditChord
                         var playedNotes = PrepareToPlay();
                         playedNotes.Reverse();
 
-                        PlayChord(playedNotes, 0);
+                        DependencyInjection.PlaySoundService.PlayChord(playedNotes, 0);
                     }
                      , param => true);
                 }
@@ -263,7 +262,7 @@ namespace GitarUberProject.EditChord
                     playUp = new RelayCommand(param =>
                     {
                         var playedNotes = PrepareToPlay();
-                        PlayChord(playedNotes, strumDelayMs);
+                        DependencyInjection.PlaySoundService.PlayChord(playedNotes, strumDelayMs);
                     }
                      , param => true);
                 }
@@ -383,7 +382,7 @@ namespace GitarUberProject.EditChord
             var playedNotes = PrepareToPlay();
             playedNotes.Reverse();
 
-            PlayChord(playedNotes, strumDelayMs);
+            DependencyInjection.PlaySoundService.PlayChord(playedNotes, strumDelayMs);
             //PlayChordWithStrumPattern(playedNotes);
         }
 
@@ -434,122 +433,6 @@ namespace GitarUberProject.EditChord
         {
             List<NoteModelEdit> res = Notes.Where(a => a.IsSelected).ToList();
             return res;
-        }
-
-        private void PlayChordWithStrumPattern(List<string> paths)
-        {
-            Debug.WriteLine(string.Join(", ", paths.Select(a => $"\"{a}\"")));
-
-            List<string> GmChord = new List<string> { "s6p3", "s5p5", "s4p5", "s3p3", "s2p3", "s1p3" };
-            List<string> EbChord = new List<string> { "s5p6", "s4p5", "s3p3", "s2p4", "s1p3" };
-            List<string> BbChord = new List<string> { "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6" };
-
-            int offsetMs = 0;
-
-            List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            //List<SingleStrum> strumPattern = new List<SingleStrum>()
-            //{
-            //    new SingleStrum(StrumDirection.Downward, 30, 0, 6, paths),
-            //    new SingleStrum(StrumDirection.Downward, 20, 100, 2, paths),
-            //    new SingleStrum(StrumDirection.Downward, 20, 20, 2, paths),
-
-            //    new SingleStrum(StrumDirection.Downward, 30, 400, 6, paths),
-            //    new SingleStrum(StrumDirection.Downward, 30, 400, 6, paths),
-            //    new SingleStrum(StrumDirection.Downward, 30, 400, 6, paths)
-            //};
-
-            List<SingleStrum> strumPattern = new List<SingleStrum>()
-            {
-                new SingleStrum(GmChord, StrumDirection.Downward, 40, 0, 3, 0),
-                new SingleStrum(GmChord, StrumDirection.Downward, 40, 800, 4, 0),
-
-                new SingleStrum(GmChord, StrumDirection.Upward, 15, 400, 6, 1),
-                new SingleStrum(GmChord, StrumDirection.Downward, 10, 100, 5, 0),
-
-                new SingleStrum(EbChord, StrumDirection.Upward, 15, 160, 6, 1),
-                new SingleStrum(EbChord, StrumDirection.Downward, 15, 160, EbChord.Count-1, 0),
-                new SingleStrum(EbChord, StrumDirection.Upward, 15, 160, 6, 1),
-                new SingleStrum(EbChord, StrumDirection.Downward, 20, 350, EbChord.Count-1, 0),
-
-                new SingleStrum(EbChord, StrumDirection.Upward, 15, 360, 6, 1),
-                new SingleStrum(EbChord, StrumDirection.Downward, 25, 100, EbChord.Count-1, 0),
-
-                new SingleStrum(BbChord, StrumDirection.Downward, 40, 160, BbChord.Count-1, 0),
-                new SingleStrum(BbChord, StrumDirection.Downward, 40, 700, BbChord.Count-1, 0),
-
-                new SingleStrum(BbChord, StrumDirection.Downward, 40, 400, BbChord.Count-1, 0),
-                new SingleStrum(BbChord, StrumDirection.Downward, 25, 300, BbChord.Count-1, 0),
-                new SingleStrum(BbChord, StrumDirection.Upward, 25, 100, 6, 1),
-
-                new SingleStrum(BbChord, StrumDirection.Downward, 25, 400, BbChord.Count-1, 0),
-                new SingleStrum(BbChord, StrumDirection.Upward, 25, 100, 6, 1),
-                new SingleStrum(BbChord, StrumDirection.Downward, 25, 100, BbChord.Count-1, 0),
-                new SingleStrum(BbChord, StrumDirection.Upward, 40, 100, 6, 1),
-
-                //new SingleStrum(EbChord, StrumDirection.Downward, 20, 450, EbChord.Count-1, 0),
-
-                //new SingleStrum(StrumDirection.Downward, 20, 200, 6, EbChord)
-            };
-
-            StrumManager strumManager = new StrumManager(strumPattern);
-            strumManager.CalculateDelays();
-
-            //Gm     "s6p3", "s5p5", "s4p5", "s3p3", "s2p3", "s1p3"
-            //Eb     "s5p6", "s4p5", "s3p3", "s2p4", "s1p3"
-            //Bb     "s6p6", "s5p8", "s4p8", "s3p7", "s2p6", "s1p6"
-            int strumCounter = 0;
-            foreach (var item in strumManager.StrumPattern)
-            {
-                int counter = 0;
-                foreach (var strumItem in item.PlayedNotes)
-                {
-                    OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{strumItem.Path}.wav"));
-
-                    offsetSample.DelayBy = TimeSpan.FromMilliseconds(strumItem.DelayMs);
-                    var takeSample = strumItem.PlayTime == -1 ? offsetSample : offsetSample.Take(TimeSpan.FromMilliseconds(strumItem.PlayTime + strumItem.DelayMs));
-                    samples.Add(takeSample);
-                    counter++;
-                }
-                strumCounter++;
-            }
-
-            if (!samples.Any()) return;
-
-            MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-
-            //NAudioHelper.ConvertToFileWavMp3(mixSample, "mixedBest.wav", "mixedBest.mp3");
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
-        }
-
-        private void PlayChord(List<string> paths, int delayMs)
-        {
-            int offsetMs = 0;
-
-            List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            foreach (var path in paths)
-            {
-                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{path}.wav"));
-                offsetSample.DelayBy = TimeSpan.FromMilliseconds(offsetMs);
-                samples.Add(offsetSample);
-                offsetMs += delayMs;
-            }
-
-            if (!samples.Any()) return;
-
-            MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-
-            //WaveFileWriter.CreateWaveFile16("mixed22.wav", mixSample);
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
         }
 
         public List<string> PrepareToPlay()
