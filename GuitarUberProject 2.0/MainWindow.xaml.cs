@@ -2223,16 +2223,10 @@ namespace GitarUberProject
                     PathService.GetBasePathToRecords(),
                     exportToWavMp3: true
                     );
-
-            //_playSoundService.PlayPlaylist(KlocekViewModel.Klocki, MixerViewModel.MixerModels.ToList(), exportToWavMp3: true);
         }
 
         private void BtnGame_Click(object sender, RoutedEventArgs e)
         {
-            //GameWindow gameWindow = new GameWindow();
-            //RecognizeNote gameWindow = new RecognizeNote();
-            //RecognizeChord gameWindow = new RecognizeChord();
-            //FindChordsOnGuitar gameWindow = new FindChordsOnGuitar();
             GameChoose gameWindow = new GameChoose();
 
             gameWindow.Owner = System.Windows.Application.Current.MainWindow;
