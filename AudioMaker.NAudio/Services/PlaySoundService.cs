@@ -339,5 +339,43 @@ namespace AudioMaker.NAudiox.Services
             MainWaveOut.Init(mixSample);
             MainWaveOut.Play();
         }
+
+        public void PlayTwoChords(List<string> chordANotes, List<string> chordBNotes, int delayBetweenNotes, int delayBetweenChords)
+        {
+            List<ISampleProvider> samples = new List<ISampleProvider>();
+
+            int idx = 0;
+            int fullDelayBy = 0;
+
+            foreach (var item in chordANotes)
+            {
+                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
+
+                fullDelayBy += delayBetweenNotes;
+                offsetSample.DelayBy = TimeSpan.FromMilliseconds(fullDelayBy);
+                samples.Add(offsetSample);
+                idx++;
+            }
+
+            fullDelayBy += delayBetweenChords;
+            idx = 0;
+            foreach (var item in chordBNotes)
+            {
+                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
+
+                fullDelayBy += delayBetweenNotes;
+                offsetSample.DelayBy = TimeSpan.FromMilliseconds(fullDelayBy);
+                //var takeSample = strumItem.PlayTime == -1 ? offsetSample : offsetSample.Take(TimeSpan.FromMilliseconds(strumItem.PlayTime + strumItem.DelayMs + fullDelayMs));
+                samples.Add(offsetSample);
+                idx++;
+            }
+
+            MixingSampleProvider globalMixSample = new MixingSampleProvider(samples);
+
+            MainWaveOut.Dispose();
+            MainWaveOut = new WaveOut();
+            MainWaveOut.Init(globalMixSample);
+            MainWaveOut.Play();
+        }
     }
 }

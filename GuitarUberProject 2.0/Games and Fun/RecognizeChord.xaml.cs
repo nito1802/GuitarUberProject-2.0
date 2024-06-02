@@ -5,12 +5,8 @@ using GitarUberProject.Games_And_Fun;
 using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
 using GuitarUberProject;
-using NAudio.Midi;
-using NAudio.Wave;
-using NAudio.Wave.SampleProviders;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,7 +33,6 @@ namespace GitarUberProject
         public int ErrorToleranceMaxTries { get; set; } = 1;
         public int BullseyePoints { get; set; } = 3;
         public SolidColorBrush BullseyeTextColor { get; } = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF007C9C"));
-        public WaveOut MainWaveOut { get; set; } = new WaveOut();
 
         public int ErrorToleranceTries { get; set; } = 1;
         public string[] PossibleErrorMessages { get; set; }
@@ -64,7 +59,7 @@ namespace GitarUberProject
         public List<int> IntervalNumbers { get; set; } = new List<int>();
         public Dictionary<string, int> AllNotesFromGuitar { get; set; }
         public Random Rand { get; set; } = new Random();
-        public MidiIn MidiKeyboard { get; set; }
+        //public MidiIn MidiKeyboard { get; set; }
 
         private string notesRemainText;
         private string chordsAlreadyWithInterval;
@@ -339,49 +334,49 @@ namespace GitarUberProject
             RandNote();
             var dis2 = NotesViewModel.Notes.Where(a => a.NoteOpacity == 1).ToList();
 
-            var midiCounter = MidiIn.NumberOfDevices;
+            //var midiCounter = MidiIn.NumberOfDevices;
 
-            if (midiCounter > 0)
-            {
-                MidiKeyboard = new MidiIn(0);
-                MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
-                MidiKeyboard.Start();
-            }
+            //if (midiCounter > 0)
+            //{
+            //    MidiKeyboard = new MidiIn(0);
+            //    MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
+            //    MidiKeyboard.Start();
+            //}
         }
 
-        private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
-        {
-            if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
-            {
-                NoteEvent noteEvent = (NoteEvent)e.MidiEvent;
+        //private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
+        //{
+        //    if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
+        //    {
+        //        NoteEvent noteEvent = (NoteEvent)e.MidiEvent;
 
-                if (noteEvent.NoteName == "C4")
-                {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        QuestionModel.PlaySingleNote();
-                        MessageText = string.Empty;
-                    });
-                }
-                else
-                {
-                    string midiNoteName = noteEvent.NoteName.Substring(0, noteEvent.NoteName.Length - 1);
-                    string midiNoteOctave = noteEvent.NoteName.Substring(noteEvent.NoteName.Length - 1, 1);
+        //        if (noteEvent.NoteName == "C4")
+        //        {
+        //            this.Dispatcher.Invoke(() =>
+        //            {
+        //                QuestionModel.PlaySingleNote();
+        //                MessageText = string.Empty;
+        //            });
+        //        }
+        //        else
+        //        {
+        //            string midiNoteName = noteEvent.NoteName.Substring(0, noteEvent.NoteName.Length - 1);
+        //            string midiNoteOctave = noteEvent.NoteName.Substring(noteEvent.NoteName.Length - 1, 1);
 
-                    var myNote = NotesViewModel.Notes.First(a => a.Name == midiNoteName && a.Octave.ToString() == midiNoteOctave);
+        //            var myNote = NotesViewModel.Notes.First(a => a.Name == midiNoteName && a.Octave.ToString() == midiNoteOctave);
 
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        myNote.PlayNoteMethod();
-                    });
-                }
-            }
+        //            this.Dispatcher.Invoke(() =>
+        //            {
+        //                myNote.PlayNoteMethod();
+        //            });
+        //        }
+        //    }
 
-            //e.MidiEvent.Note
+        //    //e.MidiEvent.Note
 
-            string text = e.MidiEvent.ToString();
-            Debug.WriteLine(text);
-        }
+        //    string text = e.MidiEvent.ToString();
+        //    Debug.WriteLine(text);
+        //}
 
         private void RandNote()
         {
@@ -747,12 +742,11 @@ namespace GitarUberProject
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if (MidiKeyboard != null)
-            {
-                MidiKeyboard.Stop();
-                MidiKeyboard.Dispose();
-            }
-            MainWaveOut.Dispose();
+            //if (MidiKeyboard != null)
+            //{
+            //    MidiKeyboard.Stop();
+            //    MidiKeyboard.Dispose();
+            //}
 
             if (Streak > 0)
             {
@@ -843,49 +837,13 @@ namespace GitarUberProject
             }
 
             RandNote();
-            PlayTwoChords(clickedChord, QuestionModelChord, 20, 1000);
-            tbCounter.Text = Streak.ToString();
-        }
-
-        private void PlayTwoChords(NotesViewModelLiteVersion chordA, NotesViewModelLiteVersion chordB, int delayBetweenNotes, int delayBetweenChords)
-        {
-            List<ISampleProvider> samples = new List<ISampleProvider>();
-
-            int idx = 0;
-            int fullDelayBy = 0;
-            var chordANotes = GitarUberProject.NotesViewModel.PrepareToPlay(chordA);
+            var chordANotes = GitarUberProject.NotesViewModel.PrepareToPlay(clickedChord);
             chordANotes.Reverse();
-            foreach (var item in chordANotes)
-            {
-                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
-
-                fullDelayBy += delayBetweenNotes;
-                offsetSample.DelayBy = TimeSpan.FromMilliseconds(fullDelayBy);
-                samples.Add(offsetSample);
-                idx++;
-            }
-
-            fullDelayBy += delayBetweenChords;
-            var chordBNotes = GitarUberProject.NotesViewModel.PrepareToPlay(chordB);
+            var chordBNotes = GitarUberProject.NotesViewModel.PrepareToPlay(QuestionModelChord);
             chordBNotes.Reverse();
-            idx = 0;
-            foreach (var item in chordBNotes)
-            {
-                OffsetSampleProvider offsetSample = new OffsetSampleProvider(new AudioFileReader($@"NotesMp3\GibsonSj200 New\{item}.wav"));
 
-                fullDelayBy += delayBetweenNotes;
-                offsetSample.DelayBy = TimeSpan.FromMilliseconds(fullDelayBy);
-                //var takeSample = strumItem.PlayTime == -1 ? offsetSample : offsetSample.Take(TimeSpan.FromMilliseconds(strumItem.PlayTime + strumItem.DelayMs + fullDelayMs));
-                samples.Add(offsetSample);
-                idx++;
-            }
-
-            MixingSampleProvider globalMixSample = new MixingSampleProvider(samples);
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(globalMixSample);
-            MainWaveOut.Play();
+            DependencyInjection.PlaySoundService.PlayTwoChords(chordANotes, chordBNotes, 20, 1000);
+            tbCounter.Text = Streak.ToString();
         }
     }
 }
