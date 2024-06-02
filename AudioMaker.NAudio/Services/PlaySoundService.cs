@@ -23,10 +23,7 @@ namespace AudioMaker.NAudiox.Services
 
         public double PlaylistMilisecond()
         {
-            var pos = MainWaveOut.GetPosition();
-
-            double ms = MainWaveOut.GetPosition() * 1000.0 / MainWaveOut.OutputWaveFormat.BitsPerSample / MainWaveOut.OutputWaveFormat.Channels * 8 / MainWaveOut.OutputWaveFormat.SampleRate;
-            return ms;
+            return MainWaveOut.GetPosition() * 1000.0 / MainWaveOut.OutputWaveFormat.BitsPerSample / MainWaveOut.OutputWaveFormat.Channels * 8 / MainWaveOut.OutputWaveFormat.SampleRate;
         }
 
         public PlaylistState GetPlaylistState() => MainWaveOut.PlaybackState switch
