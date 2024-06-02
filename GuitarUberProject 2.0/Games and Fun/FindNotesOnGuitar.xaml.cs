@@ -4,10 +4,8 @@ using GitarUberProject.Games_and_Fun;
 using GitarUberProject.Games_And_Fun;
 using GitarUberProject.Helperes;
 using GitarUberProject.ViewModels;
-using NAudio.Midi;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
@@ -50,7 +48,7 @@ namespace GitarUberProject
         public Dictionary<string, int> AllNotesFromGuitar { get; set; }
         public GameModelEdit QuestionModel { get; set; }
         public Random Rand { get; set; } = new Random();
-        public MidiIn MidiKeyboard { get; set; }
+        //public MidiIn MidiKeyboard { get; set; }
 
         private string notesRemainText;
         private string chordsAlreadyWithInterval;
@@ -230,49 +228,49 @@ namespace GitarUberProject
             RandNote();
             var dis2 = NotesViewModel.Notes.Where(a => a.NoteOpacity == 1).ToList();
 
-            var midiCounter = MidiIn.NumberOfDevices;
+            //var midiCounter = MidiIn.NumberOfDevices;
 
-            if (midiCounter > 0)
-            {
-                MidiKeyboard = new MidiIn(0);
-                MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
-                MidiKeyboard.Start();
-            }
+            //if (midiCounter > 0)
+            //{
+            //    MidiKeyboard = new MidiIn(0);
+            //    MidiKeyboard.MessageReceived += MidiKeyboard_MessageReceived;
+            //    MidiKeyboard.Start();
+            //}
         }
 
-        private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
-        {
-            if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
-            {
-                NoteEvent noteEvent = (NoteEvent)e.MidiEvent;
+        //private void MidiKeyboard_MessageReceived(object sender, MidiInMessageEventArgs e)
+        //{
+        //    if (e.MidiEvent.CommandCode == MidiCommandCode.NoteOn)
+        //    {
+        //        NoteEvent noteEvent = (NoteEvent)e.MidiEvent;
 
-                if (noteEvent.NoteName == "C4")
-                {
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        QuestionModel.PlaySingleNote();
-                        MessageText = string.Empty;
-                    });
-                }
-                else
-                {
-                    string midiNoteName = noteEvent.NoteName.Substring(0, noteEvent.NoteName.Length - 1);
-                    string midiNoteOctave = noteEvent.NoteName.Substring(noteEvent.NoteName.Length - 1, 1);
+        //        if (noteEvent.NoteName == "C4")
+        //        {
+        //            this.Dispatcher.Invoke(() =>
+        //            {
+        //                QuestionModel.PlaySingleNote();
+        //                MessageText = string.Empty;
+        //            });
+        //        }
+        //        else
+        //        {
+        //            string midiNoteName = noteEvent.NoteName.Substring(0, noteEvent.NoteName.Length - 1);
+        //            string midiNoteOctave = noteEvent.NoteName.Substring(noteEvent.NoteName.Length - 1, 1);
 
-                    var myNote = NotesViewModel.Notes.First(a => a.Name == midiNoteName && a.Octave.ToString() == midiNoteOctave);
+        //            var myNote = NotesViewModel.Notes.First(a => a.Name == midiNoteName && a.Octave.ToString() == midiNoteOctave);
 
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        myNote.PlayNoteMethod();
-                    });
-                }
-            }
+        //            this.Dispatcher.Invoke(() =>
+        //            {
+        //                myNote.PlayNoteMethod();
+        //            });
+        //        }
+        //    }
 
-            //e.MidiEvent.Note
+        //    //e.MidiEvent.Note
 
-            string text = e.MidiEvent.ToString();
-            Debug.WriteLine(text);
-        }
+        //    string text = e.MidiEvent.ToString();
+        //    Debug.WriteLine(text);
+        //}
 
         private void RandNote()
         {
@@ -656,11 +654,11 @@ namespace GitarUberProject
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            if (MidiKeyboard != null)
-            {
-                MidiKeyboard.Stop();
-                MidiKeyboard.Dispose();
-            }
+            //if (MidiKeyboard != null)
+            //{
+            //    MidiKeyboard.Stop();
+            //    MidiKeyboard.Dispose();
+            //}
 
             if (Streak > 0)
             {

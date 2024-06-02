@@ -1,8 +1,5 @@
 ﻿using EditChordsWindow;
 using GuitarUberProject;
-
-//using NAudio.Wave;
-//using NAudio.Wave.SampleProviders;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Windows.Media;
