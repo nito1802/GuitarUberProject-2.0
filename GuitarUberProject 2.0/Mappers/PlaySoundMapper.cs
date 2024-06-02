@@ -21,7 +21,7 @@ namespace GuitarUberProject.Mappers
             ChannelNr = klocekChordModel.ChannelNr,
             Mp3Name = klocekChordModel.Mp3Name,
             IsChord = klocekChordModel.IsChord,
-            StrumViewModel = MapStrumViewModel(klocekChordModel.StrumViewModel)
+            StrumViewModel = klocekChordModel.StrumViewModel != null ? MapStrumViewModel(klocekChordModel.StrumViewModel) : null
         };
 
         public PlaysoundMixerModel MapMixerModel(MixerModel mixerModel) => new()
