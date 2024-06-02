@@ -77,11 +77,7 @@ namespace AudioMaker.NAudiox.Services
             if (!samples.Any()) return;
 
             MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
+            PlaySample(mixSample);
         }
 
         public void MyExtraPlayChordWithStrumPattern(PlaysoundStrumViewModel strumManager)
@@ -107,10 +103,7 @@ namespace AudioMaker.NAudiox.Services
 
             MixingSampleProvider mixSample = new MixingSampleProvider(samples);
 
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
+            PlaySample(mixSample);
         }
 
         public void PlayPlaylist(
@@ -193,10 +186,7 @@ namespace AudioMaker.NAudiox.Services
                 NAudioHelper.ConvertToFileWavMp3(globalMixSample, wavPath, mp3Path);
             }
 
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(myOffsetSample);
-            MainWaveOut.Play();
+            PlaySample(myOffsetSample);
         }
 
         public void PlayChordPiano(List<string> paths, int delayMs, string recordBasePath, int index = 0, bool exportToWavMp3 = false)
@@ -231,10 +221,7 @@ namespace AudioMaker.NAudiox.Services
             }
             else
             {
-                MainWaveOut.Dispose();
-                MainWaveOut = new WaveOut();
-                MainWaveOut.Init(mixSample);
-                MainWaveOut.Play();
+                PlaySample(mixSample);
             }
         }
 
@@ -255,11 +242,7 @@ namespace AudioMaker.NAudiox.Services
             if (!samples.Any()) return;
 
             MixingSampleProvider mixSample = new MixingSampleProvider(samples);
-            //WaveFileWriter.CreateWaveFile16("mixed22.wav", mixSample);
-            MainWaveOut.Dispose();
-            MainWaveOut = new WaveOut();
-            MainWaveOut.Init(mixSample);
-            MainWaveOut.Play();
+            PlaySample(mixSample);
         }
 
         public void PlayTwoChords(List<string> chordANotes, List<string> chordBNotes, int delayBetweenNotes, int delayBetweenChords)
@@ -293,10 +276,14 @@ namespace AudioMaker.NAudiox.Services
             }
 
             MixingSampleProvider globalMixSample = new MixingSampleProvider(samples);
+            PlaySample(globalMixSample);
+        }
 
+        private void PlaySample(ISampleProvider sample)
+        {
             MainWaveOut.Dispose();
             MainWaveOut = new WaveOut();
-            MainWaveOut.Init(globalMixSample);
+            MainWaveOut.Init(sample);
             MainWaveOut.Play();
         }
     }
