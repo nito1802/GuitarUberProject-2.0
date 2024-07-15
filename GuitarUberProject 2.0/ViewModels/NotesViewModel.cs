@@ -266,12 +266,12 @@ namespace GitarUberProject
 
             LiteNote[] startNotes = new LiteNote[]
             {
-                new LiteNote("E", 5),
-                new LiteNote("B", 4),
-                new LiteNote("G", 4),
-                new LiteNote("D", 4),
-                new LiteNote("A", 3),
-                new LiteNote("E", 3),
+                new LiteNote("E", 4),
+                new LiteNote("B", 3),
+                new LiteNote("G", 3),
+                new LiteNote("D", 3),
+                new LiteNote("A", 2),
+                new LiteNote("E", 2),
             };
 
             foreach (var item in startNotes)
@@ -320,10 +320,10 @@ namespace GitarUberProject
 
             BrushOctavesDict = new Dictionary<int, string>
             {
-                { 3, "#E8BD00"},
-                { 4, "#1D47C2"},
-                { 5, "#008730"},
-                { 6, "#B50461"},
+                { 2, "#E8BD00"},
+                { 3, "#1D47C2"},
+                { 4, "#008730"},
+                { 5, "#B50461"},
             };
         }
 

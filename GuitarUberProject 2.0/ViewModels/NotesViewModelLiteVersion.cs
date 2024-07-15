@@ -101,12 +101,12 @@ namespace EditChordsWindow
 
         private NoteDetails[] DefaultNotesNames = new NoteDetails[6]
         {
-            new NoteDetails("E", 5),
-            new NoteDetails("B", 4),
-            new NoteDetails("G", 4),
-            new NoteDetails("D", 4),
-            new NoteDetails("A", 3),
-            new NoteDetails("E", 3)
+            new NoteDetails("E", 4),
+            new NoteDetails("B", 3),
+            new NoteDetails("G", 3),
+            new NoteDetails("D", 3),
+            new NoteDetails("A", 2),
+            new NoteDetails("E", 2)
         };
 
         public NotesViewModelLiteVersion()
@@ -184,6 +184,12 @@ namespace EditChordsWindow
                 {
                     kolorujChord = new RelayCommand(param =>
                     {
+                        //string path1 = @"C:\Users\dante\Desktop\Istotne\MojeDane\2024\lipiec\12_07_2024\Inne\chordPalce.png";
+                        //string path2 = @"C:\Users\dante\Desktop\Istotne\MojeDane\2024\lipiec\12_07_2024\Inne\intervals.png";
+                        //RenderChordAction?.Invoke(this, path1, path2);
+
+                        //return;
+
                         KolorowanieChordWindow kolorowanieChordWindow = new KolorowanieChordWindow(this);
                         kolorowanieChordWindow.Owner = System.Windows.Application.Current.MainWindow;
 

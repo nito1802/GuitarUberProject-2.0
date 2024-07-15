@@ -9,6 +9,7 @@ using GitarUberProject.Services;
 using GitarUberProject.ViewModels;
 using GuitarUberProject;
 using GuitarUberProject_2._0.Services;
+using GuitarUberProject_2._0.ViewModels;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.ComponentModel;
@@ -63,6 +64,8 @@ namespace GitarUberProject
         public CustomChordsViewModel CustomChordsViewModel { get; set; } = new CustomChordsViewModel();
         public ScaleNotesViewModel ScaleNotesViewModel { get; set; } = new ScaleNotesViewModel();
         public ChordIntervalsDetailsViewModel ChordIntervalsDetailsViewModel { get; set; }
+        public ScalesInChordsViewModel ScalesInChordsViewModel { get; set; } = new();
+        public ChordNameViewModel ChordNameViewModel { get; set; } = new();
         public PianoNotesViewModel PianoNotesViewModel { get; set; } = new PianoNotesViewModel();
         public GlobalGitarButtonViewModel GlobalGitarViewModel { get; set; } = new GlobalGitarButtonViewModel();
         public ChordBoxViewModel ChordBoxViewModel { get; set; } = new ChordBoxViewModel();
@@ -269,13 +272,19 @@ namespace GitarUberProject
                 viewModel.UpdateChordBorders();
                 mainContentControlReadChord.Content = viewModel;
 
-                mainContentControl.UpdateLayout();
-                RenderChordService.WriteToPng(mainContentControl, path, NormalChordWidth, NormalChordHeight);
+                string chordNamePath = @"C:\Users\dante\Desktop\Istotne\MojeDane\2024\lipiec\12_07_2024\Inne\chordName.png";
 
-                mainContentControlReadChord.Visibility = Visibility.Visible;
-                mainContentControlReadChord.UpdateLayout();
-                RenderChordService.WriteToPngReadChord(mainContentControlReadChord, readChordPath, ReadChordWidth, ReadChordHeight);
-                mainContentControlReadChord.Visibility = Visibility.Hidden;
+                mainContentControl.UpdateLayout();
+                float scaleChord = 5f; //dla chordIntervals 2
+                float scaleChordIntervals = 1.8f; //dla chordIntervals 2
+                RenderChordService.WriteToPng(mainContentControl, Path.Combine(path, "chordPalce.png"), NormalChordWidth * scaleChord, NormalChordHeight * scaleChord);
+                RenderChordService.WriteToPng(scalesAndIntervalsStackPanel, Path.Combine(path, "intervals.png"), 570 * scaleChordIntervals, 180 * scaleChordIntervals);
+                RenderChordService.WriteToPng(chordNameStack, Path.Combine(path, "chordName.png"), chordNameStack.ActualWidth * 3, chordNameStack.ActualHeight);
+
+                //mainContentControlReadChord.Visibility = Visibility.Visible;
+                //mainContentControlReadChord.UpdateLayout();
+                //RenderChordService.WriteToPngReadChord(mainContentControlReadChord, readChordPath, ReadChordWidth, ReadChordHeight);
+                //mainContentControlReadChord.Visibility = Visibility.Hidden;
             };
 
             NotesViewModelLiteVersion.MainWindowBlackAction = (makeBlack) =>
@@ -1206,15 +1215,56 @@ namespace GitarUberProject
                 string chordName = SelectedViewModel.ChordName ?? notesIntervals.First().Note;
                 string chordType = SelectedViewModel.ChordType ?? "None";
 
-                try
-                {
-                    ChordIntervalsDetailsViewModel = ChordIntervalHelper.ConvertIntoChordIntervalDetails(chordName, chordType, notesIntervals);
-                }
-                catch (Exception)
-                {
-                }
-                chordIntervalsDetailsPanel.DataContext = ChordIntervalsDetailsViewModel;
+                //for (int i = 0; i < ChordsViewModel.Chords.Count; i++)
+                //{
+                //    foreach (var item in ChordsViewModel.Chords[i].GetAllChords())
+                //    {
+                //        //item.ChordIntervalsNotes
 
+                //        filteredNoteOctaves = item.NoteOctaves
+                //                                        .Where(a => !string.IsNullOrEmpty(a.Name))
+                //                                        .ToList();
+
+                //        notesIntervals = filteredNoteOctaves
+                //                                        .Select(b => new NoteOctaveIntervalDetails(b.Name, int.Parse(b.Octave)))
+                //                                        .Reverse()
+                //                                        .ToList();
+
+                //        chordName = item.ChordName;
+                //        chordType = item.ChordType;
+
+                //        ScalesInChordsViewModel.AA(ScaleNotesViewModel, notesIntervals, null);
+                //        ChordIntervalsDetailsViewModel = ChordIntervalHelper.ConvertIntoChordIntervalDetails(chordName, chordType, notesIntervals);
+                //        chordIntervalsDetailsPanel.DataContext = ChordIntervalsDetailsViewModel;
+                //        scalesInChordsViewModel.DataContext = ScalesInChordsViewModel;
+                //        ChordNameViewModel.SetData(chordName, chordType);
+                //        chordNameStack.DataContext = ChordNameViewModel;
+
+                //        //if (item.ChordName == chordName && item.ChordType == chordType)
+                //        //{
+                //        //    ChordsViewModel.Chords[i].SelectedChord = item;
+                //        //}
+                //        //if (item.ChordName == chordName && item.ChordType == chordType)
+                //        //{
+                //        //    ChordsViewModel.Chords[i].SelectedChord = item;
+                //        //}
+
+                //        string chordPalce = $@"C:\Users\dante\Desktop\Istotne\MojeDane\2024\lipiec\12_07_2024\Inne\allChordsData\{chordType}\{chordName}";
+                //        if (!Directory.Exists(chordPalce))
+                //        {
+                //            Directory.CreateDirectory(chordPalce);
+                //        }
+
+                //        NotesViewModelLiteVersion.RenderChordAction(item, chordPalce, string.Empty);
+                //    }
+                //}
+
+                ScalesInChordsViewModel.SetScalesForChord(ScaleNotesViewModel, notesIntervals);
+                ChordIntervalsDetailsViewModel = ChordIntervalHelper.ConvertIntoChordIntervalDetails(chordName, chordType, notesIntervals);
+                chordIntervalsDetailsPanel.DataContext = ChordIntervalsDetailsViewModel;
+                scalesInChordsViewModel.DataContext = ScalesInChordsViewModel;
+                ChordNameViewModel.SetData(chordName, chordType);
+                chordNameStack.DataContext = ChordNameViewModel;
                 SetPianoKeys(filteredNoteOctaves);
             }
             else
@@ -1276,7 +1326,7 @@ namespace GitarUberProject
             foreach (var item in notes)
             {
                 var pianoBrush = NotesHelper.ChordColor[item.Name];
-                string key = $"{item.Name}{(int.Parse(item.Octave) - 1)}";
+                string key = $"{item.Name}{(int.Parse(item.Octave))}";
 
                 PianoKeysDict[key].Background = pianoBrush;
                 PianoKeysDict[key].IsChecked = true;

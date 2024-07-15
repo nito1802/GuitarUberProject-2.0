@@ -26,7 +26,7 @@ namespace GitarUberProject
                 {"C#", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF7947FF")) },
                 {"D", (SolidColorBrush)(new BrushConverter().ConvertFrom("#00A0E8")) },
                 {"D#", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF09709E")) },
-                {"E", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF05E205")) },
+                {"E", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF0A910A")) },
                 {"F", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEC1C1C")) },
                 {"F#", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFA40E0E")) },
                 {"G", (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFF94790")) },

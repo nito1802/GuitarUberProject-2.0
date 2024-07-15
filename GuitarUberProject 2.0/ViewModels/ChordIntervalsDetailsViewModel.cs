@@ -76,9 +76,8 @@ namespace GitarUberProject.ViewModels
             Note = note;
             Octave = octave;
 
-            ForegroundNoteBrush = NotesHelper.ChordColorNoOpacity[Note];
+            ForegroundNoteBrush = NotesHelper.NotesColor[Note];
             FontSizeNote = NotesHelper.OctaveToFontSizeDict[Octave];
-            //FontSizeNote = 25;
         }
 
         public string FullName

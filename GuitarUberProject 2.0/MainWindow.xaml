@@ -262,7 +262,7 @@
                             Click="btnQuit_Click" />
                 </StackPanel>
                 <TextBlock Margin="0 5 0 0"
-                           Text="ver. 2.0.0"
+                           Text="ver. 2.1.0"
                            Foreground="#FFF1F1F1"
                            FontSize="11"
                            FontWeight="Bold" />
@@ -1676,7 +1676,6 @@
                     <ColumnDefinition Width="400" />
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="200" />
                     <ColumnDefinition Width="530" />
                 </Grid.ColumnDefinitions>
 
@@ -1895,6 +1894,7 @@
                         </ContentControl>
 
                         <StackPanel Margin="50 -5 0 0"
+                                    Visibility="Collapsed"
                                     VerticalAlignment="Center">
                             <CheckBox x:Name="cbSynchroChordsOnGuitar"
                                       IsChecked="True"
@@ -1942,132 +1942,140 @@
                     </StackPanel>
                 </Grid>
 
-                <StackPanel Grid.Column="2">
-                    <StackPanel x:Name="chordIntervalsDetailsPanel"
-                                HorizontalAlignment="Left"
-                                Margin="50 -5 0 0"
-                                Visibility="Visible">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding RootNoteName, UpdateSourceTrigger=PropertyChanged}"
-                                       FontWeight="Normal"
-                                       Foreground="White"
-                                       FontSize="30"
-                                       HorizontalAlignment="Left" />
-                            <TextBlock Margin="5 0 0 0"
-                                       Text="{Binding ChordType, UpdateSourceTrigger=PropertyChanged}"
-                                       FontWeight="UltraLight"
-                                       Foreground="#FFCBCBCB"
-                                       FontSize="30"
-                                       HorizontalAlignment="Left" />
-                        </StackPanel>
-                        <ItemsControl Margin="0 0 0 0"
-                                      ItemsSource="{Binding NotesGroup, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <ItemsControl ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Margin="0 20 10 0" />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel HorizontalAlignment="Left"
-                                                                Margin="0 -5 0 0"
-                                                                Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Note}"
-                                                                   Foreground="{Binding ForegroundNoteBrush}"
-                                                                   FontSize="{Binding FontSizeNote}"
-                                                                   FontWeight="Normal" />
-                                                        <TextBlock Text="{Binding Octave}"
-                                                                   Foreground="{Binding ForegroundNoteBrush}"
-                                                                   FontSize="{Binding FontSizeNote}"
-                                                                   FontWeight="UltraLight" />
-                                                    </StackPanel>
-                                                    <TextBlock Margin="5 -20 0 0"
-                                                               Text="{Binding Interval}"
-                                                               Foreground="White"
-                                                               VerticalAlignment="Top"
-                                                               FontSize="20" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                <StackPanel Grid.Column="2"
+                            Margin="0 -20 0 0"
+                            Orientation="Horizontal">
+                    <StackPanel x:Name="chordNameStack"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="{Binding ChordName}"
+                                   Foreground="#FFCBCBCB"
+                                   FontWeight="Light"
+                                   Margin="0"
+                                   Padding="0"
+                                   HorizontalAlignment="Left"
+                                   Height="110"
+                                   Background="Transparent"
+                                   FontSize="80" />
+                        <TextBlock Text="{Binding ChordType}"
+                                   Margin="0 -25 0 0"
+                                   Foreground="#FFCBCBCB"
+                                   Background="Transparent"
+                                   FontWeight="Bold"
+                                   Width="150"
+                                   Height="70"
+                                   FontSize="50" />
                     </StackPanel>
-
-                    <StackPanel x:Name="chordIntervalsDetailsPanelVariations"
-                                HorizontalAlignment="Left"
-                                Margin="50 -5 0 0"
-                                Visibility="Hidden">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding RootNoteName, UpdateSourceTrigger=PropertyChanged}"
-                                       FontWeight="Normal"
-                                       Foreground="White"
-                                       FontSize="30"
-                                       HorizontalAlignment="Left" />
-                            <TextBlock Margin="5 0 0 0"
-                                       Text="{Binding ChordType, UpdateSourceTrigger=PropertyChanged}"
-                                       TextDecorations="Underline"
-                                       FontWeight="UltraLight"
+                    <StackPanel x:Name="scalesAndIntervalsStackPanel"
+                                Height="190"
+                                Background="Transparent"
+                                Orientation="Horizontal">
+                        <StackPanel x:Name="scalesInChordsViewModel">
+                            <TextBlock Text="SCALES"
+                                       Margin="0 35 0 -12"
                                        Foreground="#FFCBCBCB"
-                                       FontSize="30"
-                                       HorizontalAlignment="Left" />
+                                       FontWeight="Light"
+                                       FontSize="23" />
+
+                            <ItemsControl Margin="35 5 0 0"
+                                          Width="150"
+                                          ItemsSource="{Binding Scales, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <UniformGrid Columns="3"
+                                                     Rows="2" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Note}"
+                                                   Margin="10 0 0 -5"
+                                                   Padding="0"
+                                                   LineHeight="10"
+                                                   Foreground="{Binding ForegroundNoteBrush}"
+                                                   FontSize="30"
+                                                   FontWeight="Bold" />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                                <ItemsControl.ItemContainerStyle>
+                                    <Style>
+                                        <Setter Property="Control.Margin"
+                                                Value="0" />
+                                    </Style>
+                                </ItemsControl.ItemContainerStyle>
+                            </ItemsControl>
                         </StackPanel>
-                        <ItemsControl Margin="0 0 0 0"
-                                      ItemsSource="{Binding NotesGroup, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <ItemsControl ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged}">
-                                        <ItemsControl.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Margin="0 20 10 0" />
-                                            </ItemsPanelTemplate>
-                                        </ItemsControl.ItemsPanel>
-                                        <ItemsControl.ItemTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <StackPanel HorizontalAlignment="Left"
-                                                                Margin="0 -5 0 0"
-                                                                Orientation="Horizontal">
-                                                        <TextBlock Text="{Binding Note}"
-                                                                   Foreground="{Binding ForegroundNoteBrush}"
-                                                                   FontSize="{Binding FontSizeNote}"
-                                                                   FontWeight="Normal" />
-                                                        <TextBlock Text="{Binding Octave}"
-                                                                   Foreground="{Binding ForegroundNoteBrush}"
-                                                                   FontSize="{Binding FontSizeNote}"
-                                                                   FontWeight="UltraLight" />
+                        <StackPanel x:Name="chordIntervalsDetailsPanel"
+                                    HorizontalAlignment="Left"
+                                    Margin="50 -5 0 0"
+                                    Visibility="Visible">
+                            <StackPanel Orientation="Horizontal"
+                                        Visibility="Hidden">
+                                <TextBlock Text="{Binding RootNoteName, UpdateSourceTrigger=PropertyChanged}"
+                                           FontWeight="Bold"
+                                           Foreground="White"
+                                           FontSize="30"
+                                           HorizontalAlignment="Left" />
+                                <TextBlock Margin="5 0 0 0"
+                                           Text="{Binding ChordType, UpdateSourceTrigger=PropertyChanged}"
+                                           FontWeight="UltraLight"
+                                           Foreground="#FFCBCBCB"
+                                           FontSize="30"
+                                           HorizontalAlignment="Left" />
+                            </StackPanel>
+                            <TextBlock Text="NOTES"
+                                       Foreground="#FFCBCBCB"
+                                       FontWeight="Light"
+                                       FontSize="23" />
+
+                            <ItemsControl Margin="40 -22 0 0"
+                                          ItemsSource="{Binding NotesGroup, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <ItemsControl ItemsSource="{Binding Notes, UpdateSourceTrigger=PropertyChanged}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel Margin="0 20 10 0" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel HorizontalAlignment="Left"
+                                                                    Margin="0 -5 0 0"
+                                                                    Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding Note}"
+                                                                       Foreground="{Binding ForegroundNoteBrush}"
+                                                                       FontSize="30"
+                                                                       FontWeight="DemiBold" />
+                                                            <TextBlock Margin="2 0 0 0"
+                                                                       Text="{Binding Octave}"
+                                                                       Foreground="#FF8D8D8D"
+                                                                       FontSize="30"
+                                                                       FontWeight="DemiBold" />
+                                                        </StackPanel>
+                                                        <TextBlock Margin="5 -20 0 0"
+                                                                   Text="{Binding Interval}"
+                                                                   Foreground="#FFEBEBEB"
+                                                                   VerticalAlignment="Top"
+                                                                   FontSize="20" />
                                                     </StackPanel>
-                                                    <TextBlock Margin="5 -20 0 0"
-                                                               Text="{Binding Interval}"
-                                                               Foreground="White"
-                                                               VerticalAlignment="Top"
-                                                               FontSize="20" />
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ItemsControl.ItemTemplate>
-                                    </ItemsControl>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel x:Name="gridMixer"
+                            Visibility="Collapsed"
                             Grid.Column="3">
                     <TextBlock Text="Mixer"
                                FontSize="20"
@@ -2124,7 +2132,7 @@
                 </StackPanel>
 
                 <Grid x:Name="gridStrumPatterns"
-                      Grid.Column="4">
+                      Grid.Column="3">
                     <TextBlock Text="Strum Patterns"
                                FontSize="20"
                                Foreground="White"
@@ -3455,24 +3463,21 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55"
                                   Foreground="White" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="E2"
                                   Canvas.Left="88"
                                   Height="120"
                                   Width="44" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="F2"
                                   Canvas.Left="132"
                                   Height="120"
                                   Width="44" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="F#2"
@@ -3482,16 +3487,14 @@
                                   Background="Black"
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="G2"
                                   Canvas.Left="176"
                                   Height="120"
                                   Width="44" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="G#2"
@@ -3501,16 +3504,14 @@
                                   Background="Black"
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="A2"
                                   Canvas.Left="220"
                                   Height="120"
                                   Width="44" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="A#2"
@@ -3520,8 +3521,7 @@
                                   Background="Black"
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="B2"
@@ -3531,8 +3531,7 @@
 
                     <!--Octave 3-->
 
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="C3"
@@ -3540,8 +3539,7 @@
                                   Height="120"
                                   Width="44"
                                   FontWeight="Bold" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="C#3"
@@ -3551,16 +3549,14 @@
                                   Background="Black"
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="D3"
                                   Canvas.Left="352"
                                   Height="120"
                                   Width="44" />
-                    <ToggleButton Opacity="0.5"
-                                  BorderBrush="#33000000"
+                    <ToggleButton BorderBrush="#33000000"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="D#3"
@@ -3801,6 +3797,7 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="G5"
@@ -3808,6 +3805,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="G#5"
@@ -3818,6 +3816,7 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="A5"
@@ -3825,6 +3824,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="A#5"
@@ -3835,6 +3835,7 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="B5"
@@ -3845,6 +3846,7 @@
                     <!--Octave 6-->
 
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   FontWeight="Bold"
@@ -3853,6 +3855,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="C#6"
@@ -3863,6 +3866,7 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="D6"
@@ -3870,6 +3874,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="D#6"
@@ -3880,6 +3885,7 @@
                                   VerticalAlignment="Center"
                                   Panel.ZIndex="55" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="E6"
@@ -3887,6 +3893,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   Padding="0 60 0 0"
                                   FontSize="20"
                                   Content="F6"
@@ -3894,6 +3901,7 @@
                                   Height="120"
                                   Width="44" />
                     <ToggleButton BorderBrush="#33000000"
+                                  Opacity="0.5"
                                   FontSize="12"
                                   Foreground="White"
                                   Content="F#6"

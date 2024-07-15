@@ -66,7 +66,7 @@ namespace GitarUberProject.Services
             }
             catch (Exception ex)
             {
-                //throw;
+                throw;
             }
         }
     }
